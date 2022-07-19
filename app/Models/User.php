@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -32,6 +33,8 @@ class User extends Authenticatable
      * @var string
      */
     protected $table = 'users';
+    protected string $guard = 'user';
+
 
     /**
      * The attributes that are mass assignable.
@@ -71,6 +74,12 @@ class User extends Authenticatable
     public function phones(): MorphMany
     {
         return $this->morphMany(Phone::class, 'phoneable');
+    }
+
+
+    public function questions(): BelongsToMany
+    {
+        return $this->belongsToMany(Question::class,'users_questions');
     }
 
     /*-------------- Scopes -------------*/

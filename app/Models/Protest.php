@@ -4,18 +4,27 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Role extends Model
+class Protest extends Model
 {
     use HasFactory;
+
 
     /*--------- Const Variables ---------*/
 
 
     /*------------ Variables ------------*/
 
-    protected $table = 'roles';
+
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'protests';
+
 
     /**
      * The attributes that are mass assignable.
@@ -23,7 +32,8 @@ class Role extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'question_id',
+        'text',
     ];
 
 
@@ -33,6 +43,7 @@ class Role extends Model
      * @var array<int, string>
      */
     protected $hidden = [];
+
 
 
     /**
@@ -46,9 +57,9 @@ class Role extends Model
 
     /*------------ Relations ------------*/
 
-    public function permissions(): BelongsToMany
+    public function question(): BelongsTo
     {
-        return $this->belongsToMany(Permission::class,'role_permission');
+        return $this->belongsTo(Question::class);
     }
 
     /*-------------- Scopes -------------*/
@@ -56,5 +67,8 @@ class Role extends Model
 
 
     /*---------- Other Functions --------*/
+
+
+
 
 }

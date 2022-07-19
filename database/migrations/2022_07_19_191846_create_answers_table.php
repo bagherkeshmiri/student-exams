@@ -13,10 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('answers', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name');
+            $table->foreignId('question_id')->constrained('questions')->onDelete('cascade');
+
+            $table->text('text');
+
+            $table->text('incorrect_statement')->nullable();
+            $table->text('correct_statement')->nullable();
+
+            $table->tinyInteger('status')->comment(' 0:very-weak , 1:weak-need-correction , 2:corrected , 3:ok-confirm ');
 
             $table->softDeletes();
             $table->timestamps();
@@ -30,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('answers');
     }
 };

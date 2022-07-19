@@ -5,16 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Facades\Hash;
 
-class Admin extends Model
+class Question extends Model
 {
     use HasFactory;
 
     /*--------- Const Variables ---------*/
 
-    const AVATAR_PATH = 'uploads/admins/avatar/';
+    const NEW = 0;
+    const REVIEWED = 1;
+    const HAVE_PROTEST = 2;
+    const PROTEST_APPROVED = 3;
+    const CONFIRMED = 4;
 
     /*------------ Variables ------------*/
 
@@ -23,8 +28,8 @@ class Admin extends Model
      *
      * @var string
      */
-    protected $table = 'admins';
-    protected string $guard = 'admin';
+    protected $table = 'questions';
+
 
     /**
      * The attributes that are mass assignable.
@@ -32,21 +37,25 @@ class Admin extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'family',
-        'username',
-        'password',
+        'link',
+        'response_deadline',
+        'admin_id',
+        'status',
+        'text',
+        'response_time',
+        'review_time',
+        'confirmation_time',
+        'protest_time',
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = [ ];
+
 
     /**
      * The attributes that should be cast.
@@ -54,43 +63,37 @@ class Admin extends Model
      * @var array<string, string>
      */
     protected $casts = [
+        'response_time' => 'datetime',
+        'review_time' => 'datetime',
+        'confirmation_time' => 'datetime',
+        'protest_time' => 'datetime',
+        'response_deadline' => 'datetime',
     ];
 
 
     /*------------ Relations ------------*/
 
-    public function phones(): MorphMany
+    public function users(): BelongsToMany
     {
-        return $this->morphMany(Phone::class, 'phoneable');
-    }
-
-    public function roles(): BelongsToMany
-    {
-        return $this->belongsToMany('roles');
+        return $this->belongsToMany(User::class,'users_questions');
     }
 
 
+    public function protest(): HasOne
+    {
+        return $this->hasOne(Protest::class);
+    }
+
+
+    public function answer(): HasOne
+    {
+        return $this->hasOne(Answer::class);
+    }
     /*-------------- Scopes -------------*/
 
 
 
     /*---------- Other Functions --------*/
-
-
-
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = Hash::make($value);
-    }
-
-    public function getFullName(): string
-    {
-        if ($this->name && $this->family) {
-            return $this->name . ' ' . $this->family;
-        }
-        return 'بدون نام';
-    }
-
 
 
 }
