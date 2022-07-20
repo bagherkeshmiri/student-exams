@@ -51,6 +51,12 @@ class Role extends Model
         return $this->belongsToMany(Permission::class,'role_permission');
     }
 
+
+    public function admins(): BelongsToMany
+    {
+        return $this->belongsToMany(Admin::class,'admin_role');
+    }
+
     /*-------------- Scopes -------------*/
 
 

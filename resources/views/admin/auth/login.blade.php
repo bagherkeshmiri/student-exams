@@ -26,13 +26,20 @@
                         <div class="divider-text text-uppercase text-muted"><small> @lang('login.login_with_email') </small>
                         </div>
                     </div>
-                    <form action="#" method="post">
+
+
+                    {{-- Start Flash Message --}}
+                    @include('alerts.flash-message')
+                    {{-- End Flash Message --}}
+
+
+                    <form action="{{ route('admin.login') }}" method="post">
                         @csrf
                         <div class="form-group mb-50">
-                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'id' => null , 'for' => 'email' , 'content' => __('login.email') ] )
+                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'id' => null , 'for' => 'username' , 'content' => 'نام کاربری'] )
                             @include('frest-components.tags.required-tag')
-                            @include('frest-components.inputs.input',[ 'type' => 'email' , 'name' => 'email' , 'value' => old('email') , 'classes' => ['text-left'] , 'id' => 'email' , 'placeholder' => null , 'dir' => 'ltr' , 'icon' => '<i class="bx bx-mail-send"></i>' , 'attributes' => ['required'] , 'options' => null ])
-                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'email' ])
+                            @include('frest-components.inputs.input',[ 'type' => 'text' , 'name' => 'username' , 'value' => old('username') , 'classes' => ['text-left'] , 'id' => 'username' , 'placeholder' => null , 'dir' => 'ltr' , 'icon' => '<i class="bx bx-mail-send"></i>' , 'attributes' => ['required'] , 'options' => null ])
+                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'username' ])
                         </div>
                         <div class="form-group">
                             @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'id' => null , 'for' => 'password' , 'content' => __('login.password') ] )
@@ -46,10 +53,7 @@
                             </div>
                             <div class="text-right line-height-2"><a href="#" class="card-link"><small class="text-warning"> @lang('login.forget_password') </small></a></div>
                         </div>
-                        @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary glow w-100 position-relative' , 'content' => __('global.login')  , 'icon' => '<i id="icon-arrow" class="bx bx-left-arrow-alt"></i>'])
-                    </form>
-                    <hr>
-                    <div class="text-center"><small class="mr-25"> @lang('login.no_account') </small><a  href="{{ route('user.show-register') }}"><small class="text-success">@lang('global.register')</small></a></div>
+                        @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary glow w-100 position-relative mt-2' , 'id' => 'register_btn' , 'content' => __('global.login')  , 'icon' => '<i id="icon-arrow" class="bx bx-left-arrow-alt"></i>' ]) </form>
                 </div>
             </div>
         </div>
@@ -60,4 +64,6 @@
 
 
 @section('scripts')
+
+
 @endsection

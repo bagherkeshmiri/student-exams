@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
 
-class Admin extends Model
+class Admin extends Authenticatable
 {
     use HasFactory;
 
@@ -66,7 +66,7 @@ class Admin extends Model
 
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany('roles');
+        return $this->belongsToMany(Role::class,'admin_role');
     }
 
 

@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\admin\AdminAuthController;
-use Illuminate\Http\Request;
+
+use App\Http\Controllers\api\v1\admin\AdminAuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::name('api.admin.')->middleware('throttle:api')->group( function(){
+Route::name('api.admin.')->group( function(){
 
-    Route::controller(AdminAuthController::Class)->group( function(){
-        Route::post('/login', 'login')->name('login');
-    });
+//    Route::controller(AdminAuthController::Class)->group( function(){
+//        Route::post('/login', 'login')->name('login');
+//    });
 
 
 });

@@ -12,7 +12,7 @@ class EloquentBaseRepository implements RepositoryInterface, \Countable
         return resolve($this->model);
     }
 
-    public function count()
+    public function count(): int
     {
         return $this->model::count();
     }
@@ -58,7 +58,7 @@ class EloquentBaseRepository implements RepositoryInterface, \Countable
     }
 
 
-    public function filters($val)
+    public function filters($val): static
     {
          $this->model::filters($val);
         return $this;

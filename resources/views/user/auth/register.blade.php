@@ -70,44 +70,6 @@
 
 @section('scripts')
 
-    <script>
-        const register_url = '{{ route('api.user.register') }}' ;
-        const    headers = {
-                   'Accept' : 'application/json',
-                'Content-Type' : 'application/json',
-            };
 
-        const test  = async () => {
-            const email_input = document.querySelector('#email');
-            const mobile_input = document.querySelector('#mobile');
-            const password_input = document.querySelector('#password');
-            const password_confirmation_input = document.querySelector('#password_confirmation');
-            const introduced_code_input = document.querySelector('#introduced_code');
-
-            const requestBody = {
-                email: email_input.value,
-                mobile: mobile_input.value,
-                password: password_input.value,
-                password_confirmation: password_confirmation_input.value,
-                introduced_code: introduced_code_input.value,
-            }
-
-
-            fetch(register_url,
-                {
-                    method: 'POST',
-                    headers: headers,
-                    body : JSON.stringify(requestBody)
-                })
-                .then((response) => {
-                    console.log(response)
-                })
-                .catch((error) => console.log(error));
-
-
-
-        }
-
-    </script>
 
 @endsection
