@@ -108,7 +108,6 @@ class User extends Authenticatable
         return 'بدون نام';
     }
 
-
     public function getStatuses(): array
     {
         return [
@@ -118,6 +117,22 @@ class User extends Authenticatable
               'پیش دانشگاهی' => $this::PRE_UNIVERSITY,
         ];
 
+    }
+
+    public function getBadgeStatus(): string
+    {
+        if($this->level == $this::ELEMENTARY){
+            $level = '<div class="badge badge-success mr-1 mb-1">ابتدایی</div>';
+        }elseif ($this->level == $this::GUIDANCE){
+            $level = '<div class="badge badge-info mr-1 mb-1">راهنمایی</div>';
+        }elseif ($this->level == $this::HIGH_SCHOOL){
+            $level = '<div class="badge badge-warning mr-1 mb-1">دبیرستان</div>';
+        }elseif ($this->level == $this::PRE_UNIVERSITY){
+            $level = '<div class="badge badge-danger mr-1 mb-1">پیش دانشگاهی</div>';
+        }else{
+            $level = '<div class="badge badge-secondary mr-1 mb-1">نامشخص</div>';
+        }
+        return $level;
     }
 
 }

@@ -51,12 +51,11 @@
                                                         <td>{{ $student->name }}</td>
                                                         <td>{{ $student->family }}</td>
                                                         <td>{{ $student->username }}</td>
-                                                        <td>{{ $student->level }}</td>
+                                                        <td>{!! $student->getBadgeStatus() !!} </td>
                                                         <td>{{ $student->getJalaliCreatedAt() }}</td>
                                                         <td>
-                                                            <a href="#">
-                                                                <i class="badge-circle badge-circle-light-secondary bx bx-envelope font-medium-1"></i>
-                                                            </a>
+                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'classes' => null , 'id' => null , 'href' => route('admin.user.show',[ 'user' => $student->id ])  , 'tooltip_title' => 'ویرایش' , 'icon' => '<i class="bx bx-pencil bx-sm bx-tada-hover" style="color:#FDAC41 !important;"></i>'])
+                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'classes' => null , 'id' => null , 'href' => route('admin.user.destroy',[ 'user' => $student->id ])  , 'tooltip_title' => 'حذف' , 'icon' => '<i class="bx bx-trash bx-sm bx-tada-hover" style="color:#FF5B5C !important;"></i>'])
                                                         </td>
                                                     </tr>
                                                 @endforeach

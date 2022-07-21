@@ -66,7 +66,7 @@ class AdminStudentsController extends Controller
      */
     public function show(User $user)
     {
-        //
+        dd($user->id);
     }
 
     /**
@@ -90,6 +90,7 @@ class AdminStudentsController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $this->UserRepository->delete($user->id);
+        return redirect()->route('admin.user.index');
     }
 }
