@@ -170,6 +170,7 @@ return [
         'mobile' => 'Mobile',
         'password' => 'password',
         'username' => ' Username',
+        'level' => ' Level',
     ],
 
 ];

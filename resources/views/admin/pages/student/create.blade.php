@@ -7,6 +7,9 @@
 
     <!-- select 2 css -->
     <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/vendors/css/forms/select/select2.min.css') }}">
+
+
+
 @endsection
 
 
@@ -89,7 +92,7 @@
                                                         <div class="form-group">
                                                             @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'id' => null , 'for' => 'level' , 'content' => 'سطح'] )
                                                             @include('frest-components.tags.required-tag')
-                                                            @include('frest-components.inputs.select2.simple',[ 'data' => $levels, 'classes' => null , 'id' => null , 'name' => 'level' ,'attributes' => ['required']])
+                                                            @include('frest-components.inputs.select2.simple',[ 'data' => $levels , 'id' => 'level' , 'name' => 'level' ])
                                                             @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'level' ])
                                                         </div>
                                                     </div>
@@ -122,9 +125,23 @@
 
 @section('scripts')
 
+    <!-- Jquery Library CDN -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- select 2 js -->
     <script type="text/javascript" src="{{ asset('/frest/vendors/js/forms/select/select2.full.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/frest/js/scripts/forms/select/form-select2.js') }}"></script>
+
+
+    <script type="text/javascript">
+
+        $("#level").select2({
+            placeholder: " -- انتخاب کنید -- ",
+            allowClear: true
+        });
+
+    </script>
+
+
 
 @endsection

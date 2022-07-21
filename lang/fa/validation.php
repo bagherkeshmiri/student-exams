@@ -146,5 +146,6 @@ return [
         'mobile' => 'موبایل',
         'password' => 'رمز عبور',
         'username' => 'نام کاربری',
+        'level' => 'سطح ',
     ],
 ];

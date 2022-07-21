@@ -1,5 +1,15 @@
-<select class="select2 form-control"  @isset($name) name="{{ $name }}" @endisset>
-    <option selected> -- انتخاب کنید  --  </option>
+<select class="select2 form-control "
+
+    @isset($name)
+        name="{{ $name }}"
+    @endisset
+
+    @isset($id)
+        id="{{ $id }}"
+    @endisset
+    >
+
+    <option></option>
 
     @isset($data)
         @foreach($data as $key => $value)
