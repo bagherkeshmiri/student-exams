@@ -13,7 +13,7 @@
                 id="{{ $id }}"
             @endisset
 
-           class="form-control @isset($classes) @foreach($classes as $class) {{$class}} @endforeach @endisset"
+           class="form-control @isset($classes)  {{$classes}} @endisset"
 
            @isset($placeholder)
                 placeholder="{{ $placeholder }}"
@@ -24,15 +24,11 @@
             @endisset
 
             @isset($attributes)
-                @foreach($attributes as $attribute)
-                    {{$attribute}}
-                @endforeach
+                    {{$attributes}}
             @endisset
 
             @isset($options)
-                @foreach($options as $key => $value)
-                     {{$key}} = '{{ $value }}'
-                @endforeach
+                     {{ $options }}
             @endisset
 
     >

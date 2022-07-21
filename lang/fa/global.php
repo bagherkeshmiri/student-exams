@@ -6,5 +6,7 @@ return [
     'login' => 'ورود',
     'google' => 'گوگل',
     'facebook' => 'فیسبوک',
+    'save' => 'ثبت',
+    'cancel' => 'انصراف'
 
 ];

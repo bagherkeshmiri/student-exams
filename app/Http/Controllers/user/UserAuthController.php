@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\user\auth\register\UserRegisterRequest;
+use App\Http\Requests\user\auth\UserRegisterRequest;
 use App\Models\User;
 use App\Repositories\User\UserRepositoryInterface;
 use Illuminate\Http\Request;
@@ -20,7 +20,6 @@ class UserAuthController extends Controller
 
     public function showLogin()
     {
-        dd(config('auth.guards'));
         return view('user.auth.login');
     }
 

@@ -145,6 +145,6 @@ return [
         'email' => 'ایمیل',
         'mobile' => 'موبایل',
         'password' => 'رمز عبور',
-        'retype_password' => 'تکرار رمز عبور',
+        'username' => 'نام کاربری',
     ],
 ];

@@ -104,5 +104,15 @@ class User extends Authenticatable
     }
 
 
+    public function getStatuses(): array
+    {
+        return [
+              'ابتدایی' => $this::ELEMENTARY,
+              'راهنمایی' => $this::GUIDANCE,
+              'دبیرستان' => $this::HIGH_SCHOOL,
+              'پیش دانشگاهی' => $this::PRE_UNIVERSITY,
+        ];
+
+    }
 
 }
