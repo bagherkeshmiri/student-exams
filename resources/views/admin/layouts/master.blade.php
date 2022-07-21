@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html class="loading" lang="fa" data-textdirection="rtl" dir="rtl">
 <!-- BEGIN: Head-->
-    @include('user.partials.head')
+    @include('admin.partials.head')
 <!-- END: Head-->
 
 <!-- BEGIN: Body-->
 <body class="horizontal-layout horizontal-menu navbar-static dark-layout 2-columns   footer-static  " data-open="hover" data-menu="horizontal-menu" data-col="2-columns" data-layout="dark-layout">
 
 <!-- BEGIN: Header-->
-@include('user.partials.header')
+@include('admin.partials.header')
 <!-- END: Header-->
 
 
 <!-- BEGIN: Main Menu-->
-@include('.user.partials.main-menu')
+@include('admin.partials.main-menu')
 <!-- END: Main Menu-->
 
 <!-- BEGIN: Content-->
@@ -22,7 +22,7 @@
 
 
 <!-- BEGIN: Footer-->
-@include('user.partials.footer')
+@include('admin.partials.footer')
 <!-- END: Footer-->
 
 

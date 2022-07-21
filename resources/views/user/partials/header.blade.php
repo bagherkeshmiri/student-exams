@@ -211,7 +211,7 @@
                                 گفتگو ها
                             </a>
                             <div class="dropdown-divider mb-0"></div>
-                            <a class="dropdown-item" href="{{ route('admin.logout') }}">
+                            <a class="dropdown-item" href="#">
                                 <i class="bx bx-power-off mr-50"></i>
                                 خروج
                             </a>
