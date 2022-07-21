@@ -1,5 +1,5 @@
 @extends('user.layouts.auth-master')
-@section('title', __('global.login') )
+@section('title', 'ورود مدیران' )
 
 
 @section('styles')
@@ -11,7 +11,7 @@
         <div class="card disable-rounded-right mb-0 p-2 h-100 d-flex justify-content-center">
             <div class="card-header pb-1">
                 <div class="card-title">
-                    <h4 class="text-center mb-2"> @lang('global.login') </h4>
+                    <h4 class="text-center mb-2"> ورود مدیران </h4>
                 </div>
             </div>
             <div class="card-content">

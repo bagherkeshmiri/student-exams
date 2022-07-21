@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminLoginRequest;
 use App\Repositories\Admin\AdminRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,7 @@ class AdminAuthController extends Controller
     }
 
 
-    public function login(Request $request)
+    public function login(AdminLoginRequest $request)
     {
         try {
             $admin = $this->AdminRepository->getModel()->where('username',$request->input('username'))->first();
