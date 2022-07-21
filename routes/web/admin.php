@@ -31,5 +31,4 @@ Route::name('admin.')->group( function(){
     Route::resource('student', AdminStudentsController::class);
 
 
-
 });

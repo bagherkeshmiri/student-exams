@@ -89,6 +89,10 @@ class User extends Authenticatable
     /*---------- Other Functions --------*/
 
 
+    public function createdAt()
+    {
+        return $this->create_at;
+    }
 
     public function setPasswordAttribute($value)
     {
