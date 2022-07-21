@@ -52,7 +52,7 @@
                                                         <td>{{ $student->family }}</td>
                                                         <td>{{ $student->username }}</td>
                                                         <td>{{ $student->level }}</td>
-                                                        <td>{{ $student->created_at }}</td>
+                                                        <td>{{ $student->getJalaliCreatedAt() }}</td>
                                                         <td>
                                                             <a href="#">
                                                                 <i class="badge-circle badge-circle-light-secondary bx bx-envelope font-medium-1"></i>

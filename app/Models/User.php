@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
+use Morilog\Jalali\Jalalian;
 
 class User extends Authenticatable
 {
@@ -89,9 +90,9 @@ class User extends Authenticatable
     /*---------- Other Functions --------*/
 
 
-    public function createdAt()
+    public function getJalaliCreatedAt(): string
     {
-        return $this->create_at;
+        return Jalalian::forge($this->create_at)->format('Y/m/d H:i:s');
     }
 
     public function setPasswordAttribute($value)
