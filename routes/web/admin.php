@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminDashboardController;
+use App\Http\Controllers\admin\AdminQuestionController;
 use App\Http\Controllers\admin\AdminStudentsController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,13 @@ Route::name('admin.')->group( function(){
     Route::resource('user', AdminStudentsController::class)->except('edit','destroy');
     Route::name('user.')->prefix('user')->controller(AdminStudentsController::Class)->group( function(){
         Route::get('/destroy/{user}', 'destroy')->name('destroy');
+    });
+
+
+    // students
+    Route::resource('question', AdminQuestionController::class)->except('edit','destroy');
+    Route::name('question.')->prefix('question')->controller(AdminStudentsController::Class)->group( function(){
+        Route::get('/destroy/{question}', 'destroy')->name('destroy');
     });
 
 });

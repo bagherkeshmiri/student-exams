@@ -47,7 +47,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="#" data-toggle="dropdown">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.question.create') }}" data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             ایجاد سوال
                         </a>

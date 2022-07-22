@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title','ویرایش دانش آموز')
+@section('title','ایجاد سوال')
 
 
 @section('styles')
@@ -9,6 +9,11 @@
     <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/vendors/css/forms/select/select2.min.css') }}">
 
 
+    <style>
+        textarea {
+            resize: none;
+        }
+    </style>
 
 @endsection
 
@@ -23,7 +28,7 @@
                 <div class="content-header-left col-12 mb-2 mt-1">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h5 class="content-header-title float-left pr-1 text-success " style=" border-left: 0 !important;">ویرایش دانش آموز</h5>
+                            <h5 class="content-header-title float-left pr-1 text-success " style=" border-left: 0 !important;">ایجاد سوال</h5>
                         </div>
                     </div>
                 </div>
@@ -43,62 +48,62 @@
                                         {{-- End Flash Message --}}
 
 
-                                        <form class="form" action="{{ route('admin.user.update',[ 'user' => $user->id ]) }}" method="post">
+                                        <form class="form" action="{{ route('admin.user.store') }}" method="post">
                                             @csrf
-                                            @method('put')
                                             <div class="form-body">
                                                 <div class="row">
 
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-group">
-                                                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'name' , 'content' => 'نام '] )
+                                                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'link' , 'content' => 'لینک '] )
                                                             @include('frest-components.tags.required-tag')
-                                                            @include('frest-components.inputs.input',[ 'type' => 'text' , 'name' => 'name' , 'value' => $user->name , 'classes' => 'text-left' , 'id' => 'name'  , 'dir' => 'ltr' , 'icon' => userIcon() , 'attributes' => 'required'  ])
-                                                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'name' ])
+                                                            @include('frest-components.inputs.input',[ 'type' => 'text' , 'name' => 'link' , 'value' => old('link') , 'classes' => 'text-left' , 'id' => 'link' , 'dir' => 'ltr' , 'icon' => linkIcon() , 'attributes' => 'required' ])
+                                                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'link' ])
                                                         </div>
                                                     </div>
 
 
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-group">
-                                                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'family' , 'content' => 'نام خانوادگی'] )
+                                                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'user_id' , 'content' => 'دانش آموز'] )
                                                             @include('frest-components.tags.required-tag')
-                                                            @include('frest-components.inputs.input',[ 'type' => 'text' , 'name' => 'family' , 'value' => $user->family , 'classes' => 'text-left' , 'id' => 'family' , 'dir' => 'ltr' , 'icon' => userIcon() , 'attributes' => 'required'  ])
-                                                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'family' ])
+                                                            @include('frest-components.inputs.select2.simple',[ 'data' => $students , 'id' => 'user_id' , 'name' => 'user_id' ])
+                                                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'user_id' ])
                                                         </div>
                                                     </div>
 
 
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-group">
-                                                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'mobile' , 'content' => 'موبایل'] )
+                                                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'admin_id' , 'content' => ' تصحیح کننده'] )
                                                             @include('frest-components.tags.required-tag')
-                                                            @include('frest-components.inputs.input',[ 'type' => 'number' , 'name' => 'mobile' , 'value' => $user->mobile , 'classes' => 'text-left' , 'id' => 'mobile' , 'dir' => 'ltr' , 'icon' => mobileIcon() , 'attributes' => 'required' ])
-                                                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'mobile' ])
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700']  , 'for' => 'username' , 'content' => 'نام کاربری'] )
-                                                            @include('frest-components.tags.required-tag')
-                                                            @include('frest-components.inputs.input',[ 'type' => 'text' , 'name' => 'username' , 'value' => $user->username , 'classes' => 'text-left' , 'id' => 'username' , 'dir' => 'ltr' , 'icon' => userIcon() , 'attributes' => 'required'  ])
-                                                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'username' ])
+                                                            @include('frest-components.inputs.select2.simple',[ 'data' => $admins , 'id' => 'admin_id' , 'name' => 'admin_id' ])
+                                                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'admin_id' ])
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-group">
-                                                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'level' , 'content' => 'سطح'] )
+                                                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'response_deadline' , 'content' => 'مهلت پاسخ گویی (دقیقه)'] )
                                                             @include('frest-components.tags.required-tag')
-                                                            @include('frest-components.inputs.select2.simple',[ 'data' => $levels , 'id' => 'level' , 'name' => 'level' , 'selected_value' => $user->level ])
-                                                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'level' ])
+                                                            @include('frest-components.inputs.input',[ 'type' => 'number' , 'name' => 'response_deadline' , 'value' => old('response_deadline') , 'classes' => 'text-left' , 'id' => 'link' , 'dir' => 'ltr' , 'icon' => timerIcon() , 'attributes' => 'required' ])
+                                                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'response_deadline' ])
                                                         </div>
                                                     </div>
+
+
+                                                    <div class="col-md-12 col-12 mb-2">
+                                                        @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'textarea-counter' , 'content' => 'متن '] )
+                                                        @include('frest-components.tags.required-tag')
+                                                        <fieldset class="form-label-group mb-0">
+                                                            <textarea  class="form-control char-textarea " id="textarea-counter" rows="10" placeholder=""></textarea>
+                                                        </fieldset>
+                                                        <small class="counter-value float-right bg-danger font-small-3"><span class="char-count">0</span> : تعداد کلمات </small>
+                                                    </div>
+
 
                                                     <div class="col-12 d-flex justify-content-end">
-                                                        @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.edit')  , 'icon' => '<i id="icon-arrow" class="bx bx-save"></i>' ])
+                                                        @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => '<i id="icon-arrow" class="bx bx-save"></i>' ])
                                                         @include('frest-components.inputs.buttons.link-button',[ 'href' => route('admin.user.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => '<i id="icon-arrow" class="bx bx-left-arrow-alt"></i>' ])
                                                     </div>
                                                 </div>
@@ -132,7 +137,6 @@
     <script type="text/javascript" src="{{ asset('/js/select2-functions.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/frest/vendors/js/forms/select/select2.full.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/frest/js/scripts/forms/select/form-select2.js') }}"></script>
-
 
     <script type="text/javascript">
         createSelect2('#level'," -- انتخاب کنید -- ");

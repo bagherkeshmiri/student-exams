@@ -102,12 +102,12 @@ class User extends Authenticatable
         $this->attributes['password'] = Hash::make($value);
     }
 
-    public function getFullName(): string
+    public function getFullNameAttribute(): string
     {
         if ($this->name && $this->family) {
-            return $this->name . ' ' . $this->family;
+            return $this->attributes['full_name'] = $this->name . ' ' . $this->family;
         }
-        return 'بدون نام';
+        return $this->attributes['full_name'] = 'بدون نام';
     }
 
     public function getStatuses(): array

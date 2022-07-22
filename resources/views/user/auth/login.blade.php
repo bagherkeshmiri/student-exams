@@ -29,20 +29,20 @@
                     <form action="#" method="post">
                         @csrf
                         <div class="form-group mb-50">
-                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'id' => null , 'for' => 'email' , 'content' => __('login.email') ] )
+                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'email' , 'content' => __('login.email') ] )
                             @include('frest-components.tags.required-tag')
-                            @include('frest-components.inputs.input',[ 'type' => 'email' , 'name' => 'email' , 'value' => old('email') , 'classes' => 'text-left' , 'id' => 'email' , 'placeholder' => null , 'dir' => 'ltr' , 'icon' => '<i class="bx bx-mail-send"></i>' , 'attributes' => 'required' , 'options' => null ])
+                            @include('frest-components.inputs.input',[ 'type' => 'email' , 'name' => 'email' , 'value' => old('email') , 'classes' => 'text-left' , 'id' => 'email' , 'dir' => 'ltr' , 'icon' => '<i class="bx bx-mail-send"></i>' , 'attributes' => 'required'  ])
                             @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'email' ])
                         </div>
                         <div class="form-group">
-                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'id' => null , 'for' => 'password' , 'content' => __('login.password') ] )
+                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'password' , 'content' => __('login.password') ] )
                             @include('frest-components.tags.required-tag')
-                            @include('frest-components.inputs.input',[ 'type' => 'password' , 'name' => 'password' , 'value' => null , 'classes' => 'text-left' , 'id' => 'password' , 'placeholder' => null , 'dir' => 'ltr' , 'icon' => '<i class="bx bxs-lock"></i>' , 'attributes' => 'required' , 'options' => null ])
+                            @include('frest-components.inputs.input',[ 'type' => 'password' , 'name' => 'password' , 'classes' => 'text-left' , 'id' => 'password' , 'dir' => 'ltr' , 'icon' => '<i class="bx bxs-lock"></i>' , 'attributes' => 'required' ])
                             @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'password' ])
                         </div>
                         <div class="form-group d-flex flex-md-row flex-column justify-content-between align-items-center">
                             <div class="text-left">
-                                @include('frest-components.inputs.checkbox',[ 'id' => 'remember' , 'for' => 'remember' , 'main_classes' =>  [ 'checkbox-sm' ] , 'input_classes' => null , 'label_classes' => null  , 'label_content' => __('login.remember_me') ])
+                                @include('frest-components.inputs.checkbox',[ 'id' => 'remember' , 'for' => 'remember' , 'main_classes' =>  [ 'checkbox-sm' ] , 'label_content' => __('login.remember_me') ])
                             </div>
                             <div class="text-right line-height-2"><a href="#" class="card-link"><small class="text-warning"> @lang('login.forget_password') </small></a></div>
                         </div>
