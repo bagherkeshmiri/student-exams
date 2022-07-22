@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\admin\student\AdminStudentEditRequest;
 use App\Http\Requests\admin\student\AdminStudentStoreRequest;
 use App\Models\User;
 use App\Repositories\User\UserRepositoryInterface;
@@ -81,7 +82,7 @@ class AdminStudentsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(AdminStudentEditRequest $request, User $user)
     {
         $data = [
             'name' => $request->input('name'),
