@@ -119,17 +119,13 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- select 2 js -->
+    <script type="text/javascript" src="{{ asset('/js/select2-functions.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/frest/vendors/js/forms/select/select2.full.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/frest/js/scripts/forms/select/form-select2.js') }}"></script>
 
 
     <script type="text/javascript">
-
-        $("#level").select2({
-            placeholder: " -- انتخاب کنید -- ",
-            allowClear: true
-        });
-
+        createSelect2('#level'," -- انتخاب کنید -- ");
     </script>
 
 

@@ -28,7 +28,7 @@ Route::name('admin.')->group( function(){
 
 
     // students
-    Route::resource('user', AdminStudentsController::class);
+    Route::resource('user', AdminStudentsController::class)->except('edit');
 
 
 });
