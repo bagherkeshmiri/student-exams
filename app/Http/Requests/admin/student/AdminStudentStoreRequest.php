@@ -29,6 +29,7 @@ class AdminStudentStoreRequest extends FormRequest
             'username' => 'required|min:8|unique:users',
             'password' => 'required|min:8',
             'level' => 'required|numeric',
+            'mobile' => 'required|numeric|digits:11',
         ];
     }
 }

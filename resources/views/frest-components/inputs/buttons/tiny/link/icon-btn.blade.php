@@ -15,6 +15,10 @@
     @isset($tooltip_title)
     title="" data-original-title="{{ $tooltip_title }}"
     @endisset
+
+    @isset($attributes)
+        {{ $attributes }}
+    @endisset
    >
     {!! $icon !!}
 

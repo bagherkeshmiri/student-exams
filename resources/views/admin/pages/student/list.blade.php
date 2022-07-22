@@ -4,6 +4,7 @@
 
 
 @section('styles')
+    <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/vendors/css/extensions/sweetalert2.min.css') }}">
 @endsection
 
 
@@ -46,7 +47,8 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach($students as $student)
+
+                                                @forelse ($students as $student)
                                                     <tr>
                                                         <td>{{ $student->name }}</td>
                                                         <td>{{ $student->family }}</td>
@@ -54,11 +56,16 @@
                                                         <td>{!! $student->getBadgeStatus() !!} </td>
                                                         <td>{{ $student->getJalaliCreatedAt() }}</td>
                                                         <td>
-                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'classes' => null , 'id' => null , 'href' => route('admin.user.show',[ 'user' => $student->id ])  , 'tooltip_title' => 'ویرایش' , 'icon' => '<i class="bx bx-pencil bx-sm bx-tada-hover" style="color:#FDAC41 !important;"></i>'])
-                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'classes' => null , 'id' => null , 'href' => route('admin.user.destroy',[ 'user' => $student->id ])  , 'tooltip_title' => 'حذف' , 'icon' => '<i class="bx bx-trash bx-sm bx-tada-hover" style="color:#FF5B5C !important;"></i>'])
+                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.user.show',[ 'user' => $student->id ])  , 'tooltip_title' => 'ویرایش' , 'icon' => '<i class="bx bx-pencil bx-sm bx-tada-hover" style="color:#FDAC41 !important;"></i>'])
+                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => 'حذف' , 'icon' => '<i class="bx bx-trash bx-sm bx-tada-hover" style="color:#FF5B5C !important;"></i>' , 'attributes' => 'onclick=student_delete(this,event)  data-url='.route('admin.user.destroy',[ 'user' => $student->id ]) ])
                                                         </td>
                                                     </tr>
-                                                @endforeach
+                                                @empty
+                                                    <tr>
+                                                        <td colspan="100" class="text-center"> هیچ اطلاعاتی یافت نشد</td>
+                                                    </tr>
+                                                @endforelse
+
                                                 </tbody>
                                             </table>
                                         </div>
@@ -81,5 +88,16 @@
 
 
 @section('scripts')
+    <script type="text/javascript" src="{{ asset('frest/js/scripts/extensions/sweet-alerts.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frest/vendors/js/extensions/sweetalert2.all.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/swal-functions.js') }}"></script>
+    <script type="text/javascript">
+
+        function student_delete(element,event) {
+            event.preventDefault()
+            mboxDelete(element.getAttribute('data-url'));
+        }
+
+    </script>
 
 @endsection

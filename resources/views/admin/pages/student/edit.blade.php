@@ -71,6 +71,16 @@
 
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-group">
+                                                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'id' => null , 'for' => 'mobile' , 'content' => 'موبایل'] )
+                                                            @include('frest-components.tags.required-tag')
+                                                            @include('frest-components.inputs.input',[ 'type' => 'number' , 'name' => 'mobile' , 'value' => $user->mobile , 'classes' => 'text-left' , 'id' => 'mobile' , 'placeholder' => null , 'dir' => 'ltr' , 'icon' => '<i class="bx bx-phone"></i>' , 'attributes' => 'required' , 'options' => null ])
+                                                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'mobile' ])
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-group">
                                                             @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700']  , 'for' => 'username' , 'content' => 'نام کاربری'] )
                                                             @include('frest-components.tags.required-tag')
                                                             @include('frest-components.inputs.input',[ 'type' => 'text' , 'name' => 'username' , 'value' => $user->username , 'classes' => 'text-left' , 'id' => 'username' , 'dir' => 'ltr' , 'icon' => '<i class="bx bx-user"></i>' , 'attributes' => 'required'  ])

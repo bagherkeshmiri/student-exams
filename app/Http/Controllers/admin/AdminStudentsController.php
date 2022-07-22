@@ -49,6 +49,7 @@ class AdminStudentsController extends Controller
             'username' => $request->input('username'),
             'password' => $request->input('password'),
             'level' => $request->input('level'),
+            'mobile' => $request->input('mobile'),
         ];
         DB::beginTransaction();
         try {
@@ -87,6 +88,7 @@ class AdminStudentsController extends Controller
             'family' => $request->input('family'),
             'username' => $request->input('username'),
             'level' => $request->input('level'),
+            'mobile' => $request->input('mobile'),
         ];
         DB::beginTransaction();
         try {

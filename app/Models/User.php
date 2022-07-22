@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
@@ -13,7 +14,7 @@ use Morilog\Jalali\Jalalian;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use HasApiTokens, Notifiable ,SoftDeletes;
 
 
     /*--------- Const Variables ---------*/
@@ -45,6 +46,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'family',
+        'mobile',
         'username',
         'password',
         'level'

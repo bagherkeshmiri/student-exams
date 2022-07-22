@@ -28,7 +28,9 @@ Route::name('admin.')->group( function(){
 
 
     // students
-    Route::resource('user', AdminStudentsController::class)->except('edit');
-
+    Route::resource('user', AdminStudentsController::class)->except('edit','destroy');
+    Route::name('user.')->prefix('user')->controller(AdminStudentsController::Class)->group( function(){
+        Route::get('/destroy/{user}', 'destroy')->name('destroy');
+    });
 
 });
