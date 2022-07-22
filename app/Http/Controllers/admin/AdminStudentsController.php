@@ -66,7 +66,8 @@ class AdminStudentsController extends Controller
      */
     public function show(User $user)
     {
-        dd($user->id);
+        $levels = $this->UserRepository->getModel()->getStatuses();
+        return view('admin.pages.student.edit',compact('user','levels'));
     }
 
     /**
@@ -74,7 +75,6 @@ class AdminStudentsController extends Controller
      */
     public function edit(User $user)
     {
-        //
     }
 
     /**
@@ -82,7 +82,22 @@ class AdminStudentsController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $data = [
+            'name' => $request->input('name'),
+            'family' => $request->input('family'),
+            'username' => $request->input('username'),
+            'level' => $request->input('level'),
+        ];
+        DB::beginTransaction();
+        try {
+            $this->UserRepository->update($data,$user->id);
+            DB::commit();
+            return redirect()->back()->with('success','عملیات موفق');
+        } catch (Exception $error){
+            DB::rollBack();
+            return redirect()->back()->with('error','خطا در عملیات ');
+        }
+
     }
 
     /**

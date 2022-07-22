@@ -7,6 +7,7 @@ return [
     'google' => 'گوگل',
     'facebook' => 'فیسبوک',
     'save' => 'ثبت',
-    'cancel' => 'انصراف'
+    'cancel' => 'انصراف',
+    'edit' => 'ویرایش',
 
 ];
