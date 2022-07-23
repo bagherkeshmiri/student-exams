@@ -38,7 +38,7 @@ class AdminAuthController extends Controller
             Auth::guard('admin')->loginUsingId($admin->id);
             return redirect()->route('admin.dashboard');
         } catch (\Exception $error){
-            return redirect()->back()->with('error',$error->getMessage());
+            return redirect()->back()->with('error','خطا در عملیات');
         }
 
     }
