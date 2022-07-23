@@ -48,7 +48,7 @@
                                         {{-- End Flash Message --}}
 
 
-                                        <form class="form" action="{{ route('admin.user.store') }}" method="post">
+                                        <form class="form" action="{{ route('admin.question.store') }}" method="post">
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row">
@@ -95,10 +95,7 @@
                                                     <div class="col-md-12 col-12 mb-2">
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'متن '] )
                                                         @include('frest-components.tags.required-tag')
-                                                        <fieldset class="form-label-group mb-0">
-                                                            <textarea  class="form-control char-textarea " id="textarea-counter" rows="10" placeholder=""></textarea>
-                                                        </fieldset>
-                                                        <small class="counter-value float-right bg-danger font-small-3"><span class="char-count">0</span> : تعداد کلمات </small>
+                                                        @include('frest-components.inputs.textarea' , [ 'rows' => 10 ])
                                                     </div>
 
 
@@ -139,7 +136,8 @@
     <script type="text/javascript" src="{{ asset('/frest/js/scripts/forms/select/form-select2.js') }}"></script>
 
     <script type="text/javascript">
-        createSelect2('#level'," -- انتخاب کنید -- ");
+        createSelect2('#user_id'," -- انتخاب کنید -- ");
+        createSelect2('#admin_id'," -- انتخاب کنید -- ");
     </script>
 
 
