@@ -102,6 +102,22 @@ class User extends Authenticatable
         $this->attributes['password'] = Hash::make($value);
     }
 
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strip_tags($value);
+    }
+
+    public function setFamilyAttribute($value)
+    {
+        $this->attributes['family'] = strip_tags($value);
+    }
+
+
+    public function setUsernameAttribute($value)
+    {
+        $this->attributes['username'] = strip_tags($value);
+    }
+
     public function getFullNameAttribute(): string
     {
         if ($this->name && $this->family) {

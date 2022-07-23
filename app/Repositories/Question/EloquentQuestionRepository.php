@@ -6,7 +6,7 @@ use App\Models\Question;
 use App\Repositories\EloquentBaseRepository;
 
 
-class EloquentAdminRepository extends EloquentBaseRepository implements QuestionRepositoryInterface
+class EloquentQuestionRepository extends EloquentBaseRepository implements QuestionRepositoryInterface
 {
 
     protected string $model = Question::class;

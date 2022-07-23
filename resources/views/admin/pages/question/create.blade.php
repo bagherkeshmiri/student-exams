@@ -67,7 +67,7 @@
                                                         <div class="form-group">
                                                             @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700', 'for' => 'user_id' , 'content' => 'دانش آموز'] )
                                                             @include('frest-components.tags.required-tag')
-                                                            @include('frest-components.inputs.select2.simple',[ 'data' => $students , 'id' => 'user_id' , 'name' => 'user_id' ])
+                                                            @include('frest-components.inputs.select2.simple',[ 'data' => $students , 'id' => 'user_id' , 'name' => 'user_id' , 'attributes' => 'required' ])
                                                             @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'user_id' ])
                                                         </div>
                                                     </div>
@@ -77,7 +77,7 @@
                                                         <div class="form-group">
                                                             @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'admin_id' , 'content' => ' تصحیح کننده'] )
                                                             @include('frest-components.tags.required-tag')
-                                                            @include('frest-components.inputs.select2.simple',[ 'data' => $admins , 'id' => 'admin_id' , 'name' => 'admin_id' ])
+                                                            @include('frest-components.inputs.select2.simple',[ 'data' => $admins , 'id' => 'admin_id' , 'name' => 'admin_id' , 'attributes' => 'required'  ])
                                                             @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'admin_id' ])
                                                         </div>
                                                     </div>
@@ -95,7 +95,8 @@
                                                     <div class="col-md-12 col-12 mb-2">
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'متن '] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.textarea' , [ 'rows' => 10 ])
+                                                        @include('frest-components.inputs.textarea' , [ 'rows' => 10  , 'name' => 'text' , 'attributes' => 'required' ])
+                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'text' ])
                                                     </div>
 
 

@@ -5,6 +5,10 @@
                 id="{{ $id }}"
             @endisset
 
+            @isset($name)
+               name="{{ $name }}"
+            @endisset
+
             @isset($rows)
                 rows="{{ $rows }}"
             @endisset
@@ -12,6 +16,11 @@
             @isset($placeholder)
                placeholder="{{ $placeholder }}"
             @endisset
+
+            @isset($attributes)
+                {{ $attributes }}
+            @endisset
+
                 >
 
     </textarea>

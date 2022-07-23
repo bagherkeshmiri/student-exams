@@ -7,6 +7,10 @@
     @isset($id)
         id="{{ $id }}"
     @endisset
+
+    @isset($attributes)
+       {{ $attributes }}
+    @endisset
     >
 
     <option></option>

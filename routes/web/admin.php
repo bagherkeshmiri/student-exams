@@ -35,9 +35,9 @@ Route::name('admin.')->group( function(){
     });
 
 
-    // students
+    // questions
     Route::resource('question', AdminQuestionController::class)->except('edit','destroy');
-    Route::name('question.')->prefix('question')->controller(AdminStudentsController::Class)->group( function(){
+    Route::name('question.')->prefix('question')->controller(AdminQuestionController::Class)->group( function(){
         Route::get('/destroy/{question}', 'destroy')->name('destroy');
     });
 

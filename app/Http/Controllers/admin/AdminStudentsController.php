@@ -59,6 +59,7 @@ class AdminStudentsController extends Controller
             return redirect()->back()->with('success','عملیات موفق');
         } catch (Exception $error){
             DB::rollBack();
+            dd($error);
             return redirect()->back()->with('error','خطا در عملیات ');
         }
     }

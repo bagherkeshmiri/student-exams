@@ -67,7 +67,6 @@ class Question extends Model
         'review_time' => 'datetime',
         'confirmation_time' => 'datetime',
         'protest_time' => 'datetime',
-        'response_deadline' => 'datetime',
     ];
 
 
@@ -95,5 +94,15 @@ class Question extends Model
 
     /*---------- Other Functions --------*/
 
+
+    public function setLinkAttribute($value)
+    {
+        $this->attributes['link'] = strip_tags($value);
+    }
+
+    public function setTextAttribute($value)
+    {
+        $this->attributes['text'] = strip_tags($value);
+    }
 
 }

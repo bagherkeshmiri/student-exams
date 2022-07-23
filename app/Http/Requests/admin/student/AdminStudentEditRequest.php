@@ -26,10 +26,9 @@ class AdminStudentEditRequest extends FormRequest
         return [
             'name' => 'required',
             'family' => 'required',
-            'username' => 'required|min:8|unique:users',
-            'password' => 'required|min:8',
+            'username' => 'required|min:8',
             'level' => 'required|numeric',
-            'mobile' => 'required|numeric|digits:11|unique:users',
+            'mobile' => 'required|numeric|digits:10',
         ];
     }
 }
