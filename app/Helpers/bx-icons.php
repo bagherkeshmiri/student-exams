@@ -39,3 +39,9 @@ function mobileIcon(): string
 {
     return '<i class="bx bx-mobile"></i>';
 }
+
+
+function saveIcon(): string
+{
+    return '<i id="icon-arrow" class="bx bx-save"></i>';
+}

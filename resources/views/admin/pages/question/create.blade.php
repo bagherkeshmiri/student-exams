@@ -55,7 +55,7 @@
 
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-group">
-                                                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'link' , 'content' => 'لینک '] )
+                                                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'link' , 'content' => 'لینک '] )
                                                             @include('frest-components.tags.required-tag')
                                                             @include('frest-components.inputs.input',[ 'type' => 'text' , 'name' => 'link' , 'value' => old('link') , 'classes' => 'text-left' , 'id' => 'link' , 'dir' => 'ltr' , 'icon' => linkIcon() , 'attributes' => 'required' ])
                                                             @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'link' ])
@@ -65,7 +65,7 @@
 
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-group">
-                                                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'user_id' , 'content' => 'دانش آموز'] )
+                                                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700', 'for' => 'user_id' , 'content' => 'دانش آموز'] )
                                                             @include('frest-components.tags.required-tag')
                                                             @include('frest-components.inputs.select2.simple',[ 'data' => $students , 'id' => 'user_id' , 'name' => 'user_id' ])
                                                             @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'user_id' ])
@@ -75,7 +75,7 @@
 
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-group">
-                                                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'admin_id' , 'content' => ' تصحیح کننده'] )
+                                                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'admin_id' , 'content' => ' تصحیح کننده'] )
                                                             @include('frest-components.tags.required-tag')
                                                             @include('frest-components.inputs.select2.simple',[ 'data' => $admins , 'id' => 'admin_id' , 'name' => 'admin_id' ])
                                                             @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'admin_id' ])
@@ -84,7 +84,7 @@
 
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-group">
-                                                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'response_deadline' , 'content' => 'مهلت پاسخ گویی (دقیقه)'] )
+                                                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'response_deadline' , 'content' => 'مهلت پاسخ گویی (دقیقه)'] )
                                                             @include('frest-components.tags.required-tag')
                                                             @include('frest-components.inputs.input',[ 'type' => 'number' , 'name' => 'response_deadline' , 'value' => old('response_deadline') , 'classes' => 'text-left' , 'id' => 'link' , 'dir' => 'ltr' , 'icon' => timerIcon() , 'attributes' => 'required' ])
                                                             @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'response_deadline' ])
@@ -93,7 +93,7 @@
 
 
                                                     <div class="col-md-12 col-12 mb-2">
-                                                        @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'textarea-counter' , 'content' => 'متن '] )
+                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'متن '] )
                                                         @include('frest-components.tags.required-tag')
                                                         <fieldset class="form-label-group mb-0">
                                                             <textarea  class="form-control char-textarea " id="textarea-counter" rows="10" placeholder=""></textarea>
@@ -103,8 +103,8 @@
 
 
                                                     <div class="col-12 d-flex justify-content-end">
-                                                        @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => '<i id="icon-arrow" class="bx bx-save"></i>' ])
-                                                        @include('frest-components.inputs.buttons.link-button',[ 'href' => route('admin.user.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => '<i id="icon-arrow" class="bx bx-left-arrow-alt"></i>' ])
+                                                        @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
+                                                        @include('frest-components.inputs.buttons.link-button',[ 'href' => route('admin.user.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
                                                     </div>
                                                 </div>
                                             </div>

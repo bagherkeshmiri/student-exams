@@ -41,6 +41,7 @@
                                                     <th>نام</th>
                                                     <th>فامیل</th>
                                                     <th>نام کاربری</th>
+                                                    <th>موبایل</th>
                                                     <th>سطح</th>
                                                     <th>تاریخ ایجاد</th>
                                                     <th>عملیات</th>
@@ -53,6 +54,7 @@
                                                         <td>{{ $student->name }}</td>
                                                         <td>{{ $student->family }}</td>
                                                         <td>{{ $student->username }}</td>
+                                                        <td>{{ $student->mobile }}</td>
                                                         <td>{!! $student->getBadgeStatus() !!} </td>
                                                         <td>{{ $student->getJalaliCreatedAt() }}</td>
                                                         <td>

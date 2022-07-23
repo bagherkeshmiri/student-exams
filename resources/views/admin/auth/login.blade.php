@@ -36,20 +36,20 @@
                     <form action="{{ route('admin.login') }}" method="post">
                         @csrf
                         <div class="form-group mb-50">
-                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'username' , 'content' => 'نام کاربری'] )
+                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'username' , 'content' => 'نام کاربری'] )
                             @include('frest-components.tags.required-tag')
                             @include('frest-components.inputs.input',[ 'type' => 'text' , 'name' => 'username' , 'value' => old('username') , 'classes' => 'text-left' , 'id' => 'username' , 'dir' => 'ltr' , 'icon' => emailIcon() , 'attributes' => 'required' ])
                             @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'username' ])
                         </div>
                         <div class="form-group">
-                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'password' , 'content' => __('login.password') ] )
+                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'password' , 'content' => __('login.password') ] )
                             @include('frest-components.tags.required-tag')
                             @include('frest-components.inputs.input',[ 'type' => 'password' , 'name' => 'password' , 'classes' => 'text-left' , 'id' => 'password' , 'dir' => 'ltr' , 'icon' => lockIcon() , 'attributes' => 'required' ])
                             @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'password' ])
                         </div>
                         <div class="form-group d-flex flex-md-row flex-column justify-content-between align-items-center">
                             <div class="text-left">
-                                @include('frest-components.inputs.checkbox',[ 'id' => 'remember' , 'for' => 'remember' , 'main_classes' =>  [ 'checkbox-sm' ] , 'label_content' => __('login.remember_me') ])
+                                @include('frest-components.inputs.checkbox',[ 'id' => 'remember' , 'for' => 'remember' , 'main_classes' =>  'checkbox-sm' , 'label_content' => __('login.remember_me') ])
                             </div>
                             <div class="text-right line-height-2"><a href="#" class="card-link"><small class="text-warning"> @lang('login.forget_password') </small></a></div>
                         </div>

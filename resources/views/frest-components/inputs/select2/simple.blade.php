@@ -13,7 +13,16 @@
 
     @isset($data)
         @foreach($data as $key => $value)
-            <option @isset($selected_value) @if($selected_value == $value) selected @endif @endisset  value="{{ $value }}">{{ $key }}</option>
+            <option
+                @isset($selected_value)
+                    @if($selected_value == $value)
+                        selected
+                    @endif
+                @endisset
+                value="{{ $value }}"
+            >
+                {{ $key }}
+            </option>
         @endforeach
     @endisset
 

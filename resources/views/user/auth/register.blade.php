@@ -21,7 +21,7 @@
 
                         <div class="form-group mb-50">
 
-                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'email' , 'content' => __('register.email') ] )
+                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'email' , 'content' => __('register.email') ] )
                             @include('frest-components.tags.required-tag')
                             @include('frest-components.inputs.input',[ 'type' => 'email' , 'name' => 'email' , 'value' => old('email') ,'classes' => 'text-left' , 'id' => 'email'  , 'dir' => 'ltr' , 'icon' => emailIcon() , 'attributes' => 'required'  ])
                             @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'email' ])
@@ -29,28 +29,28 @@
 
                         <div class="form-group mb-50">
 
-                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'mobile' , 'content' => __('register.mobile') ] )
+                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'mobile' , 'content' => __('register.mobile') ] )
                             @include('frest-components.tags.required-tag')
-                            @include('frest-components.inputs.input',[ 'type' => 'nubmer' , 'name' => 'mobile' , 'value' => old('mobile') ,'classes' => 'text-left' , 'id' => 'mobile' , 'dir' => 'ltr' , 'icon' => mobileIcon() , 'attributes' => 'required' ])
+                            @include('frest-components.inputs.input',[ 'type' => 'number' , 'name' => 'mobile' , 'value' => old('mobile') ,'classes' => 'text-left' , 'id' => 'mobile' , 'dir' => 'ltr' , 'icon' => mobileIcon() , 'attributes' => 'required' ])
                             @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'mobile' ])
                         </div>
 
                         <div class="form-group mb-50">
-                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'password' , 'content' => __('register.password') ] )
+                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'password' , 'content' => __('register.password') ] )
                             @include('frest-components.tags.required-tag')
                             @include('frest-components.inputs.input',[ 'type' => 'password' , 'name' => 'password' , 'classes' => 'text-left' , 'id' => 'password' , 'dir' => 'ltr' , 'icon' => lockIcon() , 'attributes' => 'required' ])
                             @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'password' ])
                         </div>
 
                         <div class="form-group mb-50">
-                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'password_confirmation' , 'content' => __('register.repeat_password') ] )
+                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'password_confirmation' , 'content' => __('register.repeat_password') ] )
                             @include('frest-components.tags.required-tag')
                             @include('frest-components.inputs.input',[ 'type' => 'password' , 'name' => 'password_confirmation' , 'classes' => 'text-left' , 'id' => 'password_confirmation'  , 'dir' => 'ltr' , 'icon' => lockIcon() , 'attributes' => 'required'  ])
                             @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'password_confirmation' ])
                         </div>
 
                         <div class="form-group mb-50">
-                            @include('frest-components.inputs.label',[ 'classes' => ['text-bold-700'] , 'for' => 'introduced_code' , 'content' => __('register.identification_code') ] )
+                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'introduced_code' , 'content' => __('register.identification_code') ] )
                             @include('frest-components.inputs.input',[ 'type' => 'introduced_code' , 'name' => 'introduced_code' , 'value' => old('introduced_code') , 'classes' => 'text-left' , 'id' => 'introduced_code'  , 'dir' => 'ltr' , 'icon' => userIcon() ])
                             @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'introduced_code' ])
                         </div>

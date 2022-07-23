@@ -1,7 +1,7 @@
 
 <label
     @isset($classes)
-        class="@foreach($classes as $class) {{ $class }} @endforeach"
+        class="@isset($classes)  {{$classes}} @endisset"
     @endisset
 
     @isset($id)

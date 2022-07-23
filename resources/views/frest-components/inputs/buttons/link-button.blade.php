@@ -1,16 +1,16 @@
 
 <a
         @isset($href)
-        href="{{$href}}"
+            href="{{$href}}"
         @endisset
 
         @isset($classes)
-        class="{{$classes}}"
+            class="{{$classes}}"
         @endisset
 
         @isset($id)
-        id="{{ $id }}"
-    @endisset
+            id="{{ $id }}"
+        @endisset
 >
     {{ $content }}
 
