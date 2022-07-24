@@ -23,6 +23,10 @@
 
                 >
 
+         @isset($contents)
+            {{ $contents }}
+        @endisset
+
     </textarea>
 </fieldset>
 <small class="counter-value float-right bg-danger font-small-3">

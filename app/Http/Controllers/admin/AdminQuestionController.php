@@ -76,7 +76,9 @@ class AdminQuestionController extends Controller
      */
     public function show(Question $question)
     {
-        dd('show');
+        $admins = $this->AdminRepository->all()->pluck('id','full_name')->toArray();
+        $students = $this->UserRepository->all()->pluck('id','full_name')->toArray();
+        return view('admin.pages.question.edit',compact('question','admins','students'));
     }
 
     /**
@@ -84,7 +86,6 @@ class AdminQuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        dd('edit');
     }
 
     /**
@@ -92,7 +93,22 @@ class AdminQuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        dd('update');
+        $data = [
+            'link' => $request->input('link'),
+            'response_deadline' => $request->input('response_deadline'),
+            'admin_id' => $request->input('admin_id'),
+            'text' => $request->input('text'),
+        ];
+        DB::beginTransaction();
+        try {
+            $this->QuestionRepository->update($data,$question->id);
+            $question->users()->sync($request->input('user_id'));
+            DB::commit();
+            return redirect()->back()->with('success','عملیات موفق');
+        } catch (Exception $error){
+            DB::rollBack();
+            return redirect()->back()->with('error','خطا در عملیات ');
+        }
     }
 
     /**
