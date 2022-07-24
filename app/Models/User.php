@@ -36,6 +36,7 @@ class User extends Authenticatable
      */
     protected $table = 'users';
     protected string $guard = 'user';
+    protected $perPage = 10;
 
 
     /**
@@ -94,7 +95,7 @@ class User extends Authenticatable
 
     public function getJalaliCreatedAt(): string
     {
-        return Jalalian::forge($this->create_at)->format('Y/m/d H:i:s');
+        return Jalalian::forge($this->created_at)->format('Y/m/d H:i:s');
     }
 
     public function setPasswordAttribute($value)

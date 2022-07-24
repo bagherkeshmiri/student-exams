@@ -28,7 +28,7 @@ class EloquentBaseRepository implements RepositoryInterface, \Countable
     {
         if (!is_null($columns))
             return $this->model::select($columns)->paginate();
-        return $this->model::paginate();
+        return $this->model::orderBy('created_at','desc')->paginate();
     }
 
     public function createMany(array $records)

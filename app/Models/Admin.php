@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
+use Morilog\Jalali\Jalalian;
 
 class Admin extends Authenticatable
 {
@@ -26,6 +27,7 @@ class Admin extends Authenticatable
      */
     protected $table = 'admins';
     protected string $guard = 'admin';
+    protected $perPage = 10;
 
     /**
      * The attributes that are mass assignable.
@@ -82,6 +84,10 @@ class Admin extends Authenticatable
 
     /*---------- Other Functions --------*/
 
+    public function getJalaliCreatedAt(): string
+    {
+        return Jalalian::forge($this->created_at)->format('Y/m/d H:i:s');
+    }
 
 
     public function setPasswordAttribute($value)

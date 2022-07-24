@@ -82,6 +82,9 @@
 
                                                 </tbody>
                                             </table>
+
+                                            @include('frest-components.paginator.bootstrap',['model' => $questions])
+
                                         </div>
 
                                     </div>

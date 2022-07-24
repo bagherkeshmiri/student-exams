@@ -106,7 +106,7 @@ class Question extends Model
 
     public function getJalaliCreatedAt(): string
     {
-        return Jalalian::forge($this->create_at)->format('Y/m/d H:i:s');
+        return Jalalian::forge($this->created_at)->format('Y/m/d H:i:s');
     }
 
 

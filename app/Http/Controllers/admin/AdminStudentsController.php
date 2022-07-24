@@ -26,7 +26,7 @@ class AdminStudentsController extends Controller
      */
     public function index()
     {
-        $students = $this->UserRepository->all();
+        $students = $this->UserRepository->paginate();
         return view('admin.pages.student.list',compact('students'));
     }
 
