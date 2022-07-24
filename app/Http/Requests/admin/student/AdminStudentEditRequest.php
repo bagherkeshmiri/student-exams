@@ -26,9 +26,9 @@ class AdminStudentEditRequest extends FormRequest
         return [
             'name' => 'required',
             'family' => 'required',
-            'username' => 'required|min:8',
+            'username' => 'required|min:8|unique:users,username,'.$this->user->id,
             'level' => 'required|numeric',
-            'mobile' => 'required|numeric|digits:10',
+            'mobile' => 'required|numeric|digits:11|unique:users,mobile,'.$this->user->id,
         ];
     }
 }
