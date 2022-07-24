@@ -4,14 +4,29 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Permission;
+use App\Repositories\Permission\PermissionRepositoryInterface;
+use App\Repositories\Role\RoleRepositoryInterface;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminPermissionController extends Controller
 {
+    protected object $PermissionRepository;
+    protected object $RoleRepository;
+
+    public function __construct(
+        PermissionRepositoryInterface $PermissionRepository,
+        RoleRepositoryInterface $RoleRepository,
+    )
+    {
+        $this->PermissionRepository = $PermissionRepository;
+        $this->RoleRepository = $RoleRepository;
+    }
+
+
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -20,30 +35,33 @@ class AdminPermissionController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        $roles = $this->RoleRepository->all();
+        return view('admin.pages.permission.create',compact('roles'));
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->input('permissions');
+        DB::beginTransaction();
+        try {
+            $this->PermissionRepository->createMany($data);
+            DB::commit();
+            return redirect()->back()->with('success','عملیات موفق');
+        } catch(Exception $error){
+            DB::rollBack();
+            return redirect()->back()->with('error','خطا در عملیات ');
+        }
+
     }
 
     /**
      * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function show(Permission $permission)
     {
@@ -52,9 +70,6 @@ class AdminPermissionController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function edit(Permission $permission)
     {
@@ -62,10 +77,6 @@ class AdminPermissionController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Permission $permission)
     {
@@ -74,9 +85,6 @@ class AdminPermissionController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function destroy(Permission $permission)
     {

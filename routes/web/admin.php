@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AdminPermissionController;
 use App\Http\Controllers\admin\AdminQuestionController;
+use App\Http\Controllers\admin\AdminRoleController;
 use App\Http\Controllers\admin\AdminStudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +45,15 @@ Route::name('admin.')->group( function(){
 
 
 
-    // permissions and roles
-    Route::resource('permissions', AdminPermissionController::class)->except('edit','destroy');
+    // permissions
+    Route::resource('permission', AdminPermissionController::class)->except('edit','destroy');
+
+
+    // questions
+    Route::resource('role', AdminRoleController::class)->except('edit','destroy');
+    Route::name('role.')->prefix('role')->controller(AdminRoleController::Class)->group( function(){
+        Route::get('/destroy/{role}', 'destroy')->name('destroy');
+    });
+
+
 });
