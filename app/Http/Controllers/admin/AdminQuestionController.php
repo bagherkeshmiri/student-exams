@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\admin\question\AdminQuestionEditRequest;
 use App\Http\Requests\admin\question\AdminQuestionStoreRequest;
 use App\Models\Question;
 use App\Repositories\Admin\AdminRepositoryInterface;
 use App\Repositories\Question\QuestionRepositoryInterface;
 use App\Repositories\User\UserRepositoryInterface;
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class AdminQuestionController extends Controller
@@ -96,7 +96,7 @@ class AdminQuestionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Question $question)
+    public function update(AdminQuestionEditRequest $request, Question $question)
     {
         $data = [
             'link' => $request->input('link'),

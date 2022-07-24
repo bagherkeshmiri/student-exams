@@ -171,6 +171,7 @@ return [
         'password' => 'password',
         'username' => ' Username',
         'level' => ' Level',
+        'link' => ' Link',
     ],
 
 ];
