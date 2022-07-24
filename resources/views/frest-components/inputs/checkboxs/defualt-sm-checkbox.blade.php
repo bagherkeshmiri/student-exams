@@ -1,10 +1,22 @@
 <div
     class="checkbox @isset($main_classes)  {{$main_classes}}  @endisset">
-    <input type="checkbox" id="{{ $id  }}"
+    <input type="checkbox"
+
+           name = "{{ $name }}"
+
+           value = "{{ $value }}"
+
+            @isset($id)
+                id="{{ $id }}"
+            @endisset
            class="form-check-input @isset($input_classes) {{$input_classes}}  @endisset">
     <label
         class="checkboxsmall @isset($label_classes) {{$label_classes}}  @endisset"
-        for="{{ $for }}">
+
+        @isset($for)
+            for="{{ $for }}"
+        @endisset
+    >
         <small> {{ $label_content }} </small>
     </label>
 </div>

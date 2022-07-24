@@ -106,7 +106,7 @@
                                 <li data-menu="">
                                     <a class="dropdown-item align-items-center" href="{{ route('admin.role.index') }}" data-toggle="dropdown">
                                         <i class="bx bx-left-arrow-alt"></i>
-                                       لست نقش ها
+                                       لیست نقش ها
                                     </a>
                                 </li>
                             </ul>

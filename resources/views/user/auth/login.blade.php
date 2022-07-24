@@ -42,7 +42,7 @@
                         </div>
                         <div class="form-group d-flex flex-md-row flex-column justify-content-between align-items-center">
                             <div class="text-left">
-                                @include('frest-components.inputs.checkbox',[ 'id' => 'remember' , 'for' => 'remember' , 'main_classes' =>  'checkbox-sm' , 'label_content' => __('login.remember_me') ])
+                                @include('frest-components.inputs.checkboxs.defualt-sm-checkbox',[ 'id' => 'remember' , 'for' => 'remember' , 'main_classes' =>  'checkbox-sm' , 'label_content' => __('login.remember_me')  , 'name' => 'remember' , 'value' => 'remember'])
                             </div>
                             <div class="text-right line-height-2"><a href="#" class="card-link"><small class="text-warning"> @lang('login.forget_password') </small></a></div>
                         </div>

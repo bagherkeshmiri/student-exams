@@ -71,7 +71,7 @@
                                                 </tbody>
                                             </table>
 
-                                            @include('frest-components.paginator.bootstrap',['model' => $students] )
+                                            @include('frest-components.paginators.bootstrap',['model' => $students] )
 
                                         </div>
 
