@@ -52,6 +52,13 @@
                             ایجاد سوال
                         </a>
                     </li>
+
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.question.index') }}" data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt"></i>
+                            لیست سوالات
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="dropdown nav-item" data-menu="dropdown">

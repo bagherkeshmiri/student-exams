@@ -34,7 +34,8 @@ class AdminQuestionController extends Controller
      */
     public function index()
     {
-        dd('index');
+        $questions = $this->QuestionRepository->paginate();
+        return view('admin.pages.question.list',compact('questions'));
     }
 
     /**
@@ -66,7 +67,6 @@ class AdminQuestionController extends Controller
             return redirect()->back()->with('success','عملیات موفق');
         } catch (Exception $error){
             DB::rollBack();
-            dd($error);
             return redirect()->back()->with('error','خطا در عملیات ');
         }
     }
