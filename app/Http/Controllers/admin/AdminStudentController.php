@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
-class AdminStudentsController extends Controller
+class AdminStudentController extends Controller
 {
     protected object $UserRepository;
 
