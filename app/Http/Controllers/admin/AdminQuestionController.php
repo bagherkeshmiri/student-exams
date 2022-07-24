@@ -29,6 +29,7 @@ class AdminQuestionController extends Controller
         $this->QuestionRepository = $QuestionRepository;
     }
 
+
     /**
      * Display a listing of the resource.
      */
@@ -37,6 +38,7 @@ class AdminQuestionController extends Controller
         $questions = $this->QuestionRepository->paginate();
         return view('admin.pages.question.list',compact('questions'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -47,6 +49,7 @@ class AdminQuestionController extends Controller
         $students = $this->UserRepository->all()->pluck('id','full_name')->toArray();
         return view('admin.pages.question.create',compact('students','admins'));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -71,6 +74,7 @@ class AdminQuestionController extends Controller
         }
     }
 
+
     /**
      * Display the specified resource.
      */
@@ -80,6 +84,7 @@ class AdminQuestionController extends Controller
         $students = $this->UserRepository->all()->pluck('id','full_name')->toArray();
         return view('admin.pages.question.edit',compact('question','admins','students'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -111,11 +116,13 @@ class AdminQuestionController extends Controller
         }
     }
 
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Question $question)
     {
-        dd('destroy');
+        $this->QuestionRepository->delete($question->id);
+        return redirect()->route('admin.question.index');
     }
 }
