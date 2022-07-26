@@ -52,4 +52,12 @@ Route::name('admin.')->group( function(){
     // roles
     Route::resource('role', AdminRoleController::class)->except('edit','destroy');
 
+
+
+    // accounts
+    Route::resource('account', AdminQuestionController::class)->except('edit','destroy');
+    Route::name('account.')->prefix('account')->controller(AdminQuestionController::Class)->group( function(){
+        Route::get('/destroy/{question}', 'destroy')->name('destroy');
+    });
+
 });

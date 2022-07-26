@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Permission;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class AdminDashboardController extends Controller
 {
     public function index()
     {
-//       dd( Auth::guard('admin')->user() );
         return view('admin.pages.dashboard.index');
     }
 }

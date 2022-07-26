@@ -105,4 +105,10 @@ class Admin extends Authenticatable
     }
 
 
+    public function hasPermission($permission)
+    {
+        return $this->roles->first()->permissions->contains('en_name',$permission->en_name);
+    }
+
+
 }

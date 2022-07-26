@@ -154,4 +154,10 @@ class User extends Authenticatable
         return $level;
     }
 
+
+    public function hasPermission($permission)
+    {
+        return $this->role->permissions->contains('en_name',$permission->en_name);
+    }
+
 }
