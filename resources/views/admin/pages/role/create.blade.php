@@ -5,10 +5,6 @@
 
 @section('styles')
 
-    <!-- select 2 css -->
-    <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/vendors/css/forms/select/select2.min.css') }}">
-
-
 
 @endsection
 
@@ -56,6 +52,12 @@
                                                         </div>
                                                     </div>
 
+                                                    <div class="col-md-6 col-12 align-self-end">
+                                                        <div class="form-group">
+                                                            @include('frest-components.inputs.checkboxs.success-sm-checkbox',[ 'label_content' => 'انتخاب همه'  , 'id' => 'selectAll' , 'for' => 'selectAll'  , 'name' => '' , 'value' => '' , 'attributes' => 'onclick=selectAll()' ])
+                                                        </div>
+                                                    </div>
+
                                                     @include('frest-components.dividers.success-divider',['title' => 'سطوح دسترسی'])
 
 
@@ -96,24 +98,18 @@
 
 @section('scripts')
 
-    <!-- Jquery Library CDN -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-    <!-- select 2 js -->
-    <script type="text/javascript" src="{{ asset('/js/select2-functions.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/frest/vendors/js/forms/select/select2.full.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/frest/js/scripts/forms/select/form-select2.js') }}"></script>
-
-
-    <!-- form reapter js -->
-    <script type="text/javascript" src="{{ asset('/frest/vendors/js/forms/repeater/jquery.repeater.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/frest/js/scripts/forms/form-repeater.js') }}"></script>
-
-
-    <script type="text/javascript">
-        createSelect2('#level'," -- انتخاب کنید -- ");
+    <script>
+        function selectAll() {
+            try {
+                let permissions = document.querySelectorAll('[name="permissions[]"]');
+                permissions.forEach( (item) => {
+                    item.checked = item.checked !== true;
+                    }
+                );
+            } catch (e) {
+                console.log(e)
+            }
+        }
     </script>
-
-
 
 @endsection

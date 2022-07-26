@@ -15,6 +15,10 @@
         <label @isset($label_classes) {{$label_classes}}  @endisset
 
                 for="{{ $for }}"
+
+                @isset($attributes)
+                    {{ $attributes }}
+                @endisset
         >
             {{ $label_content }}
         </label>
