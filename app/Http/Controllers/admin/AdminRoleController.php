@@ -28,7 +28,9 @@ class AdminRoleController extends Controller
      */
     public function index()
     {
-        //
+        $roles = $this->RoleRepository->paginate();
+        return view('admin.pages.role.list',compact('roles'));
+
     }
 
     /**
@@ -51,12 +53,11 @@ class AdminRoleController extends Controller
         DB::beginTransaction();
         try {
             $role = $this->RoleRepository->create($data);
-            $role->permissions->attach($request->input('permissions'));
+            $role->permissions()->attach($request->input('permissions'));
             DB::commit();
             return redirect()->back()->with('success','عملیات موفق');
         } catch (Exception $error){
             DB::rollBack();
-//            dd($error);
             return redirect()->back()->with('error','خطا در عملیات ');
         }
 

@@ -49,7 +49,7 @@ Route::name('admin.')->group( function(){
     Route::resource('permission', AdminPermissionController::class)->except('edit','destroy');
 
 
-    // questions
+    // roles
     Route::resource('role', AdminRoleController::class)->except('edit','destroy');
     Route::name('role.')->prefix('role')->controller(AdminRoleController::Class)->group( function(){
         Route::get('/destroy/{role}', 'destroy')->name('destroy');
