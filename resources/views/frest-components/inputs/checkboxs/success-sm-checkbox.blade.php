@@ -9,16 +9,17 @@
                 id="{{ $id }}"
 
                 @isset($input_classes)
-                    class="  {{$input_classes}}"
+                    class="{{$input_classes}}"
                 @endisset
-        >
-        <label @isset($label_classes) {{$label_classes}}  @endisset
-
-                for="{{ $for }}"
 
                 @isset($attributes)
                     {{ $attributes }}
                 @endisset
+
+        >
+        <label @isset($label_classes) {{$label_classes}}  @endisset
+
+                for="{{ $for }}"
         >
             {{ $label_content }}
         </label>

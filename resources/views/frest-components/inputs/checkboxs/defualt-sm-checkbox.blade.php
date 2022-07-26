@@ -9,7 +9,13 @@
             @isset($id)
                 id="{{ $id }}"
             @endisset
-           class="form-check-input @isset($input_classes) {{$input_classes}}  @endisset">
+           class="form-check-input @isset($input_classes) {{$input_classes}}  @endisset"
+
+            @isset($attributes)
+                {{ $attributes }}
+            @endisset
+
+    >
     <label
         class="checkboxsmall @isset($label_classes) {{$label_classes}}  @endisset"
 

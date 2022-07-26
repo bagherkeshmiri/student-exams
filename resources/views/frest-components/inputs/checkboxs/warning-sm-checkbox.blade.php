@@ -9,8 +9,13 @@
                 id="{{ $id }}"
 
                 @isset($input_classes)
-                    class="  {{$input_classes}}"
+                    class="{{$input_classes}}"
                 @endisset
+
+                @isset($attributes)
+                    {{ $attributes }}
+                @endisset
+
         >
         <label @isset($label_classes) {{$label_classes}}  @endisset
 

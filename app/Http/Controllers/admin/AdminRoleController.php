@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Repositories\Permission\PermissionRepositoryInterface;
 use App\Repositories\Role\RoleRepositoryInterface;
 use Exception;
@@ -66,32 +67,32 @@ class AdminRoleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Role $role)
     {
-        //
+        $admin_permissions = $role->permissions->pluck('id')->toArray();
+        $permissions = $this->PermissionRepository->all();
+        return view('admin.pages.role.edit',compact('role','permissions','admin_permissions'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Role $role)
     {
-        //
+        dd($request->all());
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
-        //
     }
 }
