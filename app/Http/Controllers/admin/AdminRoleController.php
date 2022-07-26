@@ -86,7 +86,19 @@ class AdminRoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        dd($request->all());
+        $data = [
+            'name' => $request->input('name')
+        ];
+        DB::beginTransaction();
+        try {
+            $this->RoleRepository->update($data,$role->id);
+            $role->permissions()->sync($request->input('permissions'));
+            DB::commit();
+            return redirect()->back()->with('success','عملیات موفق');
+        } catch (Exception $error){
+            DB::rollBack();
+            return redirect()->back()->with('error','خطا در عملیات ');
+        }
     }
 
     /**

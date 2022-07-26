@@ -54,7 +54,7 @@
 
                                                     <div class="col-md-6 col-12 align-self-end">
                                                         <div class="form-group">
-                                                            @include('frest-components.inputs.checkboxs.success-sm-checkbox',[ 'label_content' => 'انتخاب همه'  , 'id' => 'selectAll' , 'for' => 'selectAll'  , 'name' => '' , 'value' => '' , 'attributes' => 'onclick=selectAll()' ])
+                                                            @include('frest-components.inputs.checkboxs.success-sm-checkbox',[ 'label_content' => 'انتخاب همه'  , 'id' => 'selectAll' , 'for' => 'selectAll'  , 'name' => '' , 'value' => '' , 'attributes' => 'onclick=selectAllPermissions()' ])
                                                         </div>
                                                     </div>
 
@@ -99,11 +99,11 @@
 @section('scripts')
 
     <script>
-        function selectAll() {
+        const selectAllPermissions = () => {
             try {
                 let permissions = document.querySelectorAll('[name="permissions[]"]');
                 permissions.forEach( (item) => {
-                    item.checked = item.checked !== true;
+                        item.checked = item.checked !== true;
                     }
                 );
             } catch (e) {
