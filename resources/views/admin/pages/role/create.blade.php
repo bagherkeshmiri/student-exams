@@ -60,6 +60,12 @@
 
                                                     @include('frest-components.dividers.success-divider',['title' => 'سطوح دسترسی'])
 
+                                                    @error('permissions[]')
+                                                        <div class="col-md-12 col-12 text-center mb-2">
+                                                            @include('frest-components.form-valiations.small-tag-error',['name' => 'permissions[]'])
+                                                        </div>
+                                                    @enderror
+
 
                                                     @foreach($permissions as $permission)
                                                         <div class="col-md-3 col-12">

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\admin\role\AdminRoleEditRequest;
+use App\Http\Requests\admin\role\AdminRoleStoreRequest;
 use App\Models\Role;
 use App\Repositories\Permission\PermissionRepositoryInterface;
 use App\Repositories\Role\RoleRepositoryInterface;
@@ -46,7 +48,7 @@ class AdminRoleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AdminRoleStoreRequest $request)
     {
         $data = [
             'name' => $request->input('name')
@@ -84,7 +86,7 @@ class AdminRoleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Role $role)
+    public function update(AdminRoleEditRequest $request, Role $role)
     {
         $data = [
             'name' => $request->input('name')
