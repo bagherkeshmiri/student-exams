@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AdminAccountController;
 use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AdminPermissionController;
@@ -55,9 +56,9 @@ Route::name('admin.')->group( function(){
 
 
     // accounts
-    Route::resource('account', AdminQuestionController::class)->except('edit','destroy');
-    Route::name('account.')->prefix('account')->controller(AdminQuestionController::Class)->group( function(){
-        Route::get('/destroy/{question}', 'destroy')->name('destroy');
+    Route::resource('account', AdminAccountController::class)->except('edit','destroy');
+    Route::name('account.')->prefix('account')->controller(AdminAccountController::Class)->group( function(){
+        Route::get('/destroy/{account}', 'destroy')->name('destroy');
     });
 
 });
