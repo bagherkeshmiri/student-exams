@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\admin\account\AdminAccountEditRequest;
+use App\Http\Requests\admin\account\AdminAccountStoreRequest;
 use App\Models\Admin;
 use App\Repositories\Admin\AdminRepositoryInterface;
 use App\Repositories\Role\RoleRepositoryInterface;
@@ -48,7 +50,7 @@ class AdminAccountController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AdminAccountStoreRequest $request)
     {
         $data = [
             'name' => $request->input('name'),
@@ -67,7 +69,6 @@ class AdminAccountController extends Controller
             return redirect()->back()->with('success','عملیات موفق');
         } catch (Exception $error){
             DB::rollBack();
-            dd($error);
             return redirect()->back()->with('error','خطا در عملیات ');
         }
     }
@@ -78,7 +79,10 @@ class AdminAccountController extends Controller
      */
     public function show(Admin $admin)
     {
-        //
+        $roles = $this->RoleRepository->all()->pluck('id','name')->toArray();
+        $admin_mobile = $admin->phones->first();
+        if(!is_null($admin_mobile))  $admin_mobile = $admin_mobile->number;
+        return view('admin.pages.account.edit',compact('admin','roles','admin_mobile'));
     }
 
 
@@ -94,9 +98,27 @@ class AdminAccountController extends Controller
     /**
      * Update the specified resource in storage.
          */
-    public function update(Request $request, Admin $admin)
+    public function update(AdminAccountEditRequest $request, Admin $admin)
     {
-        //
+        $data = [
+            'name' => $request->input('name'),
+            'family' => $request->input('family'),
+            'username' => $request->input('username'),
+            'password' => $request->input('password'),
+        ];
+        DB::beginTransaction();
+        try {
+            $this->AdminRepository->update($data,$admin->id);
+            $admin->roles()->sync($request->input('role'));
+            $admin->phones()->update([
+                'number' => $request->input('mobile')
+            ]);
+            DB::commit();
+            return redirect()->back()->with('success','عملیات موفق');
+        } catch (Exception $error){
+            DB::rollBack();
+            return redirect()->back()->with('error','خطا در عملیات ');
+        }
     }
 
 

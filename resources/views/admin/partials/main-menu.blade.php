@@ -68,14 +68,14 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="{{ route('admin.account.create') }}" data-toggle="dropdown">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.admin.create') }}" data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             ایجاد مدیر
                         </a>
                     </li>
 
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="{{ route('admin.account.index') }}" data-toggle="dropdown">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.admin.index') }}" data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             لیست مدیران
                         </a>

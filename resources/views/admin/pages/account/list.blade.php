@@ -62,8 +62,8 @@
                                                         <td>{{ $admin->roles->first()->name }}</td>
                                                         <td>{{ $admin->getJalaliCreatedAt() }}</td>
                                                         <td>
-                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.account.show',[ 'account' => $admin->id ])  , 'tooltip_title' => 'ویرایش' , 'icon' => '<i class="bx bx-pencil bx-sm bx-tada-hover" style="color:#FDAC41 !important;"></i>'])
-                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => 'حذف' , 'icon' => '<i class="bx bx-trash bx-sm bx-tada-hover" style="color:#FF5B5C !important;"></i>' , 'attributes' => 'onclick=account_delete(this,event)  data-url='.route('admin.account.destroy',[ 'account' => $admin->id ]) ])
+                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.admin.show',[ 'admin' => $admin->id ])  , 'tooltip_title' => 'ویرایش' , 'icon' => '<i class="bx bx-pencil bx-sm bx-tada-hover" style="color:#FDAC41 !important;"></i>'])
+                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => 'حذف' , 'icon' => '<i class="bx bx-trash bx-sm bx-tada-hover" style="color:#FF5B5C !important;"></i>' , 'attributes' => 'onclick=account_delete(this,event)  data-url='.route('admin.admin.destroy',[ 'admin' => $admin->id ]) ])
                                                         </td>
                                                     </tr>
                                                 @empty

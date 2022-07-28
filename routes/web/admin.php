@@ -56,9 +56,9 @@ Route::name('admin.')->group( function(){
 
 
     // accounts
-    Route::resource('account', AdminAccountController::class)->except('edit','destroy');
-    Route::name('account.')->prefix('account')->controller(AdminAccountController::Class)->group( function(){
-        Route::get('/destroy/{account}', 'destroy')->name('destroy');
+    Route::resource('admin', AdminAccountController::class)->except('edit','destroy');
+    Route::name('admin.')->prefix('admin')->controller(AdminAccountController::Class)->group( function(){
+        Route::get('/destroy/{admin}', 'destroy')->name('destroy');
     });
 
 });

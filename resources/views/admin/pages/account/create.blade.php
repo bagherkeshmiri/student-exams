@@ -43,7 +43,7 @@
                                         {{-- End Flash Message --}}
 
 
-                                        <form class="form" action="{{ route('admin.account.store') }}" method="post">
+                                        <form class="form" action="{{ route('admin.admin.store') }}" method="post">
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row">
