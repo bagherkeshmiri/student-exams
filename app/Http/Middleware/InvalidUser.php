@@ -6,13 +6,13 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class InvalidAdmin
+class InvalidUser
 {
 
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::guard('admin')->check()) {
-            return redirect()->route('admin.show-login');
+        if (!Auth::guard('user')->check()) {
+            return redirect()->route('user.show-login');
         }
         return $next($request);
     }

@@ -16,18 +16,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::name('admin.')->group( function(){
 
-    // dashboard
-    Route::prefix('panel')->middleware('InvalidAdmin')->controller(AdminDashboardController::Class)->group( function(){
-        Route::get('/dashboard', 'index')->name('dashboard');
-    });
 
     // auth
     Route::controller(AdminAuthController::Class)->group( function(){
         Route::middleware('ValidAdmin')->get('/login', 'showLogin')->name('show-login');
         Route::post('/login', 'login')->name('login');
         Route::get('/logout', 'logout')->name('logout');
+    });
+
+});
+
+
+
+
+Route::name('admin.')->middleware('InvalidAdmin')->group( function(){
+
+
+    // dashboard
+    Route::prefix('panel')->controller(AdminDashboardController::Class)->group( function(){
+        Route::get('/dashboard', 'index')->name('dashboard');
     });
 
 
@@ -45,14 +55,12 @@ Route::name('admin.')->group( function(){
     });
 
 
-
     // permissions
     Route::resource('permission', AdminPermissionController::class)->except('edit','destroy');
 
 
     // roles
     Route::resource('role', AdminRoleController::class)->except('edit','destroy');
-
 
 
     // accounts

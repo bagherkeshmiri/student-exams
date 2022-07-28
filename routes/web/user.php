@@ -14,19 +14,28 @@ use Illuminate\Support\Facades\Route;
 
 Route::name('user.')->group( function(){
 
+
+    // auth
+    Route::controller(UserAuthController::Class)->group( function(){
+        Route::middleware('ValidUser')->get('/login', 'showLogin')->name('show-login');
+        Route::get('/register', 'showRegister')->name('show-register');
+        Route::post('/login', 'login')->name('login');
+        Route::get('/logout', 'logout')->name('logout');
+    });
+
+});
+
+
+
+Route::name('user.')->middleware('InvalidUser')->group( function(){
+
+    // dashboard
     Route::prefix('panel')->controller(UserDashboardController::Class)->group( function(){
         Route::get('/dashboard', 'index')->name('dashboard');
     });
 
-    Route::controller(UserAuthController::Class)->group( function(){
-        Route::get('/login', 'showLogin')->name('show-login');
-        Route::get('/register', 'showRegister')->name('show-register');
-//        Route::post('/login', 'login')->name('login');
-//        Route::post('/register', 'register')->name('register');
-    });
 
 
 });
-
 
 
