@@ -104,7 +104,6 @@ class AdminAccountController extends Controller
             'name' => $request->input('name'),
             'family' => $request->input('family'),
             'username' => $request->input('username'),
-            'password' => $request->input('password'),
         ];
         DB::beginTransaction();
         try {

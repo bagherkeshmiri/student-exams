@@ -88,17 +88,7 @@
                                                         </div>
                                                     </div>
 
-
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'password' , 'content' => 'رمز عبور '] )
-                                                            @include('frest-components.tags.required-tag')
-                                                            @include('frest-components.inputs.input',[ 'type' => 'password' , 'name' => 'password' , 'classes' => 'text-left' , 'id' => 'password' , 'dir' => 'ltr' , 'icon' => lockIcon() ])
-                                                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'password' ])
-                                                        </div>
-                                                    </div>
-
-
+                                                    
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-group">
                                                             @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'role' , 'content' => 'نقش'] )
