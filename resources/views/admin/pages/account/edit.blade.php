@@ -88,7 +88,7 @@
                                                         </div>
                                                     </div>
 
-                                                    
+
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-group">
                                                             @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'role' , 'content' => 'نقش'] )

@@ -127,6 +127,7 @@ class AdminAccountController extends Controller
      */
     public function destroy(Admin $admin)
     {
-        //
+        $this->AdminRepository->delete($admin->id);
+        return redirect()->route('admin.admin.index');
     }
 }
