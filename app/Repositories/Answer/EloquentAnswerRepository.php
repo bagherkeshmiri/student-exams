@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Repositories\Admin;
+namespace App\Repositories\Answer;
 
-use App\Models\Admin;
+use App\Models\Answer;
 use App\Repositories\EloquentBaseRepository;
 
 
-class EloquentAdminRepository extends EloquentBaseRepository implements AdminRepositoryInterface
+class EloquentAnswerRepository extends EloquentBaseRepository implements AnswerRepositoryInterface
 {
 
-    protected string $model = Admin::class;
+    protected string $model = Answer::class;
 
     }

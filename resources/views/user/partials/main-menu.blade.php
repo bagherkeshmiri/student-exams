@@ -17,7 +17,7 @@
 
 
             <li class=" nav-item" >
-                <a class="nav-link" href="{{ route('admin.dashboard') }}" >
+                <a class="nav-link" href="{{ route('user.dashboard') }}" >
                     <i class="menu-livicon" data-icon="home"></i>
                     <span data-i18n="Dashboard">داشبورد</span>
                 </a>
@@ -45,8 +45,6 @@
                     <span data-i18n="Dashboard">خروج</span>
                 </a>
             </li>
-
-
 
 
         </ul>

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Repositories\Admin;
+namespace App\Repositories\Answer;
 
 use App\Repositories\RepositoryInterface;
 
 
-interface AdminRepositoryInterface extends RepositoryInterface, \Countable
+interface AnswerRepositoryInterface extends RepositoryInterface, \Countable
 {
 
 }

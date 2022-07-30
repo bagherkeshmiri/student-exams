@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Repositories\Admin\AdminRepositoryInterface;
 use App\Repositories\Admin\EloquentAdminRepository;
+use App\Repositories\Answer\AnswerRepositoryInterface;
+use App\Repositories\Answer\EloquentAnswerRepository;
 use App\Repositories\Permission\EloquentPermissionRepository;
 use App\Repositories\Permission\PermissionRepositoryInterface;
 use App\Repositories\Question\EloquentQuestionRepository;
@@ -28,7 +30,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(RoleRepositoryInterface::class, EloquentRoleRepository::class);
         $this->app->bind(QuestionRepositoryInterface::class, EloquentQuestionRepository::class);
         $this->app->bind(PermissionRepositoryInterface::class, EloquentPermissionRepository::class);
-
+        $this->app->bind(AnswerRepositoryInterface::class, EloquentAnswerRepository::class);
     }
 
     /**

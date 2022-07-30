@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class UserQuestionController extends Controller
 {
@@ -37,7 +38,8 @@ class UserQuestionController extends Controller
      */
     public function show(Question $question)
     {
-        //
+//        dd($question->text);
+        return view('user.pages.question.answer',compact('question'));
     }
 
     /**

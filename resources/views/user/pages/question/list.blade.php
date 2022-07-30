@@ -1,6 +1,6 @@
 @extends('user.layouts.master')
 
-@section('title',' لیست سوالات')
+@section('title',' لیست سوالات من')
 
 
 @section('styles')
@@ -18,7 +18,7 @@
                 <div class="content-header-left col-12 mb-2 mt-1">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h5 class="content-header-title float-left pr-1 text-success " style=" border-left: 0 !important;"> لیست سوالات </h5>
+                            <h5 class="content-header-title float-left pr-1 text-success " style=" border-left: 0 !important;"> لیست سوالات من </h5>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                                                         <td>{{ $question->getJalaliConfirmationTime() }}</td>
                                                         <td>{{ $question->getJalaliProtestTime() }}</td>
                                                         <td>
-                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.question.show',[ 'question' => $question->id ])  , 'tooltip_title' => 'پاسخ' , 'icon' => '<i class="bx bx-pencil bx-sm bx-tada-hover" style="color:#FDAC41 !important;"></i>'])
+                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('user.question.show',[ 'question' => $question->id ])  , 'tooltip_title' => 'پاسخ' , 'icon' => '<i class="bx bx-pencil bx-sm bx-tada-hover" style="color:#FDAC41 !important;"></i>'])
                                                         </td>
                                                     </tr>
                                                 @empty

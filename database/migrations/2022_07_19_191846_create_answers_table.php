@@ -23,7 +23,7 @@ return new class extends Migration
             $table->text('incorrect_statement')->nullable();
             $table->text('correct_statement')->nullable();
 
-            $table->tinyInteger('status')->comment(' 0:very-weak , 1:weak-need-correction , 2:corrected , 3:ok-confirm ');
+            $table->tinyInteger('status')->comment(' 0:very-weak , 1:weak-need-correction , 2:corrected , 3:ok-confirm ')->nullable();
 
             $table->softDeletes();
             $table->timestamps();

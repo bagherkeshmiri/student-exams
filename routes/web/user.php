@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\user\UserAnswerController;
 use App\Http\Controllers\user\UserAuthController;
 use App\Http\Controllers\user\UserDashboardController;
 use App\Http\Controllers\user\UserQuestionController;
@@ -28,16 +29,21 @@ Route::name('user.')->group( function(){
 
 
 
-Route::name('user.')->middleware('InvalidUser')->group( function(){
+Route::name('user.')->prefix('panel')->middleware('InvalidUser')->group( function(){
 
     // dashboard
-    Route::prefix('panel')->controller(UserDashboardController::Class)->group( function(){
+    Route::controller(UserDashboardController::Class)->group( function(){
         Route::get('/dashboard', 'index')->name('dashboard');
     });
 
     // questions
     Route::resource('question', UserQuestionController::class)->except('edit','destroy','create','store');
 
+
+    // answer
+    Route::name('answer.')->prefix('answer')->controller(UserAnswerController::Class)->group( function(){
+        Route::post('/store/{question}', 'store')->name('store');
+    });
 });
 
 

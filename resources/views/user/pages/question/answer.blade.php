@@ -1,6 +1,6 @@
-@extends('admin.layouts.master')
+@extends('user.layouts.master')
 
-@section('title','ویرایش سوال')
+@section('title',' پاسخ به سوال')
 
 
 @section('styles')
@@ -28,12 +28,13 @@
                 <div class="content-header-left col-12 mb-2 mt-1">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h5 class="content-header-title float-left pr-1 text-success " style=" border-left: 0 !important;">ویرایش سوال</h5>
+                            <h5 class="content-header-title float-left pr-1 text-success " style=" border-left: 0 !important;"> پاسخ به سوال</h5>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="content-body">
+
 
                 <!-- // Basic multiple Column Form section start -->
                 <section id="multiple-column-form">
@@ -48,66 +49,43 @@
                                         {{-- End Flash Message --}}
 
 
-                                        <form class="form" action="{{ route('admin.question.update',[ 'question' => $question->id ]) }}" method="post">
+                                        <div class="d-flex flex-row justify-content-start">
+                                            <div class="p-2">
+                                                @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => ' ' , 'content' => 'لینک'] ) :
+                                                <span class="mr-2 ml-2">{{ $question->link }}</span>
+                                            </div>
+                                            <div class="p-2">
+                                                @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => ' ' , 'content' => 'مدت پاسخ (دقیقه)'] ) :
+                                                <span class="mr-2 ml-2">{{ $question->response_deadline }}</span>
+                                            </div>
+                                        </div>
+
+
+                                        @include('frest-components.dividers.warning-divider' , [ 'title' => 'ثبت پاسخ'])
+
+
+                                        <form class="form" action="{{ route('user.answer.store', ['question' => $question->id ]) }}" method="post">
                                             @csrf
-                                            @method('put')
+
                                             <div class="form-body">
                                                 <div class="row">
 
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'link' , 'content' => 'لینک '] )
-                                                            @include('frest-components.tags.required-tag')
-                                                            @include('frest-components.inputs.input',[ 'type' => 'text' , 'name' => 'link' , 'value' => $question->link , 'classes' => 'text-left' , 'id' => 'link' , 'dir' => 'ltr' , 'icon' => linkIcon() , 'attributes' => 'required' ])
-                                                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'link' ])
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700', 'for' => 'user_id' , 'content' => 'دانش آموز'] )
-                                                            @include('frest-components.tags.required-tag')
-                                                            @include('frest-components.inputs.select2.simple',[ 'data' => $students , 'id' => 'user_id' , 'name' => 'user_id' , 'attributes' => 'required' , 'selected_value' => $question->users[0]->id ])
-                                                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'user_id' ])
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'admin_id' , 'content' => ' تصحیح کننده'] )
-                                                            @include('frest-components.tags.required-tag')
-                                                            @include('frest-components.inputs.select2.simple',[ 'data' => $admins , 'id' => 'admin_id' , 'name' => 'admin_id' , 'attributes' => 'required'  , 'selected_value' => $question->admin->id  ])
-                                                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'admin_id' ])
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'response_deadline' , 'content' => 'مهلت پاسخ گویی (دقیقه)'] )
-                                                            @include('frest-components.tags.required-tag')
-                                                            @include('frest-components.inputs.input',[ 'type' => 'number' , 'name' => 'response_deadline' , 'value' => $question->response_deadline , 'classes' => 'text-left' , 'id' => 'link' , 'dir' => 'ltr' , 'icon' => timerIcon() , 'attributes' => 'required' ])
-                                                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'response_deadline' ])
-                                                        </div>
-                                                    </div>
-
-
                                                     <div class="col-md-12 col-12 mb-2">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'متن '] )
+                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'پاسخ '] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.textarea' , [ 'rows' => 10  , 'name' => 'text' , 'attributes' => 'required' , 'contents' => $question->text ])
-                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'text' ])
+                                                        @include('frest-components.inputs.textarea' , [ 'rows' => 5  , 'name' => 'text' , 'attributes' => 'required' , 'contents' => $question->text ])
+                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'text'])
                                                     </div>
 
 
                                                     <div class="col-12 d-flex justify-content-end">
-                                                        @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.edit')  , 'icon' => saveIcon() ])
-                                                        @include('frest-components.inputs.buttons.link-button',[ 'href' => route('admin.question.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
+                                                        @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => 'پاسخ'  , 'icon' => saveIcon() ])
+                                                        @include('frest-components.inputs.buttons.link-button',[ 'href' => route('user.question.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
                                                     </div>
                                                 </div>
                                             </div>
                                         </form>
+
                                     </div>
                                 </div>
                             </div>
