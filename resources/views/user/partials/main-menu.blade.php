@@ -15,6 +15,7 @@
         <!-- include ../../includes/mixins-->
         <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation" data-icon-style="lines">
 
+
             <li class=" nav-item" >
                 <a class="nav-link" href="{{ route('admin.dashboard') }}" >
                     <i class="menu-livicon" data-icon="home"></i>
@@ -22,7 +23,21 @@
                 </a>
             </li>
 
+            <li class="dropdown nav-item" data-menu="dropdown">
+                <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
+                    <i class="menu-livicon" data-icon="notebook"></i>
+                    <span>سوالات </span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center" href="{{ route('user.question.index') }}" data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt"></i>
+                             سوالات من
+                        </a>
+                    </li>
 
+                </ul>
+            </li>
 
             <li class="nav-item" >
                 <a class="nav-link" href="{{ route('user.logout') }}">
@@ -30,6 +45,9 @@
                     <span data-i18n="Dashboard">خروج</span>
                 </a>
             </li>
+
+
+
 
         </ul>
     </div>

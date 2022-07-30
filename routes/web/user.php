@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\user\UserAuthController;
 use App\Http\Controllers\user\UserDashboardController;
+use App\Http\Controllers\user\UserQuestionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,7 +35,8 @@ Route::name('user.')->middleware('InvalidUser')->group( function(){
         Route::get('/dashboard', 'index')->name('dashboard');
     });
 
-
+    // questions
+    Route::resource('question', UserQuestionController::class)->except('edit','destroy','create','store');
 
 });
 
