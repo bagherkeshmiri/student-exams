@@ -108,7 +108,7 @@
 @section('scripts')
 
     <!-- Jquery Library CDN -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
 
     <!-- select 2 js -->
     <script type="text/javascript" src="{{ asset('/js/select2-functions.js') }}"></script>
