@@ -5,19 +5,13 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use App\Models\Question;
 use App\Repositories\Answer\AnswerRepositoryInterface;
+use App\Repositories\Question\QuestionRepositoryInterface;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class UserAnswerController extends Controller
 {
-    protected object $AnswerRepository;
-
-    public function __construct(AnswerRepositoryInterface $AnswerRepository)
-    {
-        $this->AnswerRepository = $AnswerRepository;
-    }
-
     public function store(Request $request,Question $question)
     {
         $data = [
@@ -26,7 +20,10 @@ class UserAnswerController extends Controller
         ];
         DB::beginTransaction();
         try {
-            $this->AnswerRepository->create($data);
+            $question->answer()->create($data);
+            $question->update([
+                'status' => $question::REVIEWED
+            ]);
             DB::commit();
             return redirect()->back()->with('success','عملیات موفق');
         } catch (Exception $error){
