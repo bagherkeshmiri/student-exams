@@ -38,8 +38,8 @@ class UserQuestionController extends Controller
      */
     public function show(Question $question)
     {
-//        dd($question->text);
-        return view('user.pages.question.answer',compact('question'));
+        $answer = $question->answer;
+        return view('user.pages.question.answer',compact('question','answer'));
     }
 
     /**

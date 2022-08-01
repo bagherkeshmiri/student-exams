@@ -49,15 +49,23 @@
                                         {{-- End Flash Message --}}
 
 
-                                        <div class="d-flex flex-row justify-content-start">
+                                        <div class="d-flex flex-row justify-content-start flex-wrap">
                                             <div class="p-2">
                                                 @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => ' ' , 'content' => 'لینک'] ) :
                                                 <span class="mr-2 ml-2">{{ $question->link }}</span>
                                             </div>
+
                                             <div class="p-2">
                                                 @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => ' ' , 'content' => 'مدت پاسخ (دقیقه)'] ) :
                                                 <span class="mr-2 ml-2">{{ $question->response_deadline }}</span>
                                             </div>
+
+
+                                            <div class="p-2">
+                                                @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => ' ' , 'content' => 'متن سوال'] ) :
+                                                <span class="mr-2 ml-2">{{ $question->text }}</span>
+                                            </div>
+
                                         </div>
 
 
@@ -73,13 +81,19 @@
                                                     <div class="col-md-12 col-12 mb-2">
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'پاسخ '] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.textarea' , [ 'rows' => 5  , 'name' => 'text' , 'attributes' => 'required' , 'contents' => $question->text ])
+                                                        @if(is_null($answer))
+                                                            @include('frest-components.inputs.textarea' , [ 'rows' => 5  , 'name' => 'text' , 'attributes' => 'required' ])
+                                                        @else
+                                                            @include('frest-components.inputs.textarea' , [ 'rows' => 5  , 'name' => 'text' , 'attributes' => 'readonly' , 'contents' => $answer->text ])
+                                                        @endif
                                                         @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'text'])
                                                     </div>
 
 
                                                     <div class="col-12 d-flex justify-content-end">
-                                                        @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => 'پاسخ'  , 'icon' => saveIcon() ])
+                                                        @if(is_null($answer))
+                                                            @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => 'پاسخ'  , 'icon' => saveIcon() ])
+                                                        @endif
                                                         @include('frest-components.inputs.buttons.link-button',[ 'href' => route('user.question.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
                                                     </div>
                                                 </div>
