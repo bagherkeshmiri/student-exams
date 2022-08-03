@@ -1,20 +1,12 @@
-@extends('user.layouts.master')
+@extends('admin.layouts.master')
 
-
-@section('title',' پاسخ به سوال')
+@section('title','تصحیح سوال')
 
 
 @section('styles')
 
     <!-- select 2 css -->
     <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/vendors/css/forms/select/select2.min.css') }}">
-
-
-    <style>
-        textarea {
-            resize: none;
-        }
-    </style>
 
 @endsection
 
@@ -29,13 +21,12 @@
                 <div class="content-header-left col-12 mb-2 mt-1">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h5 class="content-header-title float-left pr-1 text-success " style=" border-left: 0 !important;"> پاسخ به سوال</h5>
+                            <h5 class="content-header-title float-left pr-1 text-success " style=" border-left: 0 !important;">تصحیح سوال</h5>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="content-body">
-
 
                 <!-- // Basic multiple Column Form section start -->
                 <section id="multiple-column-form">
@@ -63,44 +54,66 @@
 
 
                                             <div class="p-2">
+                                                @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => ' ' , 'content' => 'دانش آموز'] ) :
+                                                <span class="mr-2 ml-2">{{ $question->users()->first()->full_name }}</span>
+                                            </div>
+
+
+                                            <div class="p-2">
+                                                @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => ' ' , 'content' => 'تاریخ پاسخگویی'] ) :
+                                                <span class="mr-2 ml-2">{{ $question->getJalaliResponseTime() }}</span>
+                                            </div>
+
+
+                                            <div class="p-2">
                                                 @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => ' ' , 'content' => 'متن سوال'] ) :
                                                 <span class="mr-2 ml-2">{{ $question->text }}</span>
                                             </div>
 
+
+
+                                            <div class="p-2">
+                                                @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => ' ' , 'content' => 'پاسخ دانش آموز '] ) :
+                                                <span class="mr-2 ml-2">{{ $question->answer->text }}</span>
+                                            </div>
+
+                                            
                                         </div>
 
 
-                                        @include('frest-components.dividers.warning-divider' , [ 'title' => 'ثبت پاسخ'])
+                                        @include('frest-components.dividers.warning-divider' , [ 'title' => 'تصحیح سوال '])
 
 
-                                        <form class="form" action="{{ route('user.answer.store', ['question' => $question->id ]) }}" method="post">
+                                        <form class="form" action="{{ route('admin.correction.store') }}" method="post">
                                             @csrf
-
                                             <div class="form-body">
                                                 <div class="row">
 
-                                                    <div class="col-md-12 col-12 mb-2">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'پاسخ '] )
+
+                                                    <div class="col-md-6 col-12 mb-2">
+                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'عبارت صحیح '] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @if(is_null($answer))
-                                                            @include('frest-components.inputs.textarea' , [ 'rows' => 5  , 'name' => 'text' , 'attributes' => 'required' ])
-                                                        @else
-                                                            @include('frest-components.inputs.textarea' , [ 'rows' => 5  , 'name' => 'text' , 'attributes' => 'readonly' , 'contents' => $answer->text ])
-                                                        @endif
+                                                        @include('frest-components.inputs.textarea' , [ 'rows' => 5  , 'name' => 'text' , 'attributes' => 'required' ])
                                                         @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'text'])
                                                     </div>
 
 
+                                                    <div class="col-md-6 col-12 mb-2">
+                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'عبارت غلط '] )
+                                                        @include('frest-components.tags.required-tag')
+                                                        @include('frest-components.inputs.textarea' , [ 'rows' => 5  , 'name' => 'text' , 'attributes' => 'required' ])
+                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'text'])
+                                                    </div>
+
+
+
                                                     <div class="col-12 d-flex justify-content-end">
-                                                        @if(is_null($answer))
-                                                            @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => 'پاسخ'  , 'icon' => saveIcon() ])
-                                                        @endif
-                                                        @include('frest-components.inputs.buttons.link-button',[ 'href' => route('user.question.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
+                                                        @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
+                                                        @include('frest-components.inputs.buttons.link-button',[ 'href' => route('admin.correction.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
                                                     </div>
                                                 </div>
                                             </div>
                                         </form>
-
                                     </div>
                                 </div>
                             </div>
@@ -130,10 +143,10 @@
     <script type="text/javascript" src="{{ asset('/frest/vendors/js/forms/select/select2.full.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/frest/js/scripts/forms/select/form-select2.js') }}"></script>
 
-    <script type="text/javascript">
-        createSelect2('#user_id'," -- انتخاب کنید -- ");
-        createSelect2('#admin_id'," -- انتخاب کنید -- ");
-    </script>
+
+    {{-- <script type="text/javascript">
+        createSelect2('#role'," -- انتخاب کنید -- ");
+    </script> --}}
 
 
 

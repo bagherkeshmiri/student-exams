@@ -59,6 +59,14 @@
                             لیست سوالات
                         </a>
                     </li>
+
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.correction.index') }}" data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt"></i>
+                            تصحیح سوالات
+                        </a>
+                    </li>
+
                 </ul>
             </li>
             <li class="dropdown nav-item" data-menu="dropdown">
