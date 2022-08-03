@@ -173,6 +173,7 @@ return [
         'level' => ' Level',
         'link' => ' Link',
         'role' => 'Role',
+        'answer_status' => 'Status',
     ],
 
 ];

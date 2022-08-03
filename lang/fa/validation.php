@@ -149,5 +149,6 @@ return [
         'level' => 'سطح ',
         'link' => 'لینک ',
         'role' => 'نقش ',
+        'answer_status' => 'وضعیت پاسخ ',
     ],
 ];

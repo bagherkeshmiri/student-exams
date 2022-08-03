@@ -8,6 +8,13 @@
     <!-- select 2 css -->
     <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/vendors/css/forms/select/select2.min.css') }}">
 
+    <style>
+        textarea {
+            resize: none;
+        }
+    </style>
+
+
 @endsection
 
 
@@ -39,7 +46,6 @@
                                         {{-- Start Flash Message --}}
                                         @include('alerts.flash-message')
                                         {{-- End Flash Message --}}
-
 
                                         <div class="d-flex flex-row justify-content-start flex-wrap">
                                             <div class="p-2">
@@ -77,38 +83,47 @@
                                                 <span class="mr-2 ml-2">{{ $question->answer->text }}</span>
                                             </div>
 
-                                            
+
                                         </div>
 
 
                                         @include('frest-components.dividers.warning-divider' , [ 'title' => 'تصحیح سوال '])
 
 
-                                        <form class="form" action="{{ route('admin.correction.store') }}" method="post">
+                                        <form class="form" action="{{ route('admin.correction.store',['question' => $question->id ]) }}" method="post">
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row">
 
-
                                                     <div class="col-md-6 col-12 mb-2">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'عبارت صحیح '] )
+                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'correct_text' , 'content' => 'عبارت صحیح '] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.textarea' , [ 'rows' => 5  , 'name' => 'text' , 'attributes' => 'required' ])
-                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'text'])
+                                                        @include('frest-components.inputs.textarea' , [ 'rows' => 8  , 'name' => 'correct_text' , 'contents' => (is_null($question->answer->correct_statement)) ? old('correct_text') : $question->answer->correct_statement ])
+                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'correct_text'])
                                                     </div>
 
 
                                                     <div class="col-md-6 col-12 mb-2">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'عبارت غلط '] )
+                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'incorrect_text' , 'content' => 'عبارت غلط '] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.textarea' , [ 'rows' => 5  , 'name' => 'text' , 'attributes' => 'required' ])
-                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'text'])
+                                                        @include('frest-components.inputs.textarea' , [ 'rows' => 8  , 'name' => 'incorrect_text' , 'contents' => (is_null($question->answer->incorrect_statement)) ? old('incorrect_text') : $question->answer->incorrect_statement ])
+                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'incorrect_text'])
                                                     </div>
 
 
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-group">
+                                                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'answer_status' , 'content' => 'وضعیت پاسخ'] )
+                                                            @include('frest-components.tags.required-tag')
+                                                            @include('frest-components.inputs.select2.simple',[ 'data' => $answer_status , 'id' => 'answer_status' , 'name' => 'answer_status' , 'attributes' => 'required'  , 'selected_value' => $question->answer->status ])
+                                                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'answer_status' ])
+                                                        </div>
+                                                    </div>
 
                                                     <div class="col-12 d-flex justify-content-end">
-                                                        @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
+                                                        @if($question->status != $question::CONFIRMED )
+                                                            @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
+                                                        @endif
                                                         @include('frest-components.inputs.buttons.link-button',[ 'href' => route('admin.correction.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
                                                     </div>
                                                 </div>
@@ -144,9 +159,9 @@
     <script type="text/javascript" src="{{ asset('/frest/js/scripts/forms/select/form-select2.js') }}"></script>
 
 
-    {{-- <script type="text/javascript">
-        createSelect2('#role'," -- انتخاب کنید -- ");
-    </script> --}}
+    <script type="text/javascript">
+        createSelect2('#answer_status'," -- انتخاب کنید -- ");
+    </script>
 
 
 

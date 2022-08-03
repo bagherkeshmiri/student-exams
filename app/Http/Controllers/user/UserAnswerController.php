@@ -4,8 +4,6 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\Question;
-use App\Repositories\Answer\AnswerRepositoryInterface;
-use App\Repositories\Question\QuestionRepositoryInterface;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

@@ -2,17 +2,28 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Http\Requests\admin\correction\AdminCorrectionStoreRequest;
 use App\Models\Question;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Repositories\Answer\AnswerRepositoryInterface;
 
 class AdminCorrectionController extends Controller
 {
+    protected object $AnswerRepository;
+
+    public function __construct(AnswerRepositoryInterface $AnswerRepository)
+    {
+        $this->AnswerRepository = $AnswerRepository;
+    }
+
+
+
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -20,66 +31,47 @@ class AdminCorrectionController extends Controller
         return view('admin.pages.correction.list',[ 'questions' => $questions->paginate() ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function show(Question $question)
     {
-        return view('admin.pages.correction.create',compact('question'));
+        $answer_status = $this->AnswerRepository->getModel()->getStatuses();
+        return view('admin.pages.correction.create',compact('question','answer_status'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-    }
+
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function store(AdminCorrectionStoreRequest $request, Question $question)
     {
-        //
+        $data = [
+            'incorrect_statement' => $request->input('incorrect_text'),
+            'correct_statement' => $request->input('correct_text'),
+            'status' => $request->input('answer_status'),
+        ];
+        DB::beginTransaction();
+        try {
+            $question->answer->update($data);
+            if($data['status'] == $question->answer::CORRECTED ||  $data['status'] == $question->answer::OK_CONFIRM){
+                $question->update([
+                    'status' => $question::CONFIRMED,
+                ]);
+            }
+            DB::commit();
+            return redirect()->back()->with('success','عملیات موفق');
+        } catch (Exception $error){
+            DB::rollBack();
+            // dd($error);
+            return redirect()->back()->with('error','خطا در عملیات ');
+        }
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-    }
+
+
 }
