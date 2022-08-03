@@ -16,27 +16,33 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         Permission::create([
-            'name' => 'edit-user'
+            'fa_name' => 'ویرایش کاربر',
+            'en_name' => 'edit-user',
         ]);
 
         Permission::create([
-            'name' => 'delete-user'
+            'fa_name' => 'حذف کاربر',
+            'en_name' => 'delete-user',
         ]);
 
         Permission::create([
-            'name' => 'create-user'
+            'fa_name' => 'ایجاد کاربر',
+            'en_name' => 'create-user',
         ]);
 
         Permission::create([
-            'name' => 'create-admin'
+            'fa_name' => 'ایجاد ادمین',
+            'en_name' => 'create-admin',
         ]);
 
         Permission::create([
-            'name' => 'delete-admin'
+            'fa_name' => 'حذف ادمین',
+            'en_name' => 'delete-admin',
         ]);
 
         Permission::create([
-            'name' => 'edit-admin'
+            'fa_name' => 'ویرایش ادمین',
+            'en_name' => 'edit-admin',
         ]);
 
     }
