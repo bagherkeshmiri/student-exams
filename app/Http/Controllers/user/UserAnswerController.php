@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 class UserAnswerController extends Controller
 {
+
     public function store(Request $request,Question $question)
     {
         $data = [
@@ -22,7 +23,8 @@ class UserAnswerController extends Controller
         try {
             $question->answer()->create($data);
             $question->update([
-                'status' => $question::REVIEWED
+                'status' => $question::REVIEWED,
+                'response_time' => now()
             ]);
             DB::commit();
             return redirect()->back()->with('success','عملیات موفق');
