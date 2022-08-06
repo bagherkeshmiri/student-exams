@@ -17,7 +17,7 @@ class Question extends Model
 
     /*--------- Const Variables ---------*/
 
-    const NEW = 0;
+    const RAW = 0;
     const REVIEWED = 1;
     const HAVE_PROTEST = 2;
     const PROTEST_APPROVED = 3;
@@ -151,7 +151,7 @@ class Question extends Model
     public function getStatuses(): array
     {
         return [
-            'جدید' => self::NEW,
+            'جدید' => $this->RAW,
             'مشاهده شده' => $this::REVIEWED,
             'دارای اعتراض' => $this::HAVE_PROTEST,
             'بازبینی شده' => $this::PROTEST_APPROVED,
@@ -164,7 +164,7 @@ class Question extends Model
 
     public function getBadgeStatus(): string
     {
-        if($this->status == self::NEW){
+        if($this->status == $this->RAW ){
             $status = '<div class="badge badge-success mr-1 mb-1">جدید</div>';
         }elseif ($this->status == $this::REVIEWED){
             $status = '<div class="badge badge-info mr-1 mb-1">مشاهده شده</div>';

@@ -36,7 +36,8 @@ class AdminQuestionController extends Controller
     public function index()
     {
         $questions = $this->QuestionRepository->paginate();
-        return view('admin.pages.question.list',compact('questions'));
+        $question_new_status = $this->QuestionRepository->getModel()::RAW;
+        return view('admin.pages.question.list',compact('questions','question_new_status'));
     }
 
 

@@ -60,6 +60,7 @@ class AdminCorrectionController extends Controller
             if($data['status'] == $question->answer::CORRECTED ||  $data['status'] == $question->answer::OK_CONFIRM){
                 $question->update([
                     'status' => $question::CONFIRMED,
+                    'confirmation_time' => now(),
                 ]);
             }
             DB::commit();

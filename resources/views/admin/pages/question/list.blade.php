@@ -70,8 +70,10 @@
                                                         <td>{{ $question->getJalaliConfirmationTime() }}</td>
                                                         <td>{{ $question->getJalaliProtestTime() }}</td>
                                                         <td>
-                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.question.show',[ 'question' => $question->id ])  , 'tooltip_title' => 'ویرایش' , 'icon' => '<i class="bx bx-pencil bx-sm bx-tada-hover" style="color:#FDAC41 !important;"></i>'])
-                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => 'حذف' , 'icon' => '<i class="bx bx-trash bx-sm bx-tada-hover" style="color:#FF5B5C !important;"></i>' , 'attributes' => 'onclick=student_delete(this,event)  data-url='.route('admin.question.destroy',[ 'question' => $question->id ]) ])
+                                                            @if($question->status == $question_new_status)
+                                                                @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.question.show',[ 'question' => $question->id ])  , 'tooltip_title' => 'ویرایش' , 'icon' => '<i class="bx bx-pencil bx-sm bx-tada-hover" style="color:#FDAC41 !important;"></i>'])
+                                                                @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => 'حذف' , 'icon' => '<i class="bx bx-trash bx-sm bx-tada-hover" style="color:#FF5B5C !important;"></i>' , 'attributes' => 'onclick=student_delete(this,event)  data-url='.route('admin.question.destroy',[ 'question' => $question->id ]) ])
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                 @empty

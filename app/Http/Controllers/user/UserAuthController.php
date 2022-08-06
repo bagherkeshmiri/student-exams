@@ -54,7 +54,7 @@ class UserAuthController extends Controller
 
     public function register(UserRegisterRequest $request)
     {
-        dd($request->all()); //FIXME:
+        dd($request->all()); // FIXME:
 
         $users_introduced_codes = $this->UserRepository->all(['introduced_code'])->pluck('introduced_code')->toArray();
         DB::beginTransaction();
