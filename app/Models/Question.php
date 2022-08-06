@@ -18,10 +18,11 @@ class Question extends Model
     /*--------- Const Variables ---------*/
 
     const RAW = 0;
-    const REVIEWED = 1;
-    const HAVE_PROTEST = 2;
-    const PROTEST_APPROVED = 3;
-    const CONFIRMED = 4;
+    const ANSWERED = 1;
+    const REVIEWED = 2;
+    const HAVE_PROTEST = 3;
+    const PROTEST_APPROVED = 4;
+    const CONFIRMED = 5;
 
     /*------------ Variables ------------*/
 
@@ -151,8 +152,9 @@ class Question extends Model
     public function getStatuses(): array
     {
         return [
-            'جدید' => $this->RAW,
-            'مشاهده شده' => $this::REVIEWED,
+            'جدید' => $this::RAW,
+            'پاسخ داده شده' => $this::ANSWERED,
+            'تصحیح شده' => $this::REVIEWED,
             'دارای اعتراض' => $this::HAVE_PROTEST,
             'بازبینی شده' => $this::PROTEST_APPROVED,
             ' تایید شده' => $this::CONFIRMED,
@@ -164,10 +166,12 @@ class Question extends Model
 
     public function getBadgeStatus(): string
     {
-        if($this->status == $this->RAW ){
+        if($this->status == $this::RAW ){
             $status = '<div class="badge badge-success mr-1 mb-1">جدید</div>';
+        }elseif ($this->status == $this::ANSWERED){
+            $status = '<div class="badge badge-secondary mr-1 mb-1">پاسخ داده شده</div>';
         }elseif ($this->status == $this::REVIEWED){
-            $status = '<div class="badge badge-info mr-1 mb-1">مشاهده شده</div>';
+            $status = '<div class="badge badge-info mr-1 mb-1">تصحیح شده</div>';
         }elseif ($this->status == $this::HAVE_PROTEST){
             $status = '<div class="badge badge-warning mr-1 mb-1">دارای اعتراض</div>';
         }elseif ($this->status == $this::PROTEST_APPROVED){

@@ -80,7 +80,7 @@
 
                                             <div class="p-2">
                                                 @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => ' ' , 'content' => 'پاسخ دانش آموز '] ) :
-                                                <span class="mr-2 ml-2">{{ $question->answer->text }}</span>
+                                                <span class="mr-2 ml-2">@isset($question->answer->text) {{ $question->answer->text }} @endisset</span>
                                             </div>
 
 

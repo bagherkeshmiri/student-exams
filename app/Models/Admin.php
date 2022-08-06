@@ -81,7 +81,7 @@ class Admin extends Authenticatable
 
     public function answeredQuestions(): HasMany
     {
-        return $this->hasMany(Question::class)->where('status', Question::REVIEWED);
+        return $this->hasMany(Question::class)->where('status', Question::ANSWERED);
     }
 
     /*-------------- Scopes -------------*/

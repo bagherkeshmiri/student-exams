@@ -62,6 +62,10 @@ class AdminCorrectionController extends Controller
                     'status' => $question::CONFIRMED,
                     'confirmation_time' => now(),
                 ]);
+            }else{
+                $question->update([
+                    'status' => $question::REVIEWED,
+                ]);
             }
             DB::commit();
             return redirect()->back()->with('success','عملیات موفق');
