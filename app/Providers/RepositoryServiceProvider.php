@@ -8,6 +8,8 @@ use App\Repositories\Answer\AnswerRepositoryInterface;
 use App\Repositories\Answer\EloquentAnswerRepository;
 use App\Repositories\Permission\EloquentPermissionRepository;
 use App\Repositories\Permission\PermissionRepositoryInterface;
+use App\Repositories\Protest\EloquentProtestRepository;
+use App\Repositories\Protest\ProtestRepositoryInterface;
 use App\Repositories\Question\EloquentQuestionRepository;
 use App\Repositories\Question\QuestionRepositoryInterface;
 use App\Repositories\Role\EloquentRoleRepository;
@@ -31,6 +33,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(QuestionRepositoryInterface::class, EloquentQuestionRepository::class);
         $this->app->bind(PermissionRepositoryInterface::class, EloquentPermissionRepository::class);
         $this->app->bind(AnswerRepositoryInterface::class, EloquentAnswerRepository::class);
+        $this->app->bind(ProtestRepositoryInterface::class, EloquentProtestRepository::class);
     }
 
     /**

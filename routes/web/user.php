@@ -3,6 +3,7 @@
 use App\Http\Controllers\user\UserAnswerController;
 use App\Http\Controllers\user\UserAuthController;
 use App\Http\Controllers\user\UserDashboardController;
+use App\Http\Controllers\user\UserProtestController;
 use App\Http\Controllers\user\UserQuestionController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +45,13 @@ Route::name('user.')->prefix('panel')->middleware('InvalidUser')->group( functio
     Route::name('answer.')->prefix('answer')->controller(UserAnswerController::Class)->group( function(){
         Route::post('/store/{question}', 'store')->name('store');
     });
+
+
+    // protest
+    Route::name('protest.')->prefix('protest')->controller(UserProtestController::Class)->group( function(){
+        Route::post('/store/{question}', 'store')->name('store');
+    });
+
 });
 
 

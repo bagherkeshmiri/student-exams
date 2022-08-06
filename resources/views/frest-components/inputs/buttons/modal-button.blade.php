@@ -1,17 +1,19 @@
 
-<button type="submit"
+<button type="button"
+
         @isset($classes)
-        class="{{$classes}}"
+            class="{{$classes}}"
         @endisset
+
+        data-toggle="modal"
+
+        data-target="#{{$modal_id}}"
+
+        data-dismiss="modal"
 
         @isset($id)
             id="{{ $id }}"
         @endisset
-
-        @isset($attributes)
-            {{ $attributes }}
-        @endisset
-
 >
     {{ $content }}
 
@@ -20,3 +22,4 @@
     @endisset
 
 </button>
+

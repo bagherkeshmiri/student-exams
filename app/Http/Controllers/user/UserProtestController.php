@@ -8,21 +8,21 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class UserAnswerController extends Controller
+class UserProtestController extends Controller
 {
 
     public function store(Request $request,Question $question)
     {
         $data = [
-            'question_id' =>$question->id ,
             'text' => $request->input('text'),
+            'question_id' => $question->id,
         ];
         DB::beginTransaction();
         try {
-            $question->answer()->create($data);
+            $question->protest()->create($data);
             $question->update([
-                'status' => $question::ANSWERED,
-                'response_time' => now()
+                'status' => $question::HAVE_PROTEST,
+                'protest_time' => now()
             ]);
             DB::commit();
             return redirect()->back()->with('success','عملیات موفق');
@@ -30,5 +30,5 @@ class UserAnswerController extends Controller
             DB::rollBack();
             return redirect()->back()->with('error','خطا در عملیات ');
         }
-    }
+   }
 }

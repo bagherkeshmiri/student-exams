@@ -32,7 +32,7 @@ class UserFactory extends Factory
             'family' => fake()->lastName(),
             'mobile' => fake()->numerify('###########'),
             'username' => Str::random(10),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => '$2y$10$QJtvF1qP/C5leGIyWXxjeeZJhA0rXe7xsglt0TFqaDlna0d4s5Uyq', // password
             'remember_token' => Str::random(10),
         ];
     }
