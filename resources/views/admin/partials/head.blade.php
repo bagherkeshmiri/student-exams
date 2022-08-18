@@ -24,6 +24,10 @@
     <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/css/core/menu/menu-types/horizontal-menu.css') }}">
     <!-- END: Page CSS-->
 
+    <!-- BEGIN: Google Recaptcha v3  -->
+    {!! htmlScriptTagJsApi() !!}
+    <!-- END: Google Recaptcha v3    -->
+
     @yield('styles')
 
 </head>
