@@ -1,35 +1,34 @@
 <?php
 
-namespace App\Http\Controllers\user;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\user\profile\UserChangePasswordRequest;
+use App\Http\Requests\admin\profile\AdminChangePasswordRequest;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class UserProfileController extends Controller
+class AdminProfileController extends Controller
 {
-
     public function index()
     {
-        $user = Auth::guard('user')->user();
-        return view('user.pages.profile.index',compact('user'));
+        $admin = Auth::guard('admin')->user();
+        return view('admin.pages.profile.index',compact('admin'));
     }
 
 
-    public function changePassword(UserChangePasswordRequest $request)
+    public function changePassword(AdminChangePasswordRequest $request)
     {
 
-        $user = Auth::guard('user')->user();
-        if(!Hash::check($request->input('old_pass'),$user->password)){
+        $admin = Auth::guard('admin')->user();
+        if(!Hash::check($request->input('old_pass'),$admin->password)){
             return redirect()->back()->with('error','رمز عبور قبلی نادرست وارد شده است');
         }
         DB::beginTransaction();
         try {
-            $user->password = $request->input('password');
-            $user->save();
+            $admin->password = $request->input('password');
+            $admin->save();
             DB::commit();
             return redirect()->back()->with('success','عملیات موفق');
         } catch (Exception $error){

@@ -140,6 +140,19 @@
                     </li>
                 </ul>
             </li>
+
+
+
+
+            <li class="nav-item" >
+                <a class="nav-link" href="{{ route('admin.profile.index') }}">
+                    <i class="menu-livicon" data-icon="gears"></i>
+                    <span data-i18n="Dashboard">پروفایل</span>
+                </a>
+            </li>
+
+
+
             <li class="nav-item" >
                 <a class="nav-link" href="{{ route('admin.logout') }}">
                     <i class="menu-livicon" data-icon="multiply-alt"></i>

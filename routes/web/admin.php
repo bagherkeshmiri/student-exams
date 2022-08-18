@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AdminProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminRoleController;
@@ -71,13 +72,20 @@ Route::name('admin.')->middleware('InvalidAdmin')->group( function(){
     });
 
 
-    // correction
-    // Route::resource('correction', AdminCorrectionController::class)->except('edit','destroy','create');
 
+    // correction
     Route::name('correction.')->prefix('correction')->controller(AdminCorrectionController::Class)->group( function(){
         Route::get('/', 'index')->name('index');
         Route::get('/show/{question}', 'show')->name('show');
         Route::post('/store/{question}', 'store')->name('store');
+    });
+
+
+
+    // profile
+    Route::name('profile.')->prefix('profile')->controller(AdminProfileController::Class)->group( function(){
+        Route::get('/', 'index')->name('index');
+        Route::post('/', 'changePassword')->name('changePassword');
     });
 
 });
