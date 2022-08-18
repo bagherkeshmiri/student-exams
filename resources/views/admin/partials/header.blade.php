@@ -67,7 +67,7 @@
                                     <div class="media d-flex align-items-center">
                                         <div class="media-left pr-0">
                                             <div class="avatar mr-1 m-0"><img
-                                                    src="{{ asset('frest/images/portrait/small/avatar-s-16.jpg')  }}"
+                                                    src="{{ asset('frest/images/portrait/small/avatar-s-16.png')  }}"
                                                     alt="avatar" height="39" width="39"></div>
                                         </div>
                                         <div class="media-body">
@@ -144,7 +144,7 @@
                                     <div class="media d-flex align-items-center">
                                         <div class="media-left pr-0">
                                             <div class="avatar mr-1 m-0"><img
-                                                    src="{{ asset('frest/images/portrait/small/avatar-s-4.jpg') }}"
+                                                    src="{{ asset('frest/images/portrait/small/avatar-s-16.png') }}"
                                                     alt="avatar" height="39" width="39"></div>
                                         </div>
                                         <div class="media-body">
@@ -171,7 +171,7 @@
                                     <div class="media d-flex align-items-center border-0">
                                         <div class="media-left pr-0">
                                             <div class="avatar mr-1 m-0"><img
-                                                    src="{{ asset('frest/images/portrait/small/avatar-s-16.jpg') }}"
+                                                    src="{{ asset('frest/images/portrait/small/avatar-s-16.png') }}"
                                                     alt="avatar" height="39" width="39"></div>
                                         </div>
                                         <div class="media-body">

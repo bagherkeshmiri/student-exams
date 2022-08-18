@@ -78,12 +78,6 @@
                                                     <div class="card-content">
                                                         <div class="card-body">
                                                             <h5 class="card-title">اطلاعات کامل</h5>
-                                                            <ul class="list-unstyled line-height-2">
-                                                                <li class="mb-1"><i class="cursor-pointer bx bx-map align-middle mr-50"></i>تهران</li>
-                                                                <li class="mb-1"><i class="cursor-pointer bx bx-phone-call align-middle mr-50"></i><span class="ltr-text">(+56) 454 45654</span></li>
-                                                                <li class="mb-1"><i class="cursor-pointer bx bx-time align-middle mr-50"></i>10 مهر</li>
-                                                                <li class="mb-1"><i class="cursor-pointer bx bx-envelope align-middle mr-50"></i>Jonnybravo@gmail.com</li>
-                                                            </ul>
                                                             <div class="row">
                                                                 <div class="col-6">
                                                                     <h6 class="mb-0"><small class="text-muted">شماره موبایل</small></h6>
@@ -106,11 +100,7 @@
                                                                     <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای</p>
                                                                 </div>
                                                             </div>
-                                                            <button class="btn btn-sm d-none d-sm-block float-right btn-light-primary mb-2">
-                                                                <i class="cursor-pointer bx bx-edit font-small-3 mr-50"></i><span>ویرایش</span>
-                                                            </button>
-                                                            <button class="btn btn-sm d-block d-sm-none btn-block text-center btn-light-primary">
-                                                                <i class="cursor-pointer bx bx-edit font-small-3 mr-25"></i><span>ویرایش</span></button>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -208,8 +198,4 @@
 
 
 @section('scripts')
-
-
-    <script type="text/javascript" src="{{ asset('frest/js/scripts/pages/page-user-profile.js') }}"></script>
-
 @endsection
