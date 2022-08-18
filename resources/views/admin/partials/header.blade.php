@@ -53,7 +53,7 @@
                                     <div class="media d-flex align-items-center">
                                         <div class="media-left pr-0">
                                             <div class="avatar mr-1 m-0"><img
-                                                    src="{{ asset('frest/images/portrait/small/avatar-s-11.jpg') }}"
+                                                    src="{{ asset('frest/images/portrait/small/avatar-s-16.png') }}"
                                                     alt="avatar" height="39" width="39"></div>
                                         </div>
                                         <div class="media-body">
@@ -186,36 +186,40 @@
                                     href="javascript:void(0)">خواندن همه اعلان ها</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link"
+                    <li class="dropdown dropdown-user nav-item">
+                        <a class="dropdown-toggle nav-link dropdown-user-link"
                                                                    href="#" data-toggle="dropdown">
                             <div class="user-nav d-lg-flex d-none"><span
                                     class="user-name">{{ auth('admin')->user()->full_name  }}</span><span
                                     class="user-status"></span></div>
-                            <span><img class="round" src="{{ asset('frest/images/portrait/small/avatar-s-11.jpg') }}"
-                                       alt="avatar" height="40" width="40"></span></a>
-{{--                        <div class="dropdown-menu pb-0">--}}
-{{--                            <a class="dropdown-item" href="#">--}}
-{{--                                <i class="bx bx-user mr-50"></i>--}}
-{{--                                ویرایش پروفایل--}}
-{{--                            </a>--}}
-{{--                            <a class="dropdown-item" href="#">--}}
-{{--                                <i class="bx bx-envelope mr-50"></i>--}}
-{{--                                صندوق ورودی من--}}
-{{--                            </a>--}}
-{{--                            <a class="dropdown-item" href="#">--}}
-{{--                                <i class="bx bx-check-square mr-50"></i>--}}
-{{--                                وظیفه--}}
-{{--                            </a>--}}
-{{--                            <a class="dropdown-item"--}}
-{{--                               href="#"><i class="bx bx-message mr-50"></i>--}}
-{{--                                گفتگو ها--}}
-{{--                            </a>--}}
-{{--                            <div class="dropdown-divider mb-0"></div>--}}
-{{--                            <a class="dropdown-item" href="{{ route('admin.logout') }}">--}}
-{{--                                <i class="bx bx-power-off mr-50"></i>--}}
-{{--                                خروج--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
+                            <span>
+                                <img class="round" src="{{ asset('frest/images/portrait/small/avatar-s-16.png') }}"
+                                       alt="avatar" height="40" width="40">
+                            </span>
+                        </a>
+                        {{--                        <div class="dropdown-menu pb-0">--}}
+                        {{--                            <a class="dropdown-item" href="#">--}}
+                        {{--                                <i class="bx bx-user mr-50"></i>--}}
+                        {{--                                ویرایش پروفایل--}}
+                        {{--                            </a>--}}
+                        {{--                            <a class="dropdown-item" href="#">--}}
+                        {{--                                <i class="bx bx-envelope mr-50"></i>--}}
+                        {{--                                صندوق ورودی من--}}
+                        {{--                            </a>--}}
+                        {{--                            <a class="dropdown-item" href="#">--}}
+                        {{--                                <i class="bx bx-check-square mr-50"></i>--}}
+                        {{--                                وظیفه--}}
+                        {{--                            </a>--}}
+                        {{--                            <a class="dropdown-item"--}}
+                        {{--                               href="#"><i class="bx bx-message mr-50"></i>--}}
+                        {{--                                گفتگو ها--}}
+                        {{--                            </a>--}}
+                        {{--                            <div class="dropdown-divider mb-0"></div>--}}
+                        {{--                            <a class="dropdown-item" href="{{ route('admin.logout') }}">--}}
+                        {{--                                <i class="bx bx-power-off mr-50"></i>--}}
+                        {{--                                خروج--}}
+                        {{--                            </a>--}}
+                        {{--                        </div>--}}
                     </li>
                 </ul>
             </div>

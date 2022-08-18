@@ -3,6 +3,7 @@
 use App\Http\Controllers\user\UserAnswerController;
 use App\Http\Controllers\user\UserAuthController;
 use App\Http\Controllers\user\UserDashboardController;
+use App\Http\Controllers\user\UserProfileController;
 use App\Http\Controllers\user\UserProtestController;
 use App\Http\Controllers\user\UserQuestionController;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,13 @@ Route::name('user.')->prefix('panel')->middleware('InvalidUser')->group( functio
         Route::post('/store/{question}', 'store')->name('store');
     });
 
+
+
+    // profile
+    Route::name('profile.')->prefix('profile')->controller(UserProfileController::Class)->group( function(){
+        Route::get('/', 'index')->name('index');
+        Route::post('/', 'changePassword')->name('changePassword');
+    });
 });
 
 

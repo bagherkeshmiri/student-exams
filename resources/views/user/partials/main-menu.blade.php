@@ -40,12 +40,20 @@
             </li>
 
             <li class="nav-item" >
+                <a class="nav-link" href="{{ route('user.profile.index') }}">
+                    <i class="menu-livicon" data-icon="gears"></i>
+                    <span data-i18n="Dashboard">پروفایل</span>
+                </a>
+            </li>
+
+
+
+            <li class="nav-item" >
                 <a class="nav-link" href="{{ route('user.logout') }}">
                     <i class="menu-livicon" data-icon="multiply-alt"></i>
                     <span data-i18n="Dashboard">خروج</span>
                 </a>
             </li>
-
 
         </ul>
     </div>
