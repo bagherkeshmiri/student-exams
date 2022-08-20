@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
+use App\Models\Question;
+use Morilog\Jalali\Jalalian;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Admin extends Model
+class Admin extends Authenticatable
 {
     use HasFactory;
 
@@ -25,6 +28,7 @@ class Admin extends Model
      */
     protected $table = 'admins';
     protected string $guard = 'admin';
+    protected $perPage = 10;
 
     /**
      * The attributes that are mass assignable.
@@ -66,9 +70,19 @@ class Admin extends Model
 
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany('roles');
+        return $this->belongsToMany(Role::class,'admin_role');
     }
 
+    public function questions(): HasMany
+    {
+        return $this->hasMany(Question::class);
+    }
+
+
+    public function answeredQuestions(): HasMany
+    {
+        return $this->hasMany(Question::class)->where('status', Question::ANSWERED);
+    }
 
     /*-------------- Scopes -------------*/
 
@@ -76,6 +90,10 @@ class Admin extends Model
 
     /*---------- Other Functions --------*/
 
+    public function getJalaliCreatedAt(): string
+    {
+        return Jalalian::forge($this->created_at)->format('Y/m/d H:i:s');
+    }
 
 
     public function setPasswordAttribute($value)
@@ -83,14 +101,20 @@ class Admin extends Model
         $this->attributes['password'] = Hash::make($value);
     }
 
-    public function getFullName(): string
+
+    public function getFullNameAttribute(): string
     {
         if ($this->name && $this->family) {
-            return $this->name . ' ' . $this->family;
+            return $this->attributes['full_name'] = $this->name . ' ' . $this->family;
         }
-        return 'بدون نام';
+        return $this->attributes['full_name'] = 'بدون نام';
     }
 
+
+    public function hasPermission($permission)
+    {
+        return $this->roles->first()->permissions->contains('en_name',$permission->en_name);
+    }
 
 
 }

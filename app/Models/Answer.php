@@ -62,12 +62,22 @@ class Answer extends Model
     public function question(): BelongsTo
     {
         return $this->belongsTo(Question::class);
-   }
+    }
 
     /*-------------- Scopes -------------*/
 
 
 
     /*---------- Other Functions --------*/
+
+
+    public function getStatuses () {
+        return [
+            'خیلی ضعیف' => $this::VERY_WEAK,
+            'ضعیف / نیاز به اصلاح' => $this::WEAK_NEED_CORRECTION,
+            'تصحیح شده' => $this::CORRECTED,
+            'تایید شده' => $this::OK_CONFIRM,
+        ];
+    }
 
 }

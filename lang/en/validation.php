@@ -169,7 +169,11 @@ return [
         'email' => 'Email',
         'mobile' => 'Mobile',
         'password' => 'password',
-        'retype_password' => ' retype password',
+        'username' => ' Username',
+        'level' => ' Level',
+        'link' => ' Link',
+        'role' => 'Role',
+        'answer_status' => 'Status',
     ],
 
 ];

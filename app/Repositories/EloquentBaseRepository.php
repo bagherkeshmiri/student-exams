@@ -12,7 +12,7 @@ class EloquentBaseRepository implements RepositoryInterface, \Countable
         return resolve($this->model);
     }
 
-    public function count()
+    public function count(): int
     {
         return $this->model::count();
     }
@@ -28,7 +28,7 @@ class EloquentBaseRepository implements RepositoryInterface, \Countable
     {
         if (!is_null($columns))
             return $this->model::select($columns)->paginate();
-        return $this->model::paginate();
+        return $this->model::orderBy('created_at','desc')->paginate();
     }
 
     public function createMany(array $records)
@@ -58,7 +58,7 @@ class EloquentBaseRepository implements RepositoryInterface, \Countable
     }
 
 
-    public function filters($val)
+    public function filters($val): static
     {
          $this->model::filters($val);
         return $this;

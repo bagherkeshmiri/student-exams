@@ -28,6 +28,11 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frest/css/pages/authentication.css') }} ">
     <!-- END: Page CSS-->
 
+
+    <!-- BEGIN: Google Recaptcha v3  -->
+    {!! htmlScriptTagJsApi() !!}
+    <!-- END: Google Recaptcha v3    -->
+
     @yield('styles')
 
 </head>

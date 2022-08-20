@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreignId('admin_id')->constrained('admins')->onDelete('cascade');
 
 
-            $table->tinyInteger('status')->comment(' 0:new , 1:reviewed , 2:have-protest , 3:protest-approved , 4:confirmed')->default(0);
+            $table->tinyInteger('status')->comment(' 0:raw , 1:answered , 2:reviewed , 3:have-protest , 4:protest-approved , 5:confirmed')->default(0);
 
             $table->text('text');
 

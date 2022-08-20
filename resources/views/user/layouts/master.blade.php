@@ -47,6 +47,9 @@
 <!-- END: Theme JS-->
 
 
+
+@yield('modals')
+
 @yield('scripts')
 
 

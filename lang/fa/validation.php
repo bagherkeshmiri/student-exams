@@ -145,6 +145,10 @@ return [
         'email' => 'ایمیل',
         'mobile' => 'موبایل',
         'password' => 'رمز عبور',
-        'retype_password' => 'تکرار رمز عبور',
+        'username' => 'نام کاربری',
+        'level' => 'سطح ',
+        'link' => 'لینک ',
+        'role' => 'نقش ',
+        'answer_status' => 'وضعیت پاسخ ',
     ],
 ];

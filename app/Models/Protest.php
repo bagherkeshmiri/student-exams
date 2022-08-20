@@ -69,6 +69,10 @@ class Protest extends Model
     /*---------- Other Functions --------*/
 
 
+    public function setTextAttribute($value)
+    {
+        $this->attributes['text'] = strip_tags($value);
+    }
 
 
 }

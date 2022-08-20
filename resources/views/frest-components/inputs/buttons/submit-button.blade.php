@@ -1,12 +1,17 @@
 
 <button type="submit"
-    @isset($classes)
+        @isset($classes)
         class="{{$classes}}"
-    @endisset
+        @endisset
 
-    @isset($id)
-        id="{{ $id }}"
-    @endisset
+        @isset($id)
+            id="{{ $id }}"
+        @endisset
+
+        @isset($attributes)
+            {{ $attributes }}
+        @endisset
+
 >
     {{ $content }}
 
