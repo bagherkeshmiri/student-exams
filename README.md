@@ -35,7 +35,7 @@ Thank you for participating in this project!
 It is possible to send an error correction request in the form of a merge request
 
 ## Security Vulnerabilities
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Laravel student exams, please send an e-mail to Bagher Keshmiri via [bagherkeshmiri@gmail.com](mailto:bagherkeshmiri@gmail.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
