@@ -1,11 +1,11 @@
-<img style="text-align: center !important;" src="https://img.freepik.com/free-vector/exams-concept-illustration_114360-2754.jpg?size=626&ext=jpg&ga=GA1.1.1703511780.1687538153&semt=ais" alt="studen-exams"/>
+<img align="center" src="https://img.freepik.com/free-vector/exams-concept-illustration_114360-2754.jpg?size=626&ext=jpg&ga=GA1.1.1703511780.1687538153&semt=ais" alt="studen-exams"/>
 
 
-<div style="text-align: center !important;">
+<div align="center">
 <h1>Laravel student exams</h1>
 </div>
 
-<div style="text-align: center !important;">
+<div align="center">
 <a href="https://github.com/bagherkeshmiri/Link-Shortener/releases/">
 <img src="https://img.shields.io/github/release/bagherkeshmiri/Link-Shortener?include_prereleases=&sort=semver&color=red" alt="GitHub release">
 </a>
