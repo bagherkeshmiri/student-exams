@@ -1,7 +1,5 @@
 <?php
 
-
-use App\Http\Controllers\api\v1\admin\AdminAuthController;
 use Illuminate\Support\Facades\Route;
 
 /*

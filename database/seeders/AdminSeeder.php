@@ -2,13 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Admin;
-use App\Models\Role;
 use App\Repositories\Admin\AdminRepositoryInterface;
 use App\Repositories\Role\RoleRepositoryInterface;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class AdminSeeder extends Seeder
 {
@@ -16,9 +12,9 @@ class AdminSeeder extends Seeder
     protected RoleRepositoryInterface $RoleRepository;
 
     public function __construct(
-        AdminRepositoryInterface $AdminRepository
-        , RoleRepositoryInterface $RoleRepository)
-    {
+        AdminRepositoryInterface $AdminRepository,
+        RoleRepositoryInterface $RoleRepository,
+    ) {
         $this->AdminRepository = $AdminRepository;
         $this->RoleRepository = $RoleRepository;
     }
@@ -37,8 +33,7 @@ class AdminSeeder extends Seeder
             'username' => 'su',
             'password' => 1234
         ]);
-        $manager_role =  $this->RoleRepository->getModel()->where('name','manager')->first();
+        $manager_role = $this->RoleRepository->getModel()->where('name', 'manager')->first();
         $created_admin->roles()->attach($manager_role);
-        dump('super manager created');
     }
 }
