@@ -1,5 +1,6 @@
-<img align="center" src="https://img.freepik.com/free-vector/exams-concept-illustration_114360-2754.jpg?size=626&ext=jpg&ga=GA1.1.1703511780.1687538153&semt=ais" alt="studen-exams"/>
-
+<div align="center">
+<img src="https://img.freepik.com/free-vector/exams-concept-illustration_114360-2754.jpg?size=626&ext=jpg&ga=GA1.1.1703511780.1687538153&semt=ais" alt="studen-exams"/>
+</div>
 
 <div align="center">
 <h1>Laravel student exams</h1>
