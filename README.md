@@ -1,13 +1,18 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<a href="https://github.com/bagherkeshmiri/Link-Shortener/releases/">
+<img src="https://img.shields.io/github/release/bagherkeshmiri/Link-Shortener?include_prereleases=&sort=semver&color=red" alt="GitHub release">
+</a>
+<a href="#license">
+<img src="https://img.shields.io/badge/License-MIT-green" alt="License">
+</a>
+<a href="https://github.com/bagherkeshmiri/Link-Shortener/releases/"><img src="https://img.shields.io/github/tag/bagherkeshmiri/Link-Shortener?include_prereleases=&sort=semver&color=blue" alt="GitHub tag"></a>
+<a href="https://"><img src="https://img.shields.io/badge/downloads-1k-ffb84d" alt="downloads - 1k"></a>
+<a href="https://www.mysql.com/" title="Go to MySQL homepage"><img src="https://img.shields.io/badge/MySQL-%3E=5.7-blue?logo=mysql&logoColor=white" alt="Made with MySQL"></a>
+<a href="/CONTRIBUTING.md" title="Go to contributions doc"><img src="https://img.shields.io/badge/contributions-welcome-yellow" alt="contributions - welcome"></a>
+<img src="https://img.shields.io/badge/maintained-yes-blue" alt="maintained - yes">
+<a href="https://github.com/features/actions" title="Go to GitHub Actions homepage"><img src="https://img.shields.io/badge/CI-GitHub_Actions-red?logo=github-actions&logoColor=white" alt="Made with GH Actions"></a>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+## About student exams
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
