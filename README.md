@@ -29,6 +29,25 @@
  - It has a management panel to define teachers and manage questions by teachers and administrators.
  - It has a panel for entering students and registering answers to question.
 
+- [Installation](#installation)
+
+## Installation
+1 - In order to install, considering that the Brasa Laravel framework has been developed, you need to clone the project in your desired path :
+```bash
+git clone https://github.com/bagherkeshmiri/student-exams.git
+```
+
+2 - To get the core of the project (vendor), you need to run the following code :
+```bash
+composer update
+```
+
+3 - After receiving the contents of the vendor folder, it is necessary to set the .env file of the project and connect to the database .
+
+4 - Then execute the following command to create tables and input basic information :
+```bash
+ php artisan migrate --seed
+```
 
 ## Contributing
 Thank you for participating in this project!
