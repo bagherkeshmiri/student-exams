@@ -25,9 +25,9 @@
 </div>
 
 ## About student exams
- - It is a web-based system for managing student questions and exams that was developed with PHP language and Laravel framework.
- - It has a management panel to define teachers and manage questions by teachers and administrators.
- - It has a panel for entering students and registering answers to question.
+  It is a web-based system for managing student questions and exams that was developed with PHP language and Laravel framework.
+  It has a management panel to define teachers and manage questions by teachers and administrators.
+  It has a panel for entering students and registering answers to question.
 
 - [Installation](#installation)
 
