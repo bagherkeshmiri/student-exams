@@ -11,10 +11,10 @@
     <img src="https://img.shields.io/github/release/bagherkeshmiri/student-exams?include_prereleases=&sort=semver&color=red" alt="GitHub release">
 </a>
 <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
-<a href="https://github.com/bagherkeshmiri/Link-Shortener/releases/">
+<a href="https://github.com/bagherkeshmiri/student-exams/releases">
 <img src="https://img.shields.io/github/tag/bagherkeshmiri/student-exams?include_prereleases=&sort=semver&color=blue" alt="GitHub tag">
 </a>
-<img src="https://img.shields.io/badge/downloads-1k-green" alt="downloads - 1k">
+<img src="https://img.shields.io/badge/downloads-2k-green" alt="downloads - 2k">
 <a href="https://www.mysql.com/" title="Go to MySQL homepage">
     <img src="https://img.shields.io/badge/MySQL-%3E=5.7-blue?logo=mysql&logoColor=white" alt="Made with MySQL">
 </a>
