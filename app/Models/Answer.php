@@ -9,6 +9,7 @@ class Answer extends Model
 {
     /*--------- Const Variables ---------*/
 
+    public const TABLE_NAME = 'answers';
     public const VERY_WEAK = 0;
     public const WEAK_NEED_CORRECTION = 1;
     public const CORRECTED = 2;
@@ -16,13 +17,13 @@ class Answer extends Model
 
     /*------------ Variables ------------*/
 
-    protected $table = 'answers';
+    protected $table = self::TABLE_NAME;
 
     /*------------ Relations ------------*/
 
     public function question(): BelongsTo
     {
-        return $this->belongsTo(Question::class);
+        return $this->belongsTo(Question::class,);
     }
 
     /*-------------- Scopes -------------*/
@@ -32,10 +33,10 @@ class Answer extends Model
     public function getStatuses(): array
     {
         return [
-            'خیلی ضعیف' => $this::VERY_WEAK,
-            'ضعیف / نیاز به اصلاح' => $this::WEAK_NEED_CORRECTION,
-            'تصحیح شده' => $this::CORRECTED,
-            'تایید شده' => $this::OK_CONFIRM,
+            'خیلی ضعیف' => self::VERY_WEAK,
+            'ضعیف / نیاز به اصلاح' => self::WEAK_NEED_CORRECTION,
+            'تصحیح شده' => self::CORRECTED,
+            'تایید شده' => self::OK_CONFIRM,
         ];
     }
 
