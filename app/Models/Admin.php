@@ -13,7 +13,7 @@ class Admin extends Authenticatable
 {
     /*--------- Const Variables ---------*/
 
-    const AVATAR_PATH = 'uploads/admins/avatar/';
+    public const AVATAR_PATH = 'uploads/admins/avatar/';
 
     /*------------ Variables ------------*/
 
@@ -58,7 +58,7 @@ class Admin extends Authenticatable
         return Jalalian::forge($this->created_at)->format('Y/m/d H:i:s');
     }
 
-    public function setPasswordAttribute($value)
+    public function setPasswordAttribute($value): void
     {
         $this->attributes['password'] = Hash::make($value);
     }
@@ -71,7 +71,7 @@ class Admin extends Authenticatable
         return $this->attributes['full_name'] = 'بدون نام';
     }
 
-    public function hasPermission($permission)
+    public function hasPermission($permission): bool
     {
         return $this->roles->first()->permissions->contains('en_name', $permission->en_name);
     }
