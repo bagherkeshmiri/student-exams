@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Answers\AnswerStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -10,20 +11,22 @@ class Answer extends Model
     /*--------- Const Variables ---------*/
 
     public const TABLE_NAME = 'answers';
-    public const VERY_WEAK = 0;
-    public const WEAK_NEED_CORRECTION = 1;
-    public const CORRECTED = 2;
-    public const OK_CONFIRM = 3;
+    public const COLUMN_ID = 'id';
+    public const COLUMN_QUESTION_ID = 'question_id';
 
     /*------------ Variables ------------*/
 
     protected $table = self::TABLE_NAME;
 
+    protected $casts = [
+        'status' => AnswerStatus::class,
+    ];
+
     /*------------ Relations ------------*/
 
     public function question(): BelongsTo
     {
-        return $this->belongsTo(Question::class,);
+        return $this->belongsTo(Question::class, self::COLUMN_QUESTION_ID, self::COLUMN_ID);
     }
 
     /*-------------- Scopes -------------*/
@@ -33,10 +36,10 @@ class Answer extends Model
     public function getStatuses(): array
     {
         return [
-            'خیلی ضعیف' => self::VERY_WEAK,
-            'ضعیف / نیاز به اصلاح' => self::WEAK_NEED_CORRECTION,
-            'تصحیح شده' => self::CORRECTED,
-            'تایید شده' => self::OK_CONFIRM,
+            __('statuses.very_weak') => AnswerStatus::VeryWeak,
+            __('statuses.weak_and_need_correction') => AnswerStatus::WeakAndNeedCorrection,
+            __('statuses.corrected') => AnswerStatus::Corrected,
+            __('statuses.ok_confirm') => AnswerStatus::OkConfirm,
         ];
     }
 
