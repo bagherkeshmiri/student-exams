@@ -26,9 +26,6 @@ class Admin extends Authenticatable
         'remember_token',
     ];
 
-    protected $casts = [
-    ];
-
     /*------------ Relations ------------*/
 
     public function phones(): MorphMany
