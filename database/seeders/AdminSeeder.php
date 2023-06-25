@@ -2,38 +2,21 @@
 
 namespace Database\Seeders;
 
-use App\Repositories\Admin\AdminRepositoryInterface;
-use App\Repositories\Role\RoleRepositoryInterface;
+use App\Models\Admin;
+use App\Models\Role;
 use Illuminate\Database\Seeder;
 
 class AdminSeeder extends Seeder
 {
-    protected AdminRepositoryInterface $AdminRepository;
-    protected RoleRepositoryInterface $RoleRepository;
-
-    public function __construct(
-        AdminRepositoryInterface $AdminRepository,
-        RoleRepositoryInterface $RoleRepository,
-    ) {
-        $this->AdminRepository = $AdminRepository;
-        $this->RoleRepository = $RoleRepository;
-    }
-
-
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        $created_admin = $this->AdminRepository->create([
-            'name' => 'مدیر',
-            'family' => 'کل',
-            'username' => 'su',
-            'password' => 1234
-        ]);
-        $manager_role = $this->RoleRepository->getModel()->where('name', 'manager')->first();
-        $created_admin->roles()->attach($manager_role);
+        $admin = new Admin();
+        $admin->name = 'مدیر';
+        $admin->family = 'کل';
+        $admin->username = 'su';
+        $admin->password = '12345678';
+        $admin->save();
+        $role = Role::query()->where('name', 'manager')->first();
+        $admin->roles()->attach($role);
     }
 }
