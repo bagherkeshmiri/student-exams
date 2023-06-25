@@ -2,64 +2,32 @@
 
 namespace App\Models;
 
-use App\Models\Question;
 use Morilog\Jalali\Jalalian;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Admin extends Authenticatable
 {
-    use HasFactory;
-
     /*--------- Const Variables ---------*/
 
     const AVATAR_PATH = 'uploads/admins/avatar/';
 
     /*------------ Variables ------------*/
 
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
     protected $table = 'admins';
     protected string $guard = 'admin';
     protected $perPage = 10;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'family',
-        'username',
-        'password',
-    ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
     ];
-
 
     /*------------ Relations ------------*/
 
@@ -70,14 +38,13 @@ class Admin extends Authenticatable
 
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(Role::class,'admin_role');
+        return $this->belongsToMany(Role::class, 'admin_role');
     }
 
     public function questions(): HasMany
     {
         return $this->hasMany(Question::class);
     }
-
 
     public function answeredQuestions(): HasMany
     {
@@ -87,7 +54,6 @@ class Admin extends Authenticatable
     /*-------------- Scopes -------------*/
 
 
-
     /*---------- Other Functions --------*/
 
     public function getJalaliCreatedAt(): string
@@ -95,12 +61,10 @@ class Admin extends Authenticatable
         return Jalalian::forge($this->created_at)->format('Y/m/d H:i:s');
     }
 
-
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);
     }
-
 
     public function getFullNameAttribute(): string
     {
@@ -110,11 +74,8 @@ class Admin extends Authenticatable
         return $this->attributes['full_name'] = 'بدون نام';
     }
 
-
     public function hasPermission($permission)
     {
-        return $this->roles->first()->permissions->contains('en_name',$permission->en_name);
+        return $this->roles->first()->permissions->contains('en_name', $permission->en_name);
     }
-
-
 }
