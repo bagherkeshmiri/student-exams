@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Questions\QuestionStatus;
 use Morilog\Jalali\Jalalian;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -13,11 +14,15 @@ class Admin extends Authenticatable
 {
     /*--------- Const Variables ---------*/
 
+    public const TABLE_NAME = 'admins';
     public const AVATAR_PATH = 'uploads/admins/avatar/';
+    public const COLUMN_ID = 'id';
+    public const COLUMN_ROLE_ID = 'role_id';
+    public const COLUMN_ADMIN_ID = 'admin_id';
 
     /*------------ Variables ------------*/
 
-    protected $table = 'admins';
+    protected $table = self::TABLE_NAME;
     protected string $guard = 'admin';
     protected $perPage = 10;
 
@@ -35,17 +40,17 @@ class Admin extends Authenticatable
 
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(Role::class, 'admin_role');
+        return $this->belongsToMany(Role::class, 'admin_role', self::COLUMN_ROLE_ID, self::COLUMN_ID);
     }
 
     public function questions(): HasMany
     {
-        return $this->hasMany(Question::class);
+        return $this->hasMany(Question::class, self::COLUMN_ADMIN_ID, self::COLUMN_ID);
     }
 
     public function answeredQuestions(): HasMany
     {
-        return $this->hasMany(Question::class)->where('status', Question::ANSWERED);
+        return $this->hasMany(Question::class, self::COLUMN_ADMIN_ID, self::COLUMN_ID)->where('status', QuestionStatus::Answered);
     }
 
     /*-------------- Scopes -------------*/
