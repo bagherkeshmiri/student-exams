@@ -9,7 +9,9 @@ class Permission extends Model
 {
     /*--------- Const Variables ---------*/
 
-    public const TABLE_NAME = 'bank_accounts';
+    public const TABLE_NAME = 'permissions';
+    public const COLUMN_ID = 'id';
+    public const COLUMN_PERMISSION_ID = 'permission_id ';
 
     /*------------ Variables ------------*/
 
@@ -19,7 +21,7 @@ class Permission extends Model
 
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(Role::class, 'role_permission');
+        return $this->belongsToMany(Role::class, 'role_permission', self::COLUMN_PERMISSION_ID, self::COLUMN_ID);
     }
 
     /*-------------- Scopes -------------*/

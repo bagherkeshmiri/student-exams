@@ -10,4 +10,8 @@ return [
     'have_protest' => 'دارای اعتراض',
     'protest_approved' => ' بازبینی شده',
     'unknown' => 'نامشخص',
+    'elementary' => 'ابتدایی',
+    'guidance' => 'راهنمایی',
+    'high_school' => 'دبیرستان',
+    'pre_university' => 'پیش دانشگاهی',
 ];
