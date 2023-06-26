@@ -2,97 +2,51 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Enums\Questions\QuestionStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Support\Facades\Hash;
 use Morilog\Jalali\Jalalian;
 
 class Question extends Model
 {
-    use HasFactory;
-
     /*--------- Const Variables ---------*/
 
-    const RAW = 0;
-    const ANSWERED = 1;
-    const REVIEWED = 2;
-    const HAVE_PROTEST = 3;
-    const PROTEST_APPROVED = 4;
-    const CONFIRMED = 5;
+    public const TABLE_NAME = 'protests';
+    public const COLUMN_ID = 'id';
+    public const COLUMN_USER_ID = 'user_id';
+    public const COLUMN_QUESTION_ID = 'question_id ';
 
     /*------------ Variables ------------*/
 
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'questions';
+    protected $table = self::TABLE_NAME;
     protected $perPage = 10;
 
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'link',
-        'response_deadline',
-        'admin_id',
-        'status',
-        'text',
-        'response_time',
-        'review_time',
-        'confirmation_time',
-        'protest_time',
-    ];
-
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [ ];
-
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'response_time' => 'datetime',
         'review_time' => 'datetime',
         'confirmation_time' => 'datetime',
         'protest_time' => 'datetime',
+        'status' => QuestionStatus::class,
     ];
-
 
     /*------------ Relations ------------*/
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class,'users_questions');
+        return $this->belongsToMany(User::class, 'users_questions', self::COLUMN_USER_ID, self::COLUMN_ID);
     }
-
 
     public function protest(): HasOne
     {
-        return $this->hasOne(Protest::class);
+        return $this->hasOne(Protest::class, self::COLUMN_QUESTION_ID, self::COLUMN_ID);
     }
-
 
     public function answer(): HasOne
     {
-        return $this->hasOne(Answer::class);
+        return $this->hasOne(Answer::class, self::COLUMN_QUESTION_ID, self::COLUMN_ID);
     }
-
 
     public function admin(): BelongsTo
     {
@@ -101,8 +55,6 @@ class Question extends Model
 
     /*-------------- Scopes -------------*/
 
-
-
     /*---------- Other Functions --------*/
 
     public function getJalaliCreatedAt(): string
@@ -110,33 +62,24 @@ class Question extends Model
         return Jalalian::forge($this->created_at)->format('Y/m/d H:i:s');
     }
 
-
-    public function getJalaliResponseTime()
+    public function getJalaliResponseTime(): string
     {
-        if(!is_null($this->response_time)){
-            return Jalalian::forge($this->response_time)->format('Y/m/d H:i:s');
-        }
+        return Jalalian::forge($this->response_time)->format('Y/m/d H:i:s');
     }
 
-    public function getJalaliReviewTime()
+    public function getJalaliReviewTime(): string
     {
-        if($this->review_time){
-            return Jalalian::forge($this->review_time)->format('Y/m/d H:i:s');
-        }
+        return Jalalian::forge($this->review_time)->format('Y/m/d H:i:s');
     }
 
-    public function getJalaliConfirmationTime()
+    public function getJalaliConfirmationTime(): string
     {
-        if($this->confirmation_time){
-            return Jalalian::forge($this->confirmation_time)->format('Y/m/d H:i:s');
-        }
+        return Jalalian::forge($this->confirmation_time)->format('Y/m/d H:i:s');
     }
 
-    public function getJalaliProtestTime()
+    public function getJalaliProtestTime(): string
     {
-        if($this->protest_time){
-            return Jalalian::forge($this->protest_time)->format('Y/m/d H:i:s');
-        }
+        return Jalalian::forge($this->protest_time)->format('Y/m/d H:i:s');
     }
 
     public function setLinkAttribute($value)
@@ -152,36 +95,25 @@ class Question extends Model
     public function getStatuses(): array
     {
         return [
-            'جدید' => $this::RAW,
-            'پاسخ داده شده' => $this::ANSWERED,
-            'تصحیح شده' => $this::REVIEWED,
-            'دارای اعتراض' => $this::HAVE_PROTEST,
-            'بازبینی شده' => $this::PROTEST_APPROVED,
-            ' تایید شده' => $this::CONFIRMED,
+            __('statuses.new') => QuestionStatus::Raw,
+            __('statuses.answered') => QuestionStatus::Answered,
+            __('statuses.corrected') => QuestionStatus::Reviewd,
+            __('statuses.have_protest') => QuestionStatus::HaveProtest,
+            __('statuses.protest_approved') => QuestionStatus::ProtestApproved,
+            __('statuses.ok_confirm') => QuestionStatus::Confirmed,
         ];
-
     }
-
-
 
     public function getBadgeStatus(): string
     {
-        if($this->status == $this::RAW ){
-            $status = '<div class="badge badge-success mr-1 mb-1">جدید</div>';
-        }elseif ($this->status == $this::ANSWERED){
-            $status = '<div class="badge badge-secondary mr-1 mb-1">پاسخ داده شده</div>';
-        }elseif ($this->status == $this::REVIEWED){
-            $status = '<div class="badge badge-info mr-1 mb-1">تصحیح شده</div>';
-        }elseif ($this->status == $this::HAVE_PROTEST){
-            $status = '<div class="badge badge-warning mr-1 mb-1">دارای اعتراض</div>';
-        }elseif ($this->status == $this::PROTEST_APPROVED){
-            $status = '<div class="badge badge-danger mr-1 mb-1">بازبینی شده </div>';
-        }elseif ($this->status == $this::CONFIRMED){
-            $status = '<div class="badge badge-primary mr-1 mb-1">تایید شده </div>';
-        }else{
-            $status = '<div class="badge badge-secondary mr-1 mb-1">نامشخص</div>';
-        }
-        return $status;
+        return match ($this->status) {
+            QuestionStatus::Raw => '<div class="badge badge-success mr-1 mb-1"> ' . __('statuses.new') . ' </div>',
+            QuestionStatus::Answered => '<div class="badge badge-secondary mr-1 mb-1"> ' . __('statuses.answered') . ' </div>',
+            QuestionStatus::Reviewd => '<div class="badge badge-info mr-1 mb-1"> ' . __('statuses.corrected') . ' </div>',
+            QuestionStatus::HaveProtest => '<div class="badge badge-warning mr-1 mb-1"> ' . __('statuses.have_protest') . ' </div>',
+            QuestionStatus::ProtestApproved => '<div class="badge badge-danger mr-1 mb-1"> ' . __('statuses.protest_approved') . ' </div>',
+            QuestionStatus::Confirmed => '<div class="badge badge-primary mr-1 mb-1"> ' . __('statuses.ok_confirm') . ' </div>',
+            default => '<div class="badge badge-secondary mr-1 mb-1"> ' . __('statuses.unknown') . ' </div>',
+        };
     }
-
 }
