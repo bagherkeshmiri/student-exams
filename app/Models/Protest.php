@@ -32,6 +32,4 @@ class Protest extends Model
     {
         $this->attributes['text'] = strip_tags($value);
     }
-
-
 }
