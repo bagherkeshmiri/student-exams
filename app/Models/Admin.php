@@ -40,7 +40,7 @@ class Admin extends Authenticatable
 
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(Role::class, 'admin_role', self::COLUMN_ROLE_ID, self::COLUMN_ID);
+        return $this->belongsToMany(Role::class, 'admin_role', self::COLUMN_ADMIN_ID, self::COLUMN_ROLE_ID);
     }
 
     public function questions(): HasMany
