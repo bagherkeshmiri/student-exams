@@ -14,13 +14,13 @@ class AdminStudentController extends Controller
 {
     public function index()
     {
-        $students = User::paginate();
+        $students = User::orderBy('id', 'desc')->paginate();
         return view('admin.pages.student.list', compact('students'));
     }
 
     public function create()
     {
-        $levels = User::getStatuses();
+        $levels = getUserLevels();
         return view('admin.pages.student.create', compact('levels'));
     }
 
@@ -46,7 +46,7 @@ class AdminStudentController extends Controller
 
     public function show(User $user)
     {
-        $levels = $user->getStatuses();
+        $levels = getUserLevels();
         return view('admin.pages.student.edit', compact('user', 'levels'));
     }
 

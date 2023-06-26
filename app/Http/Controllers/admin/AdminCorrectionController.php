@@ -23,7 +23,7 @@ class AdminCorrectionController extends Controller
 
     public function show(Question $question)
     {
-        $answer_status = Answer::getStatuses();
+        $answer_status = getQuestionstatuses();
         return view('admin.pages.correction.create', compact('question', 'answer_status'));
     }
 
