@@ -8,11 +8,6 @@ use Illuminate\Database\Seeder;
 
 class PermissionSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         Permission::create([
@@ -44,6 +39,5 @@ class PermissionSeeder extends Seeder
             'fa_name' => 'ویرایش ادمین',
             'en_name' => 'edit-admin',
         ]);
-
     }
 }
