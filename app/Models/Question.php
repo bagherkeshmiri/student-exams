@@ -92,18 +92,6 @@ class Question extends Model
         $this->attributes['text'] = strip_tags($value);
     }
 
-    public function getStatuses(): array
-    {
-        return [
-            __('statuses.new') => QuestionStatus::Raw,
-            __('statuses.answered') => QuestionStatus::Answered,
-            __('statuses.corrected') => QuestionStatus::Reviewd,
-            __('statuses.have_protest') => QuestionStatus::HaveProtest,
-            __('statuses.protest_approved') => QuestionStatus::ProtestApproved,
-            __('statuses.ok_confirm') => QuestionStatus::Confirmed,
-        ];
-    }
-
     public function getBadgeStatus(): string
     {
         return match ($this->status) {
