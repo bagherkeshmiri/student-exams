@@ -19,10 +19,9 @@ class AdminPermissionController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->input('permissions');
         DB::beginTransaction();
         try {
-            Permission::createMany($data);
+            Permission::createMany($request->input('permissions'));
             DB::commit();
             return redirect()->back()->with('success', __('errors.successful_operation'));
         } catch (Exception) {
