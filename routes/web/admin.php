@@ -15,12 +15,10 @@ use App\Http\Controllers\admin\AdminPermissionController;
 |--------------------------------------------------------------------------
 | Admins Web Routes
 |--------------------------------------------------------------------------
-|
 */
 
 
 Route::name('admin.')->group( function(){
-
 
     // auth
     Route::controller(AdminAuthController::Class)->group( function(){
@@ -30,8 +28,6 @@ Route::name('admin.')->group( function(){
     });
 
 });
-
-
 
 
 Route::name('admin.')->middleware('InvalidAdmin')->group( function(){
