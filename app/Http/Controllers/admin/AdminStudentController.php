@@ -46,7 +46,7 @@ class AdminStudentController extends Controller
 
     public function show(User $user)
     {
-        $levels = User::getStatuses();
+        $levels = $user->getStatuses();
         return view('admin.pages.student.edit', compact('user', 'levels'));
     }
 
