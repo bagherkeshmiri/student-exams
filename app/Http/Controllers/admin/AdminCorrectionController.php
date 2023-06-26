@@ -2,51 +2,31 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Enums\Answers\AnswerStatus;
+use App\Enums\Questions\QuestionStatus;
 use App\Http\Requests\admin\correction\AdminCorrectionStoreRequest;
+use App\Models\Answer;
 use App\Models\Question;
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Repositories\Answer\AnswerRepositoryInterface;
 
 class AdminCorrectionController extends Controller
 {
-    protected object $AnswerRepository;
 
-    public function __construct(AnswerRepositoryInterface $AnswerRepository)
-    {
-        $this->AnswerRepository = $AnswerRepository;
-    }
-
-
-
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $questions = Auth::guard('admin')->user()->answeredQuestions();
-        return view('admin.pages.correction.list',[ 'questions' => $questions->paginate() ]);
+        return view('admin.pages.correction.list', ['questions' => $questions->paginate()]);
     }
 
-
-
-    /**
-     * Display the specified resource.
-     */
     public function show(Question $question)
     {
-        $answer_status = $this->AnswerRepository->getModel()->getStatuses();
-        return view('admin.pages.correction.create',compact('question','answer_status'));
+        $answer_status = Answer::getStatuses();
+        return view('admin.pages.correction.create', compact('question', 'answer_status'));
     }
 
-
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function store(AdminCorrectionStoreRequest $request, Question $question)
     {
         $data = [
@@ -57,26 +37,21 @@ class AdminCorrectionController extends Controller
         DB::beginTransaction();
         try {
             $question->answer->update($data);
-            if($data['status'] == $question->answer::CORRECTED ||  $data['status'] == $question->answer::OK_CONFIRM){
+            if ($data['status'] == AnswerStatus::Corrected || $data['status'] == AnswerStatus::OkConfirm) {
                 $question->update([
-                    'status' => $question::CONFIRMED,
+                    'status' => QuestionStatus::Confirmed,
                     'confirmation_time' => now(),
                 ]);
-            }else{
+            } else {
                 $question->update([
-                    'status' => $question::REVIEWED,
+                    'status' => QuestionStatus::Reviewd,
                 ]);
             }
             DB::commit();
-            return redirect()->back()->with('success','عملیات موفق');
-        } catch (Exception $error){
+            return redirect()->back()->with('success', __('errors.successful_operation'));
+        } catch (Exception) {
             DB::rollBack();
-            // dd($error);
-            return redirect()->back()->with('error','خطا در عملیات ');
+            return redirect()->back()->with('error', __('errors.error_in_operation'));
         }
-
     }
-
-
-
 }
