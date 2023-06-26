@@ -12,12 +12,10 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 | Users Web Routes
 |--------------------------------------------------------------------------
-|
 */
 
 
 Route::name('user.')->group( function(){
-
 
     // auth
     Route::controller(UserAuthController::Class)->group( function(){
@@ -28,7 +26,6 @@ Route::name('user.')->group( function(){
     });
 
 });
-
 
 
 Route::name('user.')->prefix('panel')->middleware('InvalidUser')->group( function(){
