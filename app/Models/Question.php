@@ -13,10 +13,10 @@ class Question extends Model
 {
     /*--------- Const Variables ---------*/
 
-    public const TABLE_NAME = 'protests';
+    public const TABLE_NAME = 'questions';
     public const COLUMN_ID = 'id';
     public const COLUMN_USER_ID = 'user_id';
-    public const COLUMN_QUESTION_ID = 'question_id ';
+    public const COLUMN_QUESTION_ID = 'question_id';
 
     /*------------ Variables ------------*/
 
@@ -35,7 +35,8 @@ class Question extends Model
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'users_questions', self::COLUMN_USER_ID, self::COLUMN_ID);
+        return $this->belongsToMany(User::class, 'users_questions', self::COLUMN_USER_ID, self::COLUMN_QUESTION_ID);
+//        return $this->belongsToMany(User::class, 'users_questions');
     }
 
     public function protest(): HasOne

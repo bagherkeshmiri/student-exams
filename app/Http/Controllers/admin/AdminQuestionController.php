@@ -42,6 +42,8 @@ class AdminQuestionController extends Controller
 
     public function store(AdminQuestionStoreRequest $request)
     {
+//        dd($request->all());
+
         DB::beginTransaction();
         try {
             $question = new Question();
@@ -50,11 +52,12 @@ class AdminQuestionController extends Controller
             $question->admin_id = $request->input('admin_id');
             $question->text = $request->input('text');
             $question->save();
-            $question->users()->attach($request->input('user_id'));
             DB::commit();
+            $question->users()->attach($request->input('user_id'));
             return redirect()->back()->with('success', __('errors.successful_operation'));
-        } catch (Exception) {
+        } catch (Exception $e) {
             DB::rollBack();
+            dd($e);
             return redirect()->back()->with('error', __('errors.error_in_operation'));
         }
     }
