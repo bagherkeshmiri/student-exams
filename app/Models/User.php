@@ -90,16 +90,6 @@ class User extends Authenticatable
         return $this->attributes['full_name'] = 'بدون نام';
     }
 
-    public function getStatuses(): array
-    {
-        return [
-            __('statuses.elementary') => Userlevel::Elementary,
-            __('statuses.guidance') => Userlevel::Guidance,
-            __('statuses.high_school') => Userlevel::High_school,
-            __('statuses.pre_university') => Userlevel::Pre_university,
-        ];
-    }
-
     public function getBadgeStatus(): string
     {
         return match ($this->level) {

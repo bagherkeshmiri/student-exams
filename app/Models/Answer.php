@@ -32,15 +32,4 @@ class Answer extends Model
     /*-------------- Scopes -------------*/
 
     /*---------- Other Functions --------*/
-
-    public function getStatuses(): array
-    {
-        return [
-            __('statuses.very_weak') => AnswerStatus::VeryWeak,
-            __('statuses.weak_and_need_correction') => AnswerStatus::WeakAndNeedCorrection,
-            __('statuses.corrected') => AnswerStatus::Corrected,
-            __('statuses.ok_confirm') => AnswerStatus::OkConfirm,
-        ];
-    }
-
 }
