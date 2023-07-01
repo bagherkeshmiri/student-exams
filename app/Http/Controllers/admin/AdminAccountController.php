@@ -40,8 +40,9 @@ class AdminAccountController extends Controller
             ]);
             DB::commit();
             return redirect()->back()->with('success', __('errors.successful_operation'));
-        } catch (Exception) {
+        } catch (Exception $e) {
             DB::rollBack();
+            dd($e);
             return redirect()->back()->with('error', __('errors.error_in_operation'));
         }
     }
