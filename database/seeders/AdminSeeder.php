@@ -16,7 +16,7 @@ class AdminSeeder extends Seeder
         $admin->username = 'su';
         $admin->password = '12345678';
         $admin->save();
-        $role = Role::query()->where('name', 'manager')->first();
+        $role = Role::query()->where('en_name', 'manager')->first();
         $admin->roles()->attach($role);
     }
 }
