@@ -12,23 +12,22 @@ use App\Models\User;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
-use LaravelIdea\Helper\App\Models\_IH_Admin_C;
 
 class AdminQuestionController extends Controller
 {
-    private function getAllAdmins(): array|Collection|_IH_Admin_C
+    private function getAllAdmins(): array|Collection
     {
         return Admin::all();
     }
 
-    private function getAllUsers(): array|Collection|_IH_Admin_C
+    private function getAllUsers(): array|Collection
     {
         return User::all();
     }
 
     public function index()
     {
-        $questions = Question::paginate();
+        $questions = Question::query()->paginate();
         $question_new_status = QuestionStatus::Raw;
         return view('admin.pages.question.list', compact('questions', 'question_new_status'));
     }
@@ -42,8 +41,6 @@ class AdminQuestionController extends Controller
 
     public function store(AdminQuestionStoreRequest $request)
     {
-//        dd($request->all());
-
         DB::beginTransaction();
         try {
             $question = new Question();
@@ -55,9 +52,8 @@ class AdminQuestionController extends Controller
             $question->users()->attach($request->input('user_id'));
             DB::commit();
             return redirect()->back()->with('success', __('errors.successful_operation'));
-        } catch (Exception $e) {
+        } catch (Exception) {
             DB::rollBack();
-            dd($e);
             return redirect()->back()->with('error', __('errors.error_in_operation'));
         }
     }
