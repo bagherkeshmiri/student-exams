@@ -14,7 +14,7 @@ class AdminRoleController extends Controller
 {
     public function index()
     {
-        $roles = Role::paginate();
+        $roles = Role::query()->paginate();
         return view('admin.pages.role.list', compact('roles'));
     }
 
