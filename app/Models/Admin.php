@@ -55,7 +55,6 @@ class Admin extends Authenticatable
 
     /*-------------- Scopes -------------*/
 
-
     /*---------- Other Functions --------*/
 
     public function getJalaliCreatedAt(): string
