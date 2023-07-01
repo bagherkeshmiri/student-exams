@@ -10,15 +10,15 @@ class RoleSeeder extends Seeder
 {
     public function run()
     {
-        Role::create([
+        Role::query()->create([
             'name' => 'teacher'
         ]);
 
-        Role::create([
+        Role::query()->create([
             'name' => 'deputy'
         ]);
 
-        Role::create([
+        Role::query()->create([
             'name' => 'manager'
         ]);
     }
