@@ -52,8 +52,8 @@ class AdminQuestionController extends Controller
             $question->admin_id = $request->input('admin_id');
             $question->text = $request->input('text');
             $question->save();
-            DB::commit();
             $question->users()->attach($request->input('user_id'));
+            DB::commit();
             return redirect()->back()->with('success', __('errors.successful_operation'));
         } catch (Exception $e) {
             DB::rollBack();
