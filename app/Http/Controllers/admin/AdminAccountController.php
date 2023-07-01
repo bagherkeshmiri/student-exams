@@ -14,7 +14,7 @@ class AdminAccountController extends Controller
 {
     public function index()
     {
-        $admins = Admin::paginate();
+        $admins = Admin::query()->paginate();
         return view('admin.pages.account.list', compact('admins'));
     }
 

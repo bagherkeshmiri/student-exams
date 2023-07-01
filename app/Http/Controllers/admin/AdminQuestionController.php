@@ -27,7 +27,7 @@ class AdminQuestionController extends Controller
 
     public function index()
     {
-        $questions = Question::query()->paginate();
+        $questions = Question::query()->orderBy('id', 'desc')->paginate();
         $question_new_status = QuestionStatus::Raw;
         return view('admin.pages.question.list', compact('questions', 'question_new_status'));
     }
