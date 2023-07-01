@@ -13,7 +13,6 @@ return new class extends Migration {
             $table->string('family', 100);
             $table->string('username', 30)->unique();
             $table->string('password');
-            $table->string('password');
             $table->softDeletes();
             $table->timestamps();
         });
