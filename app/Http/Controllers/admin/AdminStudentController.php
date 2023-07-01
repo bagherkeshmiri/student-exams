@@ -14,7 +14,7 @@ class AdminStudentController extends Controller
 {
     public function index()
     {
-        $students = User::orderBy('id', 'desc')->paginate();
+        $students = User::query()->orderBy('id', 'desc')->paginate();
         return view('admin.pages.student.list', compact('students'));
     }
 
