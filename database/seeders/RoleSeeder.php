@@ -9,19 +9,21 @@ class RoleSeeder extends Seeder
 {
     public function run()
     {
-        Role::query()->create([
-            'fa_name' => 'معلم',
-            'en_name' => 'teacher',
-        ]);
+        $data = [
+            [
+                'fa_name' => 'معلم',
+                'en_name' => 'teacher',
+            ],
+            [
+                'fa_name' => 'ناظم',
+                'en_name' => 'deputy',
+            ],
+            [
+                'fa_name' => 'مدیر',
+                'en_name' => 'manager',
+            ],
+        ];
 
-        Role::query()->create([
-            'fa_name' => 'ناظم',
-            'en_name' => 'deputy',
-        ]);
-
-        Role::query()->create([
-            'fa_name' => 'مدیر',
-            'en_name' => 'manager',
-        ]);
+        Role::query()->insert($data);
     }
 }
