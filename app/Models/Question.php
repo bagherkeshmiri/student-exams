@@ -57,29 +57,39 @@ class Question extends Model
 
     /*---------- Other Functions --------*/
 
-    public function getJalaliCreatedAt(): string
+    public function getJalaliCreatedAt(): string|null
     {
-        return Jalalian::forge($this->created_at)->format('Y/m/d H:i:s');
+        return ($this->created_at)
+            ? Jalalian::forge($this->created_at)->format('Y/m/d H:i:s')
+            : null;
     }
 
-    public function getJalaliResponseTime(): string
+    public function getJalaliResponseTime(): string|null
     {
-        return Jalalian::forge($this->response_time)->format('Y/m/d H:i:s');
+        return ($this->response_time)
+            ? Jalalian::forge($this->response_time)->format('Y/m/d H:i:s')
+            : null;
     }
 
-    public function getJalaliReviewTime(): string
+    public function getJalaliReviewTime(): string|null
     {
-        return Jalalian::forge($this->review_time)->format('Y/m/d H:i:s');
+        return ($this->review_time)
+            ? Jalalian::forge($this->review_time)->format('Y/m/d H:i:s')
+            : null;
     }
 
-    public function getJalaliConfirmationTime(): string
+    public function getJalaliConfirmationTime(): string|null
     {
-        return Jalalian::forge($this->confirmation_time)->format('Y/m/d H:i:s');
+        return ($this->confirmation_time)
+            ? Jalalian::forge($this->confirmation_time)->format('Y/m/d H:i:s')
+            : null;
     }
 
-    public function getJalaliProtestTime(): string
+    public function getJalaliProtestTime(): string|null
     {
-        return Jalalian::forge($this->protest_time)->format('Y/m/d H:i:s');
+        return ($this->protest_time)
+            ? Jalalian::forge($this->protest_time)->format('Y/m/d H:i:s')
+            : null;
     }
 
     public function setLinkAttribute($value)

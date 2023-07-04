@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\user;
 
+use App\Enums\Questions\QuestionStatus;
 use App\Http\Controllers\Controller;
+use App\Models\Answer;
 use App\Models\Question;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,24 +14,23 @@ use Illuminate\Support\Facades\DB;
 class UserAnswerController extends Controller
 {
 
-    public function store(Request $request,Question $question)
+    public function store(Request $request, Question $question)
     {
-        $data = [
-            'question_id' =>$question->id ,
-            'text' => $request->input('text'),
-        ];
         DB::beginTransaction();
         try {
-            $question->answer()->create($data);
-            $question->update([
-                'status' => $question::ANSWERED,
-                'response_time' => now()
-            ]);
+            $answer = new Answer();
+            $answer->text = $request->input('text');
+            $question->answer()->save($answer);
+
+            $question->status = QuestionStatus::Answered;
+            $question->response_time = Carbon::now();
+            $question->save();
+
             DB::commit();
-            return redirect()->back()->with('success','عملیات موفق');
-        } catch (Exception $error){
+            return redirect()->back()->with('success', __('errors.successful_operation'));
+        } catch (Exception $e) {
             DB::rollBack();
-            return redirect()->back()->with('error','خطا در عملیات ');
+            return redirect()->back()->with('error', __('errors.error_in_operation'));
         }
     }
 }
