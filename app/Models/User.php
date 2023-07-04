@@ -24,7 +24,8 @@ class User extends Authenticatable
 
     public const TABLE_NAME = 'users';
     public const COLUMN_ID = 'id';
-    public const COLUMN_USER_ID = 'id';
+    public const COLUMN_USER_ID = 'user_id';
+    public const COLUMN_QUESTION_ID = 'question_id';
     public const AVATAR_PATH = 'uploads/users/avatar/';
 
     /*------------ Variables ------------*/
@@ -48,7 +49,7 @@ class User extends Authenticatable
 
     public function questions(): BelongsToMany
     {
-        return $this->belongsToMany(Question::class, 'users_questions', self::COLUMN_USER_ID, self::COLUMN_ID);
+        return $this->belongsToMany(Question::class, 'users_questions', self::COLUMN_USER_ID, self::COLUMN_QUESTION_ID);
     }
 
     /*-------------- Scopes -------------*/
@@ -57,9 +58,11 @@ class User extends Authenticatable
     /*---------- Other Functions --------*/
 
 
-    public function getJalaliCreatedAt(): string
+    public function getJalaliCreatedAt(): string|null
     {
-        return Jalalian::forge($this->created_at)->format('Y/m/d H:i:s');
+        return ($this->created_at)
+            ? Jalalian::forge($this->created_at)->format('Y/m/d H:i:s')
+            : null;
     }
 
     public function setPasswordAttribute($value): void
