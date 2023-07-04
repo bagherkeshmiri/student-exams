@@ -29,7 +29,8 @@ class AdminRoleController extends Controller
         DB::beginTransaction();
         try {
             $role = new Role();
-            $role->name = $request->input('name');
+            $role->fa_name = $request->input('fa_name');
+            $role->en_name = $request->input('en_name');
             $role->save();
             $role->permissions()->attach($request->input('permissions'));
             DB::commit();
@@ -51,7 +52,8 @@ class AdminRoleController extends Controller
     {
         DB::beginTransaction();
         try {
-            $role->name = $request->input('name');
+            $role->fa_name = $request->input('fa_name');
+            $role->en_name = $request->input('en_name');
             $role->save();
             $role->permissions()->sync($request->input('permissions'));
             DB::commit();

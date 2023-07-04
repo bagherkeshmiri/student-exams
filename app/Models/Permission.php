@@ -12,6 +12,7 @@ class Permission extends Model
     public const TABLE_NAME = 'permissions';
     public const COLUMN_ID = 'id';
     public const COLUMN_PERMISSION_ID = 'permission_id ';
+    public const COLUMN_ROLE_ID = 'role_id ';
 
     /*------------ Variables ------------*/
 
@@ -21,7 +22,7 @@ class Permission extends Model
 
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(Role::class, 'role_permission', self::COLUMN_PERMISSION_ID, self::COLUMN_ID);
+        return $this->belongsToMany(Role::class, 'role_permission', self::COLUMN_PERMISSION_ID, self::COLUMN_ROLE_ID);
     }
 
     /*-------------- Scopes -------------*/
