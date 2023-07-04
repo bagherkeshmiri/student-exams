@@ -9,7 +9,6 @@
 @endsection
 
 
-
 @section('contents')
 
     <div class="app-content content">
@@ -43,16 +42,25 @@
                                             <div class="form-body">
                                                 <div class="row">
 
-                                                    <div class="col-md-6 col-12">
+                                                    <div class="col-md-5 col-12">
                                                         <div class="form-group">
-                                                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'نام نقش '] )
+                                                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'fa_name' , 'content' => 'نام فارسی نقش '] )
                                                             @include('frest-components.tags.required-tag')
-                                                            @include('frest-components.inputs.input',[ 'type' => 'text' , 'name' => 'name' , 'value' => old('name') , 'classes' => 'text-left' , 'id' => 'name' , 'dir' => 'ltr' , 'icon' => lockIcon() , 'attributes' => 'required' ])
-                                                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'name' ])
+                                                            @include('frest-components.inputs.input',[ 'type' => 'text' , 'name' => 'fa_name' , 'value' => old('fa_name') , 'classes' => 'text-left' , 'id' => 'fa_name' , 'dir' => 'ltr' , 'icon' => lockIcon() , 'attributes' => 'required' ])
+                                                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'fa_name' ])
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-6 col-12 align-self-end">
+                                                    <div class="col-md-5 col-12">
+                                                        <div class="form-group">
+                                                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'en_name' , 'content' => 'نام انگلیسی نقش '] )
+                                                            @include('frest-components.tags.required-tag')
+                                                            @include('frest-components.inputs.input',[ 'type' => 'text' , 'name' => 'en_name' , 'value' => old('en_name') , 'classes' => 'text-left' , 'id' => 'en_name' , 'dir' => 'ltr' , 'icon' => lockIcon() , 'attributes' => 'required' ])
+                                                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'en_name' ])
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-2 col-12 align-self-end">
                                                         <div class="form-group">
                                                             @include('frest-components.inputs.checkboxs.success-sm-checkbox',[ 'label_content' => 'انتخاب همه'  , 'id' => 'selectAll' , 'for' => 'selectAll'  , 'name' => '' , 'value' => '' , 'attributes' => 'onclick=selectAllPermissions()' ])
                                                         </div>

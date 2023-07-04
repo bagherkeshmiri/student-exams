@@ -20,7 +20,7 @@ class AdminAccountController extends Controller
 
     public function create()
     {
-        $roles = Role::all()->pluck('id', 'name')->toArray();
+        $roles = Role::all()->pluck('id', 'fa_name')->toArray();
         return view('admin.pages.account.create', compact('roles'));
     }
 
@@ -40,16 +40,15 @@ class AdminAccountController extends Controller
             ]);
             DB::commit();
             return redirect()->back()->with('success', __('errors.successful_operation'));
-        } catch (Exception $e) {
+        } catch (Exception) {
             DB::rollBack();
-            dd($e);
             return redirect()->back()->with('error', __('errors.error_in_operation'));
         }
     }
 
     public function show(Admin $admin)
     {
-        $roles = Role::all()->pluck('id', 'name')->toArray();
+        $roles = Role::all()->pluck('id', 'fa_name')->toArray();
         $admin_mobile = $admin->phones->first();
         if (!is_null($admin_mobile)) {
             $admin_mobile = $admin_mobile->number;

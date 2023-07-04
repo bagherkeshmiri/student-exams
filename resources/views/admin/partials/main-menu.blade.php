@@ -14,8 +14,8 @@
     <div class="navbar-container main-menu-content" data-menu="menu-container">
         <!-- include ../../includes/mixins-->
         <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation" data-icon-style="lines">
-            <li class=" nav-item" >
-                <a class="nav-link" href="{{ route('admin.dashboard') }}" >
+            <li class=" nav-item">
+                <a class="nav-link" href="{{ route('admin.dashboard') }}">
                     <i class="menu-livicon" data-icon="home"></i>
                     <span data-i18n="Dashboard">داشبورد</span>
                 </a>
@@ -28,7 +28,7 @@
                 <ul class="dropdown-menu dropdown-menu-right">
                     <li data-menu="">
                         <a class="dropdown-item align-items-center" href="{{ route('admin.user.create') }}" data-toggle="dropdown">
-                        <i class="bx bx-left-arrow-alt"></i>
+                            <i class="bx bx-left-arrow-alt"></i>
                             ایجاد دانش آموز
                         </a>
                     </li>
@@ -90,61 +90,30 @@
                     </li>
                 </ul>
             </li>
-{{--            <li class="dropdown nav-item" data-menu="dropdown">--}}
-{{--                <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">--}}
-{{--                    <i class="menu-livicon" data-icon="lock"></i>--}}
-{{--                    <span>سطوح دسترسی </span>--}}
-{{--                </a>--}}
-{{--                <ul class="dropdown-menu dropdown-menu-right">--}}
-{{--                    <li data-menu="">--}}
-{{--                        <a class="dropdown-item align-items-center" href="{{ route('admin.permission.create') }}" data-toggle="dropdown">--}}
-{{--                            <i class="bx bx-left-arrow-alt"></i>--}}
-{{--                            ایجاد سطح دسترسی--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
-{{--            </li>--}}
 
-                        <li class="dropdown nav-item" data-menu="dropdown">
-                            <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
-                                <i class="menu-livicon" data-icon="lock"></i>
-                                <span> نقش ها </span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li data-menu="">
-                                    <a class="dropdown-item align-items-center" href="{{ route('admin.role.create') }}" data-toggle="dropdown">
-                                        <i class="bx bx-left-arrow-alt"></i>
-                                        ایجاد نقش
-                                    </a>
-                                </li>
-
-                                <li data-menu="">
-                                    <a class="dropdown-item align-items-center" href="{{ route('admin.role.index') }}" data-toggle="dropdown">
-                                        <i class="bx bx-left-arrow-alt"></i>
-                                       لیست نقش ها
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
             <li class="dropdown nav-item" data-menu="dropdown">
                 <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
-                    <i class="menu-livicon" data-icon="line-chart"></i>
-                    <span>گزارشات  </span>
+                    <i class="menu-livicon" data-icon="lock"></i>
+                    <span> نقش ها </span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="#" data-toggle="dropdown">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.role.create') }}" data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
-                            گزارش یک
+                            ایجاد نقش
+                        </a>
+                    </li>
+
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.role.index') }}" data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt"></i>
+                            لیست نقش ها
                         </a>
                     </li>
                 </ul>
             </li>
 
-
-
-
-            <li class="nav-item" >
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.profile.index') }}">
                     <i class="menu-livicon" data-icon="gears"></i>
                     <span data-i18n="Dashboard">پروفایل</span>
@@ -152,8 +121,7 @@
             </li>
 
 
-
-            <li class="nav-item" >
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.logout') }}">
                     <i class="menu-livicon" data-icon="multiply-alt"></i>
                     <span data-i18n="Dashboard">خروج</span>
