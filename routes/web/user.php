@@ -36,7 +36,7 @@ Route::name('user.')->prefix('panel')->middleware('InvalidUser')->group( functio
     });
 
     // questions
-    Route::resource('question', UserQuestionController::class)->except('edit','destroy','create','store');
+    Route::resource('question', UserQuestionController::class)->only('show','index');
 
 
     // answer
