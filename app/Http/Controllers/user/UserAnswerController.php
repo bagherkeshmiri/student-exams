@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\DB;
 
 class UserAnswerController extends Controller
 {
-
     public function store(Request $request, Question $question)
     {
         DB::beginTransaction();
@@ -28,7 +27,7 @@ class UserAnswerController extends Controller
 
             DB::commit();
             return redirect()->back()->with('success', __('errors.successful_operation'));
-        } catch (Exception $e) {
+        } catch (Exception) {
             DB::rollBack();
             return redirect()->back()->with('error', __('errors.error_in_operation'));
         }
