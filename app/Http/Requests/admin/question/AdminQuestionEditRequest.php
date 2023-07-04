@@ -7,25 +7,15 @@ use Illuminate\Http\Request;
 
 class AdminQuestionEditRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize(): bool
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
     public function rules(): array
     {
         return [
-            'link' => 'required|unique:questions,link,'.$this->question->id,
+            'link' => 'required|unique:questions,link,' . $this->question->id,
             'response_deadline' => 'required|numeric',
             'admin_id' => 'required|numeric',
             'user_id' => 'required|numeric',
@@ -33,12 +23,6 @@ class AdminQuestionEditRequest extends FormRequest
         ];
     }
 
-
-    /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array
-     */
     public function messages(): array
     {
         return [
@@ -47,5 +31,4 @@ class AdminQuestionEditRequest extends FormRequest
             'admin_id.required' => 'انتخاب تصحیح کننده الزامی است',
         ];
     }
-
 }
