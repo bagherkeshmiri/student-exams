@@ -38,7 +38,7 @@
                                             <table class="table mb-0 table-hover">
                                                 <thead>
                                                 <tr>
-                                                    <th style="width: 120px;">نام فارسی</th>
+                                                    <th style="width: 120px;">نام</th>
                                                     <th>سطوح دسترسی</th>
                                                     <th>عملیات</th>
                                                 </tr>
@@ -47,13 +47,13 @@
 
                                                 @forelse ($roles as $role)
                                                     <tr>
-                                                        <td>{{ $role->fa_name }}</td>
+                                                        <td >{{ $role->name }}</td>
                                                         <td>
                                                             @foreach($role->permissions as $permission )
                                                                 @include('frest-components.badges.danger-badge' , [ 'content' => $permission->fa_name ])
                                                             @endforeach
                                                         </td>
-                                                        <td>
+                                                       <td>
                                                             @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.role.show',[ 'role' => $role->id ])  , 'tooltip_title' => 'ویرایش' , 'icon' => '<i class="bx bx-pencil bx-sm bx-tada-hover" style="color:#FDAC41 !important;"></i>'])
                                                         </td>
                                                     </tr>
@@ -93,7 +93,7 @@
     <script type="text/javascript" src="{{ asset('/js/swal-functions.js') }}"></script>
     <script type="text/javascript">
 
-        function student_delete(element, event) {
+        function student_delete(element,event) {
             event.preventDefault()
             mboxDelete(element.getAttribute('data-url'));
         }

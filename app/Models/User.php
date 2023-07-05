@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Enums\Users\Userlevel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -15,28 +15,63 @@ use Morilog\Jalali\Jalalian;
 
 class User extends Authenticatable
 {
-    use HasApiTokens;
-    use HasFactory;
-    use Notifiable;
-    use SoftDeletes;
+    use HasApiTokens, Notifiable ,SoftDeletes,HasFactory;
+
 
     /*--------- Const Variables ---------*/
 
-    public const TABLE_NAME = 'users';
-    public const COLUMN_ID = 'id';
-    public const COLUMN_USER_ID = 'user_id';
-    public const COLUMN_QUESTION_ID = 'question_id';
-    public const AVATAR_PATH = 'uploads/users/avatar/';
+    const AVATAR_PATH = 'uploads/users/avatar/';
+    const ELEMENTARY = 0;
+    const GUIDANCE = 1;
+    const HIGH_SCHOOL = 2;
+    const PRE_UNIVERSITY= 3;
+
+
 
     /*------------ Variables ------------*/
 
-    protected $table = self::TABLE_NAME;
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
     protected string $guard = 'user';
     protected $perPage = 10;
 
-    protected $casts = [
-        'level' => Userlevel::class,
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'family',
+        'mobile',
+        'username',
+        'password',
+        'level'
     ];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+    ];
+
 
     /*------------ Relations ------------*/
 
@@ -49,38 +84,38 @@ class User extends Authenticatable
 
     public function questions(): BelongsToMany
     {
-        return $this->belongsToMany(Question::class, 'users_questions', self::COLUMN_USER_ID, self::COLUMN_QUESTION_ID);
+        return $this->belongsToMany(Question::class,'users_questions');
     }
 
     /*-------------- Scopes -------------*/
 
 
+
     /*---------- Other Functions --------*/
 
 
-    public function getJalaliCreatedAt(): string|null
+    public function getJalaliCreatedAt(): string
     {
-        return ($this->created_at)
-            ? Jalalian::forge($this->created_at)->format('Y/m/d H:i:s')
-            : null;
+        return Jalalian::forge($this->created_at)->format('Y/m/d H:i:s');
     }
 
-    public function setPasswordAttribute($value): void
+    public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);
     }
 
-    public function setNameAttribute($value): void
+    public function setNameAttribute($value)
     {
         $this->attributes['name'] = strip_tags($value);
     }
 
-    public function setFamilyAttribute($value): void
+    public function setFamilyAttribute($value)
     {
         $this->attributes['family'] = strip_tags($value);
     }
 
-    public function setUsernameAttribute($value): void
+
+    public function setUsernameAttribute($value)
     {
         $this->attributes['username'] = strip_tags($value);
     }
@@ -93,20 +128,36 @@ class User extends Authenticatable
         return $this->attributes['full_name'] = 'بدون نام';
     }
 
-    public function getBadgeStatus(): string
+    public function getStatuses(): array
     {
-        return match ($this->level) {
-            Userlevel::Elementary => '<div class="badge badge-success mr-1 mb-1">' . __('statuses.elementary') . '</div>',
-            Userlevel::Guidance => '<div class="badge badge-info mr-1 mb-1">' . __('statuses.guidance') . '</div>',
-            Userlevel::High_school => '<div class="badge badge-warning mr-1 mb-1">' . __('statuses.high_school') . '</div>',
-            Userlevel::Pre_university => '<div class="badge badge-danger mr-1 mb-1">' . __('statuses.pre_university') . '</div>',
-            default => '<div class="badge badge-secondary mr-1 mb-1"> ' . __('statuses.unknown') . ' </div>',
-        };
+        return [
+                'ابتدایی' => $this::ELEMENTARY,
+                'راهنمایی' => $this::GUIDANCE,
+                'دبیرستان' => $this::HIGH_SCHOOL,
+                'پیش دانشگاهی' => $this::PRE_UNIVERSITY,
+        ];
     }
 
-    public function hasPermission($permission): bool
+    public function getBadgeStatus(): string
     {
-        return $this->role->permissions->contains('en_name', $permission->en_name);
+        if($this->level == $this::ELEMENTARY){
+            $level = '<div class="badge badge-success mr-1 mb-1">ابتدایی</div>';
+        }elseif ($this->level == $this::GUIDANCE){
+            $level = '<div class="badge badge-info mr-1 mb-1">راهنمایی</div>';
+        }elseif ($this->level == $this::HIGH_SCHOOL){
+            $level = '<div class="badge badge-warning mr-1 mb-1">دبیرستان</div>';
+        }elseif ($this->level == $this::PRE_UNIVERSITY){
+            $level = '<div class="badge badge-danger mr-1 mb-1">پیش دانشگاهی</div>';
+        }else{
+            $level = '<div class="badge badge-secondary mr-1 mb-1">نامشخص</div>';
+        }
+        return $level;
+    }
+
+
+    public function hasPermission($permission)
+    {
+        return $this->role->permissions->contains('en_name',$permission->en_name);
     }
 
 }

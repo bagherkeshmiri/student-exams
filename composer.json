@@ -5,7 +5,7 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^8.0.2",
+        "php": "^7.2",
         "biscolab/laravel-recaptcha": "^5.4",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
@@ -29,8 +29,7 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Helpers/bx-icons.php",
-            "app/Helpers/commonHelper.php"
+            "app/Helpers/bx-icons.php"
         ]
     },
 

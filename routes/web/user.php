@@ -12,10 +12,12 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 | Users Web Routes
 |--------------------------------------------------------------------------
+|
 */
 
 
 Route::name('user.')->group( function(){
+
 
     // auth
     Route::controller(UserAuthController::Class)->group( function(){
@@ -28,6 +30,7 @@ Route::name('user.')->group( function(){
 });
 
 
+
 Route::name('user.')->prefix('panel')->middleware('InvalidUser')->group( function(){
 
     // dashboard
@@ -36,7 +39,7 @@ Route::name('user.')->prefix('panel')->middleware('InvalidUser')->group( functio
     });
 
     // questions
-    Route::resource('question', UserQuestionController::class)->only('show','index');
+    Route::resource('question', UserQuestionController::class)->except('edit','destroy','create','store');
 
 
     // answer
@@ -49,6 +52,7 @@ Route::name('user.')->prefix('panel')->middleware('InvalidUser')->group( functio
     Route::name('protest.')->prefix('protest')->controller(UserProtestController::Class)->group( function(){
         Route::post('/store/{question}', 'store')->name('store');
     });
+
 
 
     // profile

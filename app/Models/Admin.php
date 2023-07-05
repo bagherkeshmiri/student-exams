@@ -2,34 +2,64 @@
 
 namespace App\Models;
 
-use App\Enums\Questions\QuestionStatus;
+use App\Models\Question;
 use Morilog\Jalali\Jalalian;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Admin extends Authenticatable
 {
+    use HasFactory;
+
     /*--------- Const Variables ---------*/
 
-    public const TABLE_NAME = 'admins';
-    public const AVATAR_PATH = 'uploads/admins/avatar/';
-    public const COLUMN_ID = 'id';
-    public const COLUMN_ROLE_ID = 'role_id';
-    public const COLUMN_ADMIN_ID = 'admin_id';
+    const AVATAR_PATH = 'uploads/admins/avatar/';
 
     /*------------ Variables ------------*/
 
-    protected $table = self::TABLE_NAME;
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'admins';
     protected string $guard = 'admin';
     protected $perPage = 10;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'family',
+        'username',
+        'password',
+    ];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+    ];
+
 
     /*------------ Relations ------------*/
 
@@ -40,34 +70,37 @@ class Admin extends Authenticatable
 
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(Role::class, 'admin_role', self::COLUMN_ADMIN_ID, self::COLUMN_ROLE_ID);
+        return $this->belongsToMany(Role::class,'admin_role');
     }
 
     public function questions(): HasMany
     {
-        return $this->hasMany(Question::class, self::COLUMN_ADMIN_ID, self::COLUMN_ID);
+        return $this->hasMany(Question::class);
     }
+
 
     public function answeredQuestions(): HasMany
     {
-        return $this->hasMany(Question::class, self::COLUMN_ADMIN_ID, self::COLUMN_ID)->where('status', QuestionStatus::Answered);
+        return $this->hasMany(Question::class)->where('status', Question::ANSWERED);
     }
 
     /*-------------- Scopes -------------*/
 
+
+
     /*---------- Other Functions --------*/
 
-    public function getJalaliCreatedAt(): string|null
+    public function getJalaliCreatedAt(): string
     {
-        return ($this->created_at)
-            ? Jalalian::forge($this->created_at)->format('Y/m/d H:i:s')
-            : null;
+        return Jalalian::forge($this->created_at)->format('Y/m/d H:i:s');
     }
 
-    public function setPasswordAttribute($value): void
+
+    public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);
     }
+
 
     public function getFullNameAttribute(): string
     {
@@ -77,8 +110,11 @@ class Admin extends Authenticatable
         return $this->attributes['full_name'] = 'بدون نام';
     }
 
-    public function hasPermission($permission): bool
+
+    public function hasPermission($permission)
     {
-        return $this->roles->first()->permissions->contains('en_name', $permission->en_name);
+        return $this->roles->first()->permissions->contains('en_name',$permission->en_name);
     }
+
+
 }

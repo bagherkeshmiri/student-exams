@@ -2,30 +2,59 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Permission extends Model
 {
+    use HasFactory;
+
     /*--------- Const Variables ---------*/
 
-    public const TABLE_NAME = 'permissions';
-    public const COLUMN_ID = 'id';
-    public const COLUMN_PERMISSION_ID = 'permission_id ';
-    public const COLUMN_ROLE_ID = 'role_id ';
 
     /*------------ Variables ------------*/
 
-    protected $table = self::TABLE_NAME;
+    protected $table = 'permissions';
+
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'fa_name',
+        'en_name',
+    ];
+
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [];
+
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [];
+
 
     /*------------ Relations ------------*/
 
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(Role::class, 'role_permission', self::COLUMN_PERMISSION_ID, self::COLUMN_ROLE_ID);
+        return $this->belongsToMany(Role::class,'role_permission');
     }
 
     /*-------------- Scopes -------------*/
 
+
     /*---------- Other Functions --------*/
+
 }

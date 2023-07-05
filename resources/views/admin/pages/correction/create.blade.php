@@ -14,6 +14,7 @@
         }
     </style>
 
+
 @endsection
 
 
@@ -76,6 +77,7 @@
                                             </div>
 
 
+
                                             <div class="p-2">
                                                 @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => ' ' , 'content' => 'پاسخ دانش آموز '] ) :
                                                 <span class="mr-2 ml-2">@isset($question->answer->text) {{ $question->answer->text }} @endisset</span>
@@ -119,7 +121,7 @@
                                                     </div>
 
                                                     <div class="col-12 d-flex justify-content-end">
-                                                        @if($question->status != \App\Enums\Questions\QuestionStatus::Confirmed )
+                                                        @if($question->status != $question::CONFIRMED )
                                                             @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
                                                         @endif
                                                         @include('frest-components.inputs.buttons.link-button',[ 'href' => route('admin.correction.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
@@ -158,7 +160,7 @@
 
 
     <script type="text/javascript">
-        createSelect2('#answer_status', " -- انتخاب کنید -- ");
+        createSelect2('#answer_status'," -- انتخاب کنید -- ");
     </script>
 
 

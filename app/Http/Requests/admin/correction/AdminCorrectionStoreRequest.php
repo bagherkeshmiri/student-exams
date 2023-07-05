@@ -2,26 +2,41 @@
 
 namespace App\Http\Requests\admin\correction;
 
-use App\Enums\Answers\AnswerStatus;
-use App\Enums\Questions\QuestionStatus;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AdminCorrectionStoreRequest extends FormRequest
 {
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
     public function authorize(): bool
     {
         return true;
     }
 
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, mixed>
+     */
     public function rules(): array
     {
+//        dd($this->question->answer::VERY_WEAK);
         return [
             'answer_status' => 'required|numeric',
-            'incorrect_text' => 'required_if:answer_status,' . AnswerStatus::VeryWeak->value . '|required_if:answer_status,' . AnswerStatus::WeakAndNeedCorrection->value,
-            'correct_text' => 'required_if:answer_status,' . AnswerStatus::VeryWeak->value . '|required_if:answer_status,' . AnswerStatus::WeakAndNeedCorrection->value,
+            'incorrect_text' => 'required_if:answer_status,'.$this->question->answer::VERY_WEAK.'|required_if:answer_status,'.$this->question->answer::WEAK_NEED_CORRECTION,
+            'correct_text' => 'required_if:answer_status,'.$this->question->answer::VERY_WEAK.'|required_if:answer_status,'.$this->question->answer::WEAK_NEED_CORRECTION,
         ];
     }
 
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
     public function messages(): array
     {
         return [
