@@ -51,7 +51,6 @@ Route::name('user.')->prefix('panel')->middleware('InvalidUser')->group( functio
     });
 
 
-
     // profile
     Route::name('profile.')->prefix('profile')->controller(UserProfileController::Class)->group( function(){
         Route::get('/', 'index')->name('index');
