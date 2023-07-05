@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\user;
 
+use App\Enums\Questions\QuestionStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Question;
 use Exception;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class UserProtestController extends Controller
 {
 
-    public function store(Request $request,Question $question)
+    public function store(Request $request, Question $question)
     {
         $data = [
             'text' => $request->input('text'),
@@ -21,14 +22,14 @@ class UserProtestController extends Controller
         try {
             $question->protest()->create($data);
             $question->update([
-                'status' => $question::HAVE_PROTEST,
+                'status' => QuestionStatus::HaveProtest,
                 'protest_time' => now()
             ]);
             DB::commit();
-            return redirect()->back()->with('success','عملیات موفق');
-        } catch (Exception $error){
+            return redirect()->back()->with('success', __('errors.successful_operation'));
+        } catch (Exception) {
             DB::rollBack();
-            return redirect()->back()->with('error','خطا در عملیات ');
+            return redirect()->back()->with('error', __('errors.error_in_operation'));
         }
-   }
+    }
 }

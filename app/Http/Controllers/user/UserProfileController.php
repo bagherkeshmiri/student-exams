@@ -15,27 +15,25 @@ class UserProfileController extends Controller
     public function index()
     {
         $user = Auth::guard('user')->user();
-        return view('user.pages.profile.index',compact('user'));
+        return view('user.pages.profile.index', compact('user'));
     }
 
 
     public function changePassword(UserChangePasswordRequest $request)
     {
-
         $user = Auth::guard('user')->user();
-        if(!Hash::check($request->input('old_pass'),$user->password)){
-            return redirect()->back()->with('error','رمز عبور قبلی نادرست وارد شده است');
+        if (!Hash::check($request->input('old_pass'), $user->password)) {
+            return redirect()->back()->with('error', __('errors.old_password_incorrect'));
         }
         DB::beginTransaction();
         try {
             $user->password = $request->input('password');
             $user->save();
             DB::commit();
-            return redirect()->back()->with('success','عملیات موفق');
-        } catch (Exception $error){
+            return redirect()->back()->with('success', __('errors.successful_operation'));
+        } catch (Exception) {
             DB::rollBack();
-            return redirect()->back()->with('error','خطا در عملیات ');
+            return redirect()->back()->with('error', __('errors.error_in_operation'));
         }
-
     }
 }
