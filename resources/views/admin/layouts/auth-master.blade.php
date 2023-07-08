@@ -29,6 +29,7 @@
     <!-- END: Page CSS-->
 
     @yield('styles')
+    @livewireStyles
 
 </head>
 <!-- END: Head-->
@@ -48,9 +49,9 @@
                         <div class="row m-0">
                             <!-- left section-login -->
 
-                            @yield('contents')
+                        @yield('contents')
 
-                            <!-- right section image -->
+                        <!-- right section image -->
                             <div class="col-md-6 d-md-block d-none text-center align-self-center p-3">
                                 <div class="card-content">
                                     <img class="img-fluid" src="{{ asset('frest/images/pages/login.png') }} " alt="branding logo">
@@ -92,7 +93,7 @@
 <!-- END: Page JS-->
 
 @yield('scripts')
-
+@livewireScripts
 </body>
 <!-- END: Body-->
 </html>

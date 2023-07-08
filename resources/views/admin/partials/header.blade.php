@@ -2,7 +2,7 @@
     <div class="navbar-header d-xl-block d-none">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item"><a class="navbar-brand" href="#">
-                    <div class="brand-logo"><img class="logo" src="{{ asset('frest/images/logo/logo-light.png')  }}">
+                    <div class="brand-logo"><img class="logo" src="{{ asset('frest/images/logo/logo-light.png')  }}" alt="logo">
                     </div>
                     <h2 class="brand-text mb-0">Frest</h2></a></li>
         </ul>
@@ -188,13 +188,13 @@
                     </li>
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link"
-                                                                   href="#" data-toggle="dropdown">
+                           href="#" data-toggle="dropdown">
                             <div class="user-nav d-lg-flex d-none"><span
                                     class="user-name">{{ auth('admin')->user()->full_name  }}</span><span
                                     class="user-status"></span></div>
                             <span>
                                 <img class="round" src="{{ asset('frest/images/portrait/small/avatar-s-16.png') }}"
-                                       alt="avatar" height="40" width="40">
+                                     alt="avatar" height="40" width="40">
                             </span>
                         </a>
                         {{--                        <div class="dropdown-menu pb-0">--}}

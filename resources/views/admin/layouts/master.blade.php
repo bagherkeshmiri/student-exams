@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="loading" lang="fa" data-textdirection="rtl" dir="rtl">
 <!-- BEGIN: Head-->
-    @include('admin.partials.head')
+@include('admin.partials.head')
 <!-- END: Head-->
 
 <!-- BEGIN: Body-->
@@ -48,7 +48,7 @@
 
 
 @yield('scripts')
-
+@livewireScripts
 
 </body>
 <!-- END: Body-->

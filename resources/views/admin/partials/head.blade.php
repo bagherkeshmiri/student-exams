@@ -29,5 +29,5 @@
     <!-- END: Google Recaptcha v3    -->
 
     @yield('styles')
-
+    @livewireStyles
 </head>
