@@ -35,7 +35,7 @@ class Question extends Model
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'users_questions', self::COLUMN_QUESTION_ID, self::COLUMN_USER_ID);
+        return $this->belongsToMany(User::class, 'user_questions', self::COLUMN_QUESTION_ID, self::COLUMN_USER_ID);
     }
 
     public function protest(): HasOne

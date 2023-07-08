@@ -18,6 +18,10 @@ class Answer extends Model
 
     protected $table = self::TABLE_NAME;
 
+    protected $fillable = [
+
+    ];
+
     protected $casts = [
         'status' => AnswerStatus::class,
     ];
