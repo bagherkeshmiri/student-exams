@@ -15,8 +15,8 @@ class UserSeeder extends Seeder
             new Sequence(
                 ['level' => Userlevel::Elementary],
                 ['level' => Userlevel::Guidance],
-                ['level' => Userlevel::High_school],
-                ['level' => Userlevel::Pre_university],
+                ['level' => Userlevel::HighSchool],
+                ['level' => Userlevel::PreUniversity],
             )
         )->count(10)->create();
     }

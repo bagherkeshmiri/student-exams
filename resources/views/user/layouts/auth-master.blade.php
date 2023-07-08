@@ -34,6 +34,7 @@
     <!-- END: Google Recaptcha v3    -->
 
     @yield('styles')
+    @livewireStyles
 
 </head>
 <!-- END: Head-->
@@ -97,6 +98,7 @@
 <!-- END: Page JS-->
 
 @yield('scripts')
+@livewireScripts
 
 </body>
 <!-- END: Body-->

@@ -25,7 +25,7 @@
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('frest/css/core/menu/menu-types/horizontal-menu.css') }} ">
     <!-- END: Page CSS-->
-
+    @livewireStyles
 </head>
 <!-- END: Head-->
 
@@ -58,7 +58,7 @@
 
 <!-- BEGIN: Page JS-->
 <!-- END: Page JS-->
-
+@livewireScripts
 </body>
 <!-- END: Body-->
 </html>

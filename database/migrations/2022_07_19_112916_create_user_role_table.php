@@ -7,19 +7,16 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up()
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('user_role', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50);
-            $table->string('family', 100);
-            $table->string('username', 30)->unique();
-            $table->string('password');
-            $table->softDeletes();
+            $table->unsignedBigInteger('user_id')->index();
+            $table->unsignedBigInteger('role_id')->index();
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('user_role');
     }
 };

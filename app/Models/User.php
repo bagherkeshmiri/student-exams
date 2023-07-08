@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\Users\Userlevel;
+use App\Enums\Users\UserType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -31,11 +32,11 @@ class User extends Authenticatable
     /*------------ Variables ------------*/
 
     protected $table = self::TABLE_NAME;
-    protected string $guard = 'user';
     protected $perPage = 10;
 
     protected $casts = [
         'level' => Userlevel::class,
+        'type' => UserType::class,
     ];
 
     /*------------ Relations ------------*/
@@ -98,8 +99,8 @@ class User extends Authenticatable
         return match ($this->level) {
             Userlevel::Elementary => '<div class="badge badge-success mr-1 mb-1">' . __('statuses.elementary') . '</div>',
             Userlevel::Guidance => '<div class="badge badge-info mr-1 mb-1">' . __('statuses.guidance') . '</div>',
-            Userlevel::High_school => '<div class="badge badge-warning mr-1 mb-1">' . __('statuses.high_school') . '</div>',
-            Userlevel::Pre_university => '<div class="badge badge-danger mr-1 mb-1">' . __('statuses.pre_university') . '</div>',
+            Userlevel::HighSchool => '<div class="badge badge-warning mr-1 mb-1">' . __('statuses.high_school') . '</div>',
+            Userlevel::PreUniversity => '<div class="badge badge-danger mr-1 mb-1">' . __('statuses.pre_university') . '</div>',
             default => '<div class="badge badge-secondary mr-1 mb-1"> ' . __('statuses.unknown') . ' </div>',
         };
     }

@@ -4,8 +4,8 @@ namespace App\Enums\Users;
 
 enum Userlevel: int
 {
-    case Elementary = 0;
-    case Guidance = 1;
-    case High_school = 2;
-    case Pre_university = 3;
+    case Elementary = 1;
+    case Guidance = 2;
+    case HighSchool = 3;
+    case PreUniversity = 4;
 }

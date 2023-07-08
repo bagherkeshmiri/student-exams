@@ -9,8 +9,8 @@ function getUserLevels(): array
     return [
         __('statuses.elementary') => Userlevel::Elementary,
         __('statuses.guidance') => Userlevel::Guidance,
-        __('statuses.high_school') => Userlevel::High_school,
-        __('statuses.pre_university') => Userlevel::Pre_university,
+        __('statuses.high_school') => Userlevel::HighSchool,
+        __('statuses.pre_university') => Userlevel::PreUniversity,
     ];
 }
 
