@@ -15,6 +15,11 @@ class Phone extends Model
     /*------------ Variables ------------*/
 
     protected $table = self::TABLE_NAME;
+    protected $fillable = [
+        'phoneable_id',
+        'phoneable_type',
+        'number',
+    ];
 
     /*------------ Relations ------------*/
 

@@ -16,6 +16,10 @@ class Protest extends Model
     /*------------ Variables ------------*/
 
     protected $table = self::TABLE_NAME;
+    protected $fillable = [
+        'question_id',
+        'text',
+    ];
 
     /*------------ Relations ------------*/
 

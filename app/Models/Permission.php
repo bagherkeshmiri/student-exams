@@ -17,6 +17,10 @@ class Permission extends Model
     /*------------ Variables ------------*/
 
     protected $table = self::TABLE_NAME;
+    protected $fillable = [
+        'fa_name',
+        'en_name',
+    ];
 
     /*------------ Relations ------------*/
 

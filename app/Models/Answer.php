@@ -17,11 +17,13 @@ class Answer extends Model
     /*------------ Variables ------------*/
 
     protected $table = self::TABLE_NAME;
-
     protected $fillable = [
-
+        'question_id',
+        'text',
+        'incorrect_statement',
+        'correct_statement',
+        'status',
     ];
-
     protected $casts = [
         'status' => AnswerStatus::class,
     ];

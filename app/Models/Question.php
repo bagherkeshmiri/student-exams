@@ -22,7 +22,17 @@ class Question extends Model
 
     protected $table = self::TABLE_NAME;
     protected $perPage = 10;
-
+    protected $fillable = [
+        'link',
+        'response_deadline',
+        'user_id',
+        'status',
+        'text',
+        'response_time',
+        'review_time',
+        'confirmation_time',
+        'protest_time',
+    ];
     protected $casts = [
         'response_time' => 'datetime',
         'review_time' => 'datetime',

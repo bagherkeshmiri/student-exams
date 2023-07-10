@@ -33,7 +33,16 @@ class User extends Authenticatable
 
     protected $table = self::TABLE_NAME;
     protected $perPage = 10;
-
+    protected $fillable = [
+        'name',
+        'family',
+        'username',
+        'mobile',
+        'password',
+        'level',
+        'type',
+        'remember_token',
+    ];
     protected $casts = [
         'level' => Userlevel::class,
         'type' => UserType::class,
