@@ -27,6 +27,7 @@ class User extends Authenticatable
     public const COLUMN_ID = 'id';
     public const COLUMN_USER_ID = 'user_id';
     public const COLUMN_QUESTION_ID = 'question_id';
+    public const COLUMN_ROLE_ID = 'role_id';
     public const AVATAR_PATH = 'uploads/users/avatar/';
 
     /*------------ Variables ------------*/
@@ -60,6 +61,11 @@ class User extends Authenticatable
     public function questions(): BelongsToMany
     {
         return $this->belongsToMany(Question::class, 'user_questions', self::COLUMN_USER_ID, self::COLUMN_QUESTION_ID);
+    }
+
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class, 'user_role', self::COLUMN_USER_ID, self::COLUMN_ROLE_ID);
     }
 
     /*-------------- Scopes -------------*/

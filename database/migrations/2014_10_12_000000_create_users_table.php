@@ -14,8 +14,8 @@ return new class extends Migration {
             $table->string('username', 30)->unique();
             $table->bigInteger('mobile')->nullable()->unsigned()->unique();
             $table->string('password');
-            $table->unsignedTinyInteger('level')->nullable()->comment(' 1:elementary , 2:guidance , 3:high-school , 4:pre-university');
-            $table->unsignedTinyInteger('type')->comment(' 1:admin , 2:user ');
+            $table->unsignedTinyInteger('level')->nullable()->comment(' 1 => elementary , 2 => guidance , 3 => high-school , 4 => pre-university');
+            $table->unsignedTinyInteger('type')->comment(' 1 => admin , 2 => user ');
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

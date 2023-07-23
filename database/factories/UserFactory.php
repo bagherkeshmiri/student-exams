@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\Users\UserType;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -19,6 +20,7 @@ class UserFactory extends Factory
             'username' => Str::random(10),
             'password' => '$2y$10$QJtvF1qP/C5leGIyWXxjeeZJhA0rXe7xsglt0TFqaDlna0d4s5Uyq', // password
             'remember_token' => Str::random(10),
+            'type' => UserType::User,
         ];
     }
 }
