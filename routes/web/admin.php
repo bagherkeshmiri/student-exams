@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AdminProfileController;
 use App\Http\Livewire\Admin\Auth\Login;
 use App\Http\Livewire\Admin\Dashboard\Dashboard;
+use App\Http\Livewire\Admin\Students\ListStudents;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminRoleController;
@@ -34,11 +35,10 @@ Route::name('admin.panel.')->prefix('panel')->group(function () {
     Route::get('dashboard', Dashboard::class)->name('dashboard');
 
     // students
-    Route::resource('user', AdminStudentController::class)->except('edit', 'destroy');
-    Route::name('user.')->prefix('user')->controller(AdminStudentController::Class)->group(function () {
-        Route::get('/destroy/{user}', 'destroy')->name('destroy');
+    Route::name('user.')->prefix('user')->group(function () {
+        Route::get('/', ListStudents::class)->name('index');
+        Route::get('/delete/{user}', [AdminStudentController::class, 'delete'])->middleware('CheckDeletePermission')->name('delete');
     });
-
 
     // questions
     Route::resource('question', AdminQuestionController::class)->except('edit', 'destroy');

@@ -12,11 +12,6 @@ use Illuminate\Support\Facades\DB;
 
 class AdminStudentController extends Controller
 {
-    public function index()
-    {
-        $students = User::query()->orderBy('id', 'desc')->paginate();
-        return view('admin.pages.student.list', compact('students'));
-    }
 
     public function create()
     {

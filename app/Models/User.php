@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\Users\Userlevel;
 use App\Enums\Users\UserType;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -70,6 +71,15 @@ class User extends Authenticatable
 
     /*-------------- Scopes -------------*/
 
+    public function scopeIsAdmin(Builder $query): Builder
+    {
+        return $query->where('type', UserType::Admin);
+    }
+
+    public function scopeIsUser(Builder $query): Builder
+    {
+        return $query->where('type', UserType::User);
+    }
 
     /*---------- Other Functions --------*/
 

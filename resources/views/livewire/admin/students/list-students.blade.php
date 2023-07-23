@@ -1,13 +1,9 @@
-@extends('admin.layouts.master')
-
 @section('title',' لیست دانش آموزان')
 
 
 @section('styles')
     <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/vendors/css/extensions/sweetalert2.min.css') }}">
 @endsection
-
-
 
 @section('contents')
 
@@ -57,10 +53,10 @@
                                                         <td>{{ $student->mobile }}</td>
                                                         <td>{!! $student->getBadgeStatus() !!} </td>
                                                         <td>{{ $student->getJalaliCreatedAt() }}</td>
-                                                        <td>
-                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.user.show',[ 'user' => $student->id ])  , 'tooltip_title' => 'ویرایش' , 'icon' => '<i class="bx bx-pencil bx-sm bx-tada-hover" style="color:#FDAC41 !important;"></i>'])
-                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => 'حذف' , 'icon' => '<i class="bx bx-trash bx-sm bx-tada-hover" style="color:#FF5B5C !important;"></i>' , 'attributes' => 'onclick=student_delete(this,event)  data-url='.route('admin.user.destroy',[ 'user' => $student->id ]) ])
-                                                        </td>
+{{--                                                        <td>--}}
+{{--                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.user.show',[ 'user' => $student->id ])  , 'tooltip_title' => 'ویرایش' , 'icon' => '<i class="bx bx-pencil bx-sm bx-tada-hover" style="color:#FDAC41 !important;"></i>'])--}}
+{{--                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => 'حذف' , 'icon' => '<i class="bx bx-trash bx-sm bx-tada-hover" style="color:#FF5B5C !important;"></i>' , 'attributes' => 'onclick=student_delete(this,event)  data-url='.route('admin.user.destroy',[ 'user' => $student->id ]) ])--}}
+{{--                                                        </td>--}}
                                                     </tr>
                                                 @empty
                                                     <tr>
@@ -98,7 +94,7 @@
     <script type="text/javascript" src="{{ asset('/js/swal-functions.js') }}"></script>
     <script type="text/javascript">
 
-        function student_delete(element,event) {
+        function student_delete(element, event) {
             event.preventDefault()
             mboxDelete(element.getAttribute('data-url'));
         }

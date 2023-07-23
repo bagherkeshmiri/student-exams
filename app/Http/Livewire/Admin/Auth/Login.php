@@ -4,9 +4,6 @@ namespace App\Http\Livewire\Admin\Auth;
 
 use App\Models\User;
 use Exception;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
@@ -17,7 +14,7 @@ class Login extends Component
     public string $username;
     public string $password;
 
-    public function render(): Factory|View|Application
+    public function render()
     {
         return view('livewire.admin.auth.login')->layout('admin.layouts.auth-master');
     }
