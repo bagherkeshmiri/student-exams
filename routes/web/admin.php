@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\AdminProfileController;
 use App\Http\Livewire\Admin\Auth\Login;
+use App\Http\Livewire\Admin\Dashboard\Dashboard;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminRoleController;
@@ -20,24 +21,18 @@ use App\Http\Controllers\admin\AdminPermissionController;
 
 
 Route::name('admin.')->group(function () {
-    // auth
-    Route::get('login', Login::class)->name('show-login');
-
     Route::controller(AdminAuthController::Class)->group(function () {
-//        Route::middleware('ValidAdmin')->get('/login', 'showLogin')->name('show-login');
-//        Route::get('/login', 'showLogin')->name('show-login');
-        Route::post('/login', 'login')->name('login');
         Route::get('/logout', 'logout')->name('logout');
     });
 });
 
 
-Route::name('admin.')->middleware('InvalidAdmin')->group(function () {
-    // dashboard
-    Route::prefix('panel')->controller(AdminDashboardController::Class)->group(function () {
-        Route::get('/dashboard', 'index')->name('dashboard');
-    });
+Route::name('admin.panel.')->prefix('panel')->group(function () {
+    // auth
+    Route::get('login', Login::class)->name('show-login');
 
+    // dashboard
+    Route::get('dashboard', Dashboard::class)->name('dashboard');
 
     // students
     Route::resource('user', AdminStudentController::class)->except('edit', 'destroy');

@@ -15,7 +15,7 @@
         <!-- include ../../includes/mixins-->
         <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation" data-icon-style="lines">
             <li class=" nav-item">
-                <a class="nav-link" href="{{ route('admin.dashboard') }}">
+                <a class="nav-link" href="{{ route('admin.panel.dashboard') }}">
                     <i class="menu-livicon" data-icon="home"></i>
                     <span data-i18n="Dashboard">داشبورد</span>
                 </a>
@@ -27,13 +27,13 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="{{ route('admin.user.create') }}" data-toggle="dropdown">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.panel.user.create') }}" data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             ایجاد دانش آموز
                         </a>
                     </li>
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="{{ route('admin.user.index') }}" data-toggle="dropdown">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.panel.user.index') }}" data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             لیست دانش آموزان
                         </a>
@@ -47,21 +47,21 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="{{ route('admin.question.create') }}" data-toggle="dropdown">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.panel.question.create') }}" data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             ایجاد سوال
                         </a>
                     </li>
 
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="{{ route('admin.question.index') }}" data-toggle="dropdown">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.panel.question.index') }}" data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             لیست سوالات
                         </a>
                     </li>
 
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="{{ route('admin.correction.index') }}" data-toggle="dropdown">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.panel.correction.index') }}" data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             تصحیح سوالات
                         </a>
@@ -76,14 +76,14 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="{{ route('admin.admin.create') }}" data-toggle="dropdown">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.panel.admin.create') }}" data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             ایجاد مدیر
                         </a>
                     </li>
 
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="{{ route('admin.admin.index') }}" data-toggle="dropdown">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.panel.admin.index') }}" data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             لیست مدیران
                         </a>
@@ -98,14 +98,14 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="{{ route('admin.role.create') }}" data-toggle="dropdown">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.panel.role.create') }}" data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             ایجاد نقش
                         </a>
                     </li>
 
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="{{ route('admin.role.index') }}" data-toggle="dropdown">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.panel.role.index') }}" data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             لیست نقش ها
                         </a>
@@ -114,7 +114,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.profile.index') }}">
+                <a class="nav-link" href="{{ route('admin.panel.profile.index') }}">
                     <i class="menu-livicon" data-icon="gears"></i>
                     <span data-i18n="Dashboard">پروفایل</span>
                 </a>

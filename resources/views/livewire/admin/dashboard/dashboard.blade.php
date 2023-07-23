@@ -1,5 +1,3 @@
-@extends('admin.layouts.master')
-
 @section('title','داشبورد')
 
 @section('styles')
