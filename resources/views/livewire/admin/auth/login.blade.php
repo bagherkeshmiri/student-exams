@@ -1,4 +1,4 @@
-@section('title', 'ورود مدیران' )
+@section('title', __('login.login_admins') )
 
 
 @section('styles')
@@ -9,16 +9,16 @@
     <div class="card disable-rounded-right mb-0 p-2 h-100 d-flex justify-content-center">
         <div class="card-header pb-1">
             <div class="card-title">
-                <h4 class="text-center mb-2"> ورود مدیران </h4>
+                <h4 class="text-center mb-2"> @lang('login.login_admins') </h4>
             </div>
         </div>
         <div class="card-content">
             <div class="card-body">
                 <div class="d-flex flex-md-row flex-column justify-content-around">
                     <a href="#" class="btn btn-social btn-google btn-block font-small-3 mr-md-1 mb-md-0 mb-1">
-                        <i class="bx bxl-google font-medium-3"></i><span class="pl-50 d-block text-center">@lang('global.google')</span></a>
+                        <i class="bx bxl-google font-medium-3"></i><span class="pl-50 d-block text-center">@lang('login.google')</span></a>
                     <a href="#" class="btn btn-social btn-block mt-0 btn-facebook font-small-3">
-                        <i class="bx bxl-facebook-square font-medium-3"></i><span class="pl-50 d-block text-center">@lang('global.facebook')</span></a>
+                        <i class="bx bxl-facebook-square font-medium-3"></i><span class="pl-50 d-block text-center">@lang('login.facebook')</span></a>
                 </div>
                 <div class="divider">
                     <div class="divider-text text-uppercase text-muted"><small> @lang('login.login_with_email') </small>
@@ -34,7 +34,7 @@
                 <form wire:submit.prevent="login">
 
                     <div class="form-group mb-50">
-                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'username' , 'content' => 'نام کاربری'] )
+                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'username' , 'content' => __('login.username')] )
                         @include('frest-components.tags.required-tag')
                         @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'username' , 'classes' => 'text-left' , 'id' => 'username' , 'dir' => 'ltr' , 'icon' => emailIcon() , 'attributes' => 'required' ])
                         @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'username' ])

@@ -8,5 +8,8 @@ return [
     'password' => ' Password',
     'remember_me' => ' Remember Me',
     'forget_password' => ' Forgot Your Password?',
-
+    'google' => 'google',
+    'facebook' => 'facebook',
+    'username' => 'user name',
+    'login_admins' => 'Login of managers',
 ];

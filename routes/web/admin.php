@@ -9,7 +9,6 @@ use App\Http\Controllers\admin\AdminRoleController;
 use App\Http\Controllers\admin\AdminAccountController;
 use App\Http\Controllers\admin\AdminStudentController;
 use App\Http\Controllers\admin\AdminQuestionController;
-use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AdminCorrectionController;
 use App\Http\Controllers\admin\AdminPermissionController;
 

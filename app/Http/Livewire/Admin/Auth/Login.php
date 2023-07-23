@@ -10,18 +10,19 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use Livewire\Redirector;
 
 class Login extends Component
 {
-    public $username;
-    public $password;
+    public string $username;
+    public string $password;
 
     public function render(): Factory|View|Application
     {
         return view('livewire.admin.auth.login')->layout('admin.layouts.auth-master');
     }
 
-    public function login(): RedirectResponse
+    public function login(): Redirector|RedirectResponse
     {
         $this->validate([
             'username' => 'required',
@@ -39,7 +40,7 @@ class Login extends Component
                 return redirect()->back();
             }
             auth()->loginUsingId($admin->id);
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('admin.panel.dashboard');
         } catch (Exception) {
             session()->flash('error', __('errors.error_in_operation'));
             return redirect()->back();

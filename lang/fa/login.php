@@ -8,5 +8,8 @@ return [
     'password' => ' رمز عبور',
     'remember_me' => 'مرا به خاطر بسپار',
     'forget_password' => ' رمز عبورتان را فراموش کرده اید؟',
-
+    'google' => 'گوگل',
+    'facebook' => 'فیسبوک',
+    'username' => 'نام کاربری',
+    'login_admins' => 'ورود مدیران',
 ];
