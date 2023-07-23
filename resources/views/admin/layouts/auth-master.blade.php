@@ -49,7 +49,7 @@
                         <div class="row m-0">
                             <!-- left section-login -->
 
-                        @yield('contents')
+                        {{ $slot }}
 
                         <!-- right section image -->
                             <div class="col-md-6 d-md-block d-none text-center align-self-center p-3">

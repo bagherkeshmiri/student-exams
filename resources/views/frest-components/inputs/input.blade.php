@@ -1,39 +1,42 @@
-
 <div class="position-relative has-icon-left">
     <input
-            @isset($type)
-                type="{{ $type }}"
-            @endisset
+        @isset($type)
+        type="{{ $type }}"
+        @endisset
 
-            @isset($name)
-                name="{{ $name }}"
-            @endisset
+        @isset($name)
+        name="{{ $name }}"
+        @endisset
 
-            @isset($id)
-                id="{{ $id }}"
-            @endisset
+        @isset($id)
+        id="{{ $id }}"
+        @endisset
 
-           class="form-control @isset($classes)  {{$classes}} @endisset"
+        @isset($wire)
+        wire:model.defer="{{$wire}}"
+        @endisset
 
-           @isset($placeholder)
-                placeholder="{{ $placeholder }}"
-           @endisset
+        class="form-control @isset($classes)  {{$classes}} @endisset"
 
-            @isset($value)
-                value="{{ $value }}"
-            @endisset
+        @isset($placeholder)
+        placeholder="{{ $placeholder }}"
+        @endisset
 
-            @isset($attributes)
-                    {{$attributes}}
-            @endisset
+        @isset($value)
+        value="{{ $value }}"
+        @endisset
 
-            @isset($options)
-                     {{ $options }}
-            @endisset
+    @isset($attributes)
+        {{$attributes}}
+        @endisset
+
+    @isset($options)
+        {{ $options }}
+        @endisset
 
     >
     <div class="form-control-position">
-            {!! $icon !!}
+        {!! $icon !!}
     </div>
 </div>
 

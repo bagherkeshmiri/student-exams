@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AdminProfileController;
+use App\Http\Livewire\Admin\Auth\Login;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminRoleController;
@@ -20,9 +21,11 @@ use App\Http\Controllers\admin\AdminPermissionController;
 
 Route::name('admin.')->group(function () {
     // auth
+    Route::get('login', Login::class)->name('show-login');
+
     Route::controller(AdminAuthController::Class)->group(function () {
 //        Route::middleware('ValidAdmin')->get('/login', 'showLogin')->name('show-login');
-        Route::get('/login', 'showLogin')->name('show-login');
+//        Route::get('/login', 'showLogin')->name('show-login');
         Route::post('/login', 'login')->name('login');
         Route::get('/logout', 'logout')->name('logout');
     });
