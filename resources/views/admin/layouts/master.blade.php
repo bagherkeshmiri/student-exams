@@ -5,7 +5,7 @@
 <!-- END: Head-->
 
 <!-- BEGIN: Body-->
-<body class="horizontal-layout horizontal-menu navbar-static dark-layout 2-columns   footer-static  " data-open="hover" data-menu="horizontal-menu" data-col="2-columns" data-layout="dark-layout">
+<body class="horizontal-layout horizontal-menu navbar-static dark-layout 2-columns   footer-static " data-open="hover" data-menu="horizontal-menu" data-col="2-columns" data-layout="dark-layout">
 
 <!-- BEGIN: Header-->
 @include('admin.partials.header')
@@ -17,7 +17,7 @@
 <!-- END: Main Menu-->
 
 <!-- BEGIN: Content-->
-@yield('contents')
+{{ $slot }}
 <!-- END: Content-->
 
 

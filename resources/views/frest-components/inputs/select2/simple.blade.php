@@ -1,17 +1,21 @@
 <select class="select2 form-control "
 
-    @isset($name)
+        @isset($name)
         name="{{ $name }}"
-    @endisset
+        @endisset
 
-    @isset($id)
+        @isset($id)
         id="{{ $id }}"
+        @endisset
+
+        @isset($wire)
+        id="{{ $wire }}"
     @endisset
 
-    @isset($attributes)
-       {{ $attributes }}
+@isset($attributes)
+    {{ $attributes }}
     @endisset
-    >
+>
 
     <option></option>
 
@@ -19,9 +23,9 @@
         @foreach($data as $key => $value)
             <option
                 @isset($selected_value)
-                    @if($selected_value == $value)
-                        selected
-                    @endif
+                @if($selected_value == $value)
+                selected
+                @endif
                 @endisset
                 value="{{ $value }}"
             >

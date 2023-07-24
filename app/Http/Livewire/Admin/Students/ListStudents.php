@@ -14,7 +14,7 @@ class ListStudents extends Component
 
     public function render()
     {
-        $students = User::isUser()->paginate();
+        $students = User::isUser()->orderBY('id','desc')->paginate();
         return view('livewire.admin.students.list-students', ['students' => $students])->layout('admin.layouts.master');
     }
 }
