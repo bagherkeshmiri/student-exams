@@ -53,8 +53,8 @@
                                                     <td>{!! $student->getBadgeStatus() !!} </td>
                                                     <td>{{ $student->getJalaliCreatedAt() }}</td>
                                                     <td>
-                                                        {{--                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.user.show',[ 'user' => $student->id ])  , 'tooltip_title' => 'ویرایش' , 'icon' => '<i class="bx bx-pencil bx-sm bx-tada-hover" style="color:#FDAC41 !important;"></i>'])--}}
-                                                        {{--                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => 'حذف' , 'icon' => '<i class="bx bx-trash bx-sm bx-tada-hover" style="color:#FF5B5C !important;"></i>' , 'attributes' => 'onclick=student_delete(this,event)  data-url='.route('admin.user.destroy',[ 'user' => $student->id ]) ])--}}
+                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.panel.user.show',[ 'user' => $student->id ])  , 'tooltip_title' => 'ویرایش' , 'icon' => '<i class="bx bx-pencil bx-sm bx-tada-hover" style="color:#FDAC41 !important;"></i>'])
+                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => 'حذف' , 'icon' => '<i class="bx bx-trash bx-sm bx-tada-hover" style="color:#FF5B5C !important;"></i>' , 'attributes' => 'onclick=student_delete(this,event)  data-url='.route('admin.panel.user.delete',[ 'user' => $student->id ]) ])
                                                     </td>
                                                 </tr>
                                             @empty

@@ -1,32 +1,30 @@
 <select class="form-control"
 
         @isset($name)
-            name="{{ $name }}"
+        name="{{ $name }}"
         @endisset
 
         @isset($wire)
-            wire:model.defer="{{$wire}}"
+        wire:model.defer="{{$wire}}"
         @endisset
 
         @isset($id)
-            id="{{ $id }}"
+        id="{{ $id }}"
         @endisset
 
         @isset($attributes)
-            {{ $attributes }}
+        {{ $attributes }}
         @endisset
 
         required
 >
-
-    @isset($defaultOption)
-        <option  @isset($defaultValue) value="0" @endisset> -- انتخاب کنید -- </option>
-    @endisset
-
     @isset($data)
         @foreach($data as $key => $value)
             <option
                 value="{{ $value }}"
+                @isset($defualtValue)
+                    @if($value == $defualtValue) selected @endif
+                @endisset
             >
                 {{ $key }}
             </option>

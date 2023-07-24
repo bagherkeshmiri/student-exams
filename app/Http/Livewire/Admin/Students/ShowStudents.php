@@ -8,30 +8,38 @@ use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
-class CreateStudents extends Component
+class ShowStudents extends Component
 {
+    public User $user;
     public $name;
     public $family;
     public $mobile;
     public $username;
-    public $password;
     public $level;
+
+    public function mount(User $user)
+    {
+        $this->name = $user->name;
+        $this->family = $user->family;
+        $this->mobile = $user->mobile;
+        $this->username = $user->username;
+        $this->level = $user->level;
+        $this->user = $user;
+    }
 
     public function render()
     {
         $levels = getUserLevels();
-        return view('livewire.admin.students.create-students', ['levels' => $levels])->layout('admin.layouts.master');
+        return view('livewire.admin.students.show-students', ['levels' => $levels])->layout('admin.layouts.master');
     }
 
-
-    public function store()
+    public function update()
     {
         $this->validate([
             'name' => 'required',
             'family' => 'required',
-            'mobile' => 'required|min:10|max:11|unique:users,mobile',
-            'username' => 'required|unique:users,username',
-            'password' => 'required',
+            'mobile' => 'required|min:10|max:11|unique:users,mobile,' . $this->user->id,
+            'username' => 'required|unique:users,username,' . $this->user->id,
             'level' => 'required',
         ]);
         $data = [
@@ -39,15 +47,12 @@ class CreateStudents extends Component
             'family' => $this->family,
             'mobile' => $this->mobile,
             'username' => $this->username,
-            'password' => $this->password,
             'level' => $this->level,
-            'type' => UserType::User,
         ];
         DB::beginTransaction();
         try {
-            User::query()->create($data);
+            $this->user->update($data);
             DB::commit();
-            $this->reset(['name', 'family', 'mobile', 'username', 'password', 'level']);
             session()->flash('success', __('errors.successful_operation'));
         } catch (Exception) {
             DB::rollBack();

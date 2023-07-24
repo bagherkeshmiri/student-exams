@@ -12,8 +12,7 @@
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.12",
-        "morilog/jalali": "3.*",
-        "wire-elements/modal": "^1.0"
+        "morilog/jalali": "3.*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",

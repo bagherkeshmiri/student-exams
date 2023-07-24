@@ -5,6 +5,7 @@ use App\Http\Livewire\Admin\Auth\Login;
 use App\Http\Livewire\Admin\Dashboard\Dashboard;
 use App\Http\Livewire\Admin\Students\CreateStudents;
 use App\Http\Livewire\Admin\Students\ListStudents;
+use App\Http\Livewire\Admin\Students\ShowStudents;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminRoleController;
@@ -39,28 +40,29 @@ Route::name('admin.panel.')->prefix('panel')->group(function () {
     Route::name('user.')->prefix('user')->group(function () {
         Route::get('/', ListStudents::class)->name('index');
         Route::get('/create', CreateStudents::class)->name('create');
-        Route::get('/delete/{user}', [AdminStudentController::class, 'delete'])->middleware('CheckDeletePermission')->name('delete');
+        Route::get('/show/{user}', ShowStudents::class)->name('show');
+        Route::get('/delete/{user}', [AdminStudentController::class, 'delete'])->name('delete');
     });
 
     // questions
-    Route::resource('question', AdminQuestionController::class)->except('edit', 'destroy');
+    Route::resource('question', AdminQuestionController::class)->except('edit', 'delete');
     Route::name('question.')->prefix('question')->controller(AdminQuestionController::Class)->group(function () {
-        Route::get('/destroy/{question}', 'destroy')->name('destroy');
+        Route::get('/delete/{question}', 'delete')->name('delete');
     });
 
 
     // permissions
-    Route::resource('permission', AdminPermissionController::class)->except('edit', 'destroy');
+    Route::resource('permission', AdminPermissionController::class)->except('edit', 'delete');
 
 
     // roles
-    Route::resource('role', AdminRoleController::class)->except('edit', 'destroy');
+    Route::resource('role', AdminRoleController::class)->except('edit', 'delete');
 
 
     // accounts
-    Route::resource('admin', AdminAccountController::class)->except('edit', 'destroy');
+    Route::resource('admin', AdminAccountController::class)->except('edit', 'delete');
     Route::name('admin.')->prefix('admin')->controller(AdminAccountController::Class)->group(function () {
-        Route::get('/destroy/{admin}', 'destroy')->name('destroy');
+        Route::get('/delete/{admin}', 'delete')->name('delete');
     });
 
 

@@ -23,7 +23,6 @@ class UserSeeder extends Seeder
         $role = Role::query()->where('en_name', 'manager')->first();
         $admin->roles()->attach($role);
 
-
         User::factory()->state(
             new Sequence(
                 ['level' => Userlevel::Elementary],
