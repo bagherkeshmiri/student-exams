@@ -94,12 +94,13 @@
                                                     <div class="form-group">
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'level' , 'content' => 'سطح'] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.select2.simple',[ 'data' => $levels , 'id' => 'level' , 'wire' => 'level' ])
+                                                        @include('frest-components.inputs.simple-selectbox.simple-selectbox',[ 'data' => $levels , 'id' => 'level' , 'wire' => 'level'])
                                                         @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'level' ])
                                                     </div>
                                                 </div>
 
-                                                <div class="col-12 d-flex justify-content-end">
+
+                                                <div class="col-12 d-flex justify-content-end mt-3">
                                                     @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
                                                     @include('frest-components.inputs.buttons.link-button',[ 'href' => route('admin.panel.user.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
                                                 </div>
@@ -119,21 +120,19 @@
 </div>
 
 
+@section('scripts')
+
+    <!-- Jquery Library CDN -->
+    <script type="text/javascript" src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+
+    <!-- select 2 js -->
+    <script type="text/javascript" src="{{ asset('/js/select2-functions.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/frest/vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/frest/js/scripts/forms/select/form-select2.js') }}"></script>
 
 
-{{--@section('scripts')--}}
+    <script type="text/javascript">
+        createSelect2('#level', " -- انتخاب کنید -- ");
+    </script>
 
-{{--    <!-- Jquery Library CDN -->--}}
-{{--    <script type="text/javascript" src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>--}}
-
-{{--    <!-- select 2 js -->--}}
-{{--    <script type="text/javascript" src="{{ asset('/js/select2-functions.js') }}"></script>--}}
-{{--    <script type="text/javascript" src="{{ asset('/frest/vendors/js/forms/select/select2.full.min.js') }}"></script>--}}
-{{--    <script type="text/javascript" src="{{ asset('/frest/js/scripts/forms/select/form-select2.js') }}"></script>--}}
-
-
-{{--    <script type="text/javascript">--}}
-{{--        createSelect2('#level', " -- انتخاب کنید -- ");--}}
-{{--    </script>--}}
-
-{{--@endsection--}}
+@endsection
