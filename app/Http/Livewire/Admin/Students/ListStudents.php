@@ -12,8 +12,6 @@ class ListStudents extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-//    public object $students;
-
     public function render()
     {
         $students = User::isUser()->paginate();

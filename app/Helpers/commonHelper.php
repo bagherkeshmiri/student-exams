@@ -7,10 +7,10 @@ use App\Enums\Users\Userlevel;
 function getUserLevels(): array
 {
     return [
-        __('statuses.elementary') => Userlevel::Elementary,
-        __('statuses.guidance') => Userlevel::Guidance,
-        __('statuses.high_school') => Userlevel::HighSchool,
-        __('statuses.pre_university') => Userlevel::PreUniversity,
+        __('statuses.elementary') => Userlevel::Elementary->value,
+        __('statuses.guidance') => Userlevel::Guidance->value,
+        __('statuses.high_school') => Userlevel::HighSchool->value,
+        __('statuses.pre_university') => Userlevel::PreUniversity->value,
     ];
 }
 

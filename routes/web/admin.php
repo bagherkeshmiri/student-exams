@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AdminProfileController;
 use App\Http\Livewire\Admin\Auth\Login;
 use App\Http\Livewire\Admin\Dashboard\Dashboard;
+use App\Http\Livewire\Admin\Students\CreateStudents;
 use App\Http\Livewire\Admin\Students\ListStudents;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AdminAuthController;
@@ -37,6 +38,7 @@ Route::name('admin.panel.')->prefix('panel')->group(function () {
     // students
     Route::name('user.')->prefix('user')->group(function () {
         Route::get('/', ListStudents::class)->name('index');
+        Route::get('/create', CreateStudents::class)->name('create');
         Route::get('/delete/{user}', [AdminStudentController::class, 'delete'])->middleware('CheckDeletePermission')->name('delete');
     });
 

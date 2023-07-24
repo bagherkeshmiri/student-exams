@@ -16,18 +16,18 @@
         <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation" data-icon-style="lines">
             <li class=" nav-item">
                 <a class="nav-link" href="{{ route('admin.panel.dashboard') }}">
-                    <i class="menu-livicon" data-icon="home"></i>
+                    <i class="bx bx-home"></i>
                     <span data-i18n="Dashboard">داشبورد</span>
                 </a>
             </li>
             <li class="dropdown nav-item" data-menu="dropdown">
                 <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
-                    <i class="menu-livicon" data-icon="users"></i>
+                    <i class="bx bx-group"></i>
                     <span>دانش آموزان</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
                     <li data-menu="">
-{{--                        <a class="dropdown-item align-items-center" href="{{ route('admin.panel.user.create') }}" data-toggle="dropdown">--}}
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.panel.user.create') }}" data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             ایجاد دانش آموز
                         </a>
@@ -42,7 +42,7 @@
             </li>
             <li class="dropdown nav-item" data-menu="dropdown">
                 <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
-                    <i class="menu-livicon" data-icon="notebook"></i>
+                    <i class="bx bx-help-circle"></i>
                     <span>سوالات </span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
@@ -71,7 +71,7 @@
             </li>
             <li class="dropdown nav-item" data-menu="dropdown">
                 <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
-                    <i class="menu-livicon" data-icon="users"></i>
+                    <i class="bx bx-crown"></i>
                     <span>مدیران </span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
@@ -93,7 +93,7 @@
 
             <li class="dropdown nav-item" data-menu="dropdown">
                 <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
-                    <i class="menu-livicon" data-icon="lock"></i>
+                    <i class="bx bx-lock-alt"></i>
                     <span> نقش ها </span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
@@ -115,7 +115,7 @@
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.panel.profile.index') }}">
-                    <i class="menu-livicon" data-icon="gears"></i>
+                    <i class="bx bx-user-circle"></i>
                     <span data-i18n="Dashboard">پروفایل</span>
                 </a>
             </li>
@@ -123,7 +123,7 @@
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.logout') }}">
-                    <i class="menu-livicon" data-icon="multiply-alt"></i>
+                    <i class="bx bx-exit"></i>
                     <span data-i18n="Dashboard">خروج</span>
                 </a>
             </li>
