@@ -23,7 +23,7 @@
             <option
                 value="{{ $value }}"
                 @isset($defualtValue)
-                    @if($value == $defualtValue) selected @endif
+                @if($value == $defualtValue) selected @endif
                 @endisset
             >
                 {{ $key }}

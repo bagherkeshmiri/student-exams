@@ -49,6 +49,9 @@ class User extends Authenticatable
         'level' => Userlevel::class,
         'type' => UserType::class,
     ];
+    protected $appends = [
+        'full_name',
+    ];
 
     /*------------ Relations ------------*/
 

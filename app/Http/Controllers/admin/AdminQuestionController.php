@@ -15,16 +15,6 @@ use Illuminate\Support\Facades\DB;
 
 class AdminQuestionController extends Controller
 {
-    private function getAllAdmins(): array|Collection
-    {
-        return Admin::all();
-    }
-
-    private function getAllUsers(): array|Collection
-    {
-        return User::all();
-    }
-
     public function index()
     {
         $questions = Question::query()->orderBy('id', 'desc')->paginate();

@@ -3,6 +3,9 @@
 use App\Http\Controllers\admin\AdminProfileController;
 use App\Http\Livewire\Admin\Auth\Login;
 use App\Http\Livewire\Admin\Dashboard\Dashboard;
+use App\Http\Livewire\Admin\Questions\CreateQuestion;
+use App\Http\Livewire\Admin\Questions\ListQuestion;
+use App\Http\Livewire\Admin\Questions\ShowQuestion;
 use App\Http\Livewire\Admin\Students\CreateStudents;
 use App\Http\Livewire\Admin\Students\ListStudents;
 use App\Http\Livewire\Admin\Students\ShowStudents;
@@ -45,11 +48,13 @@ Route::name('admin.panel.')->prefix('panel')->group(function () {
     });
 
     // questions
-    Route::resource('question', AdminQuestionController::class)->except('edit', 'delete');
-    Route::name('question.')->prefix('question')->controller(AdminQuestionController::Class)->group(function () {
-        Route::get('/delete/{question}', 'delete')->name('delete');
+    Route::name('question.')->prefix('question')->group(function () {
+        Route::get('/', ListQuestion::class)->name('index');
+        Route::get('/create', CreateQuestion::class)->name('create');
+        Route::get('/show/{question}', ShowQuestion::class)->name('show');
+        Route::get('/delete/{question}', [AdminQuestionController::class, 'delete'])->name('delete');
     });
-
+//    Route::resource('question', AdminQuestionController::class)->except('edit', 'delete');
 
     // permissions
     Route::resource('permission', AdminPermissionController::class)->except('edit', 'delete');
