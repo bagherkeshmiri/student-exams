@@ -11,9 +11,12 @@
     <div class="content-wrapper">
         <div class="content-header row">
             <div class="content-header-left col-12 mb-2 mt-1">
-                <div class="row breadcrumbs-top">
-                    <div class="col-12">
+                <div class="row breadcrumbs-top align-items-center">
+                    <div class="col-6">
                         <h5 class="content-header-title float-left pr-1 text-success " style=" border-left: 0 !important;"> لیست سوالات </h5>
+                    </div>
+                    <div class="col-6">
+                        @include('frest-components.inputs.buttons.refresh-btn')
                     </div>
                 </div>
             </div>
@@ -27,6 +30,7 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
+
 
                                     <!-- Table with no outer spacing -->
                                     <div class="table-responsive">

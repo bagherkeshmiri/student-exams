@@ -11,6 +11,7 @@ class ListStudents extends Component
     use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
+    protected $listeners = ['refreshComponent' => '$refresh'];
 
     public function render()
     {
