@@ -40,7 +40,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'نام '] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'name' , 'value' => old('name') , 'classes' => 'text-left' , 'id' => 'name' , 'dir' => 'ltr' , 'icon' => userIcon() , 'attributes' => 'required' ])
+                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'name' , 'classes' => 'text-left' , 'id' => 'name' , 'dir' => 'ltr' , 'icon' => userIcon() , 'attributes' => 'required' ])
                                                         @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'name' ])
                                                     </div>
                                                 </div>
@@ -50,7 +50,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'family' , 'content' => 'نام خانوادگی'] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'family' , 'value' => old('family') , 'classes' => 'text-left' , 'id' => 'family' , 'dir' => 'ltr' , 'icon' => userIcon() , 'attributes' => 'required' ])
+                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'family' , 'classes' => 'text-left' , 'id' => 'family' , 'dir' => 'ltr' , 'icon' => userIcon() , 'attributes' => 'required' ])
                                                         @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'family' ])
                                                     </div>
                                                 </div>
@@ -60,7 +60,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'mobile' , 'content' => 'موبایل'] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.input',[ 'type' => 'number' , 'wire' => 'mobile' , 'value' => old('mobile') , 'classes' => 'text-left' , 'id' => 'mobile' , 'dir' => 'ltr' , 'icon' => mobileIcon() , 'attributes' => 'required' ])
+                                                        @include('frest-components.inputs.input',[ 'type' => 'number' , 'wire' => 'mobile' , 'classes' => 'text-left' , 'id' => 'mobile' , 'dir' => 'ltr' , 'icon' => mobileIcon() , 'attributes' => 'required' ])
                                                         @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'mobile' ])
                                                     </div>
                                                 </div>
@@ -70,7 +70,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'username' , 'content' => 'نام کاربری'] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'username' , 'value' => old('username') , 'classes' => 'text-left' , 'id' => 'username' , 'dir' => 'ltr' , 'icon' => userIcon() , 'attributes' => 'required' ])
+                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'username' , 'classes' => 'text-left' , 'id' => 'username' , 'dir' => 'ltr' , 'icon' => userIcon() , 'attributes' => 'required' ])
                                                         @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'username' ])
                                                     </div>
                                                 </div>
@@ -80,7 +80,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'password' , 'content' => 'رمز عبور '] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.input',[ 'type' => 'password' , 'wire' => 'password' , 'value' => old('password') , 'classes' => 'text-left' , 'id' => 'password' , 'dir' => 'ltr' , 'icon' => lockIcon() , 'attributes' => 'required' ])
+                                                        @include('frest-components.inputs.input',[ 'type' => 'password' , 'wire' => 'password' , 'classes' => 'text-left' , 'id' => 'password' , 'dir' => 'ltr' , 'icon' => lockIcon() , 'attributes' => 'required' ])
                                                         @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'password' ])
                                                     </div>
                                                 </div>

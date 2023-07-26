@@ -20,6 +20,9 @@ class CreateQuestion extends Component
         'text.required' => 'متن سوال الزامی است',
         'user_id.required' => 'انتخاب دانش آموز الزامی است',
         'admin_id.required' => 'انتخاب تصحیح کننده الزامی است',
+        'admin_id.numeric' => 'انتخاب تصحیح کننده الزامی است',
+        'user_id.numeric' => 'انتخاب تصحیح کننده الزامی است',
+        'response_deadline.numeric' => 'مهلت پاسخگویی باید عدد باشد',
     ];
 
     public function render()
