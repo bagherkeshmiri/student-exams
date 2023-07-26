@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->string('link');
             $table->unsignedInteger('response_deadline')->comment('minute');
-            $table->unsignedBigInteger('user_id')->index();
+            $table->unsignedBigInteger('admin_id')->index();
             $table->unsignedTinyInteger('status')->default(1)->comment(' 1 => raw , 2 => answered , 3 => reviewed , 4 => have-protest , 5 => protest-approved , 6 => confirmed');
             $table->text('text');
             $table->timestamp('response_time')->nullable();

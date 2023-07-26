@@ -11,9 +11,6 @@
 @endsection
 
 
-
-
-
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="content-wrapper">
@@ -49,7 +46,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'link' , 'content' => 'لینک '] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'link' , 'value' => '' , 'classes' => 'text-left' , 'id' => 'link' , 'dir' => 'ltr' , 'icon' => linkIcon() , 'attributes' => 'required' ])
+                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'link' , 'classes' => 'text-left' , 'id' => 'link' , 'dir' => 'ltr' ,'value' => old('link'), 'icon' => linkIcon() , 'attributes' => 'required' ])
                                                         @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'link' ])
                                                     </div>
                                                 </div>
@@ -59,7 +56,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700', 'for' => 'user_id' , 'content' => 'دانش آموز'] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.simple-selectbox.simple-selectbox',[ 'data' => $students , 'id' => 'user_id' , 'wire' => 'user_id' , 'attributes' => 'required' ])
+                                                        @include('frest-components.inputs.simple-selectbox.simple-selectbox',[ 'data' => $students , 'id' => 'user_id' , 'wire' => 'user_id' ,'value' => old('user_id'), 'attributes' => 'required' ])
                                                         @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'user_id' ])
                                                     </div>
                                                 </div>
@@ -69,16 +66,17 @@
                                                     <div class="form-group">
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'admin_id' , 'content' => ' تصحیح کننده'] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.simple-selectbox.simple-selectbox',[ 'data' => $admins , 'id' => 'admin_id' , 'wire' => 'admin_id' , 'attributes' => 'required'  ])
+                                                        @include('frest-components.inputs.simple-selectbox.simple-selectbox',[ 'data' => $admins , 'id' => 'admin_id' , 'wire' => 'admin_id' , 'value' => old('admin_id'), 'attributes' => 'required'  ])
                                                         @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'admin_id' ])
                                                     </div>
                                                 </div>
+
 
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'response_deadline' , 'content' => 'مهلت پاسخ گویی (دقیقه)'] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.input',[ 'type' => 'number' , 'wire' => 'response_deadline' , 'value' => old('response_deadline') , 'classes' => 'text-left' , 'id' => 'link' , 'dir' => 'ltr' , 'icon' => timerIcon() , 'attributes' => 'required' ])
+                                                        @include('frest-components.inputs.input',[ 'type' => 'number' , 'wire' => 'response_deadline' , 'value' => old('response_deadline'), 'classes' => 'text-left' , 'id' => 'response_deadline' , 'dir' => 'ltr' , 'icon' => timerIcon() , 'attributes' => 'required' ])
                                                         @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'response_deadline' ])
                                                     </div>
                                                 </div>
@@ -87,7 +85,7 @@
                                                 <div class="col-md-12 col-12 mb-2">
                                                     @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'متن '] )
                                                     @include('frest-components.tags.required-tag')
-                                                    @include('frest-components.inputs.textarea' , [ 'rows' => 10  , 'wire' => 'text' , 'attributes' => 'required' ])
+                                                    @include('frest-components.inputs.textarea' , [ 'rows' => 10  , 'wire' => 'text' ,'contents' => old('text'), 'attributes' => 'required' ])
                                                     @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'text' ])
                                                 </div>
 
@@ -110,7 +108,6 @@
         </div>
     </div>
 </div>
-
 
 
 @section('scripts')

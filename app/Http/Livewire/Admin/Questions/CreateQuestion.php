@@ -16,6 +16,12 @@ class CreateQuestion extends Component
     public $user_id;
     public $text;
 
+    protected $messages = [
+        'text.required' => 'متن سوال الزامی است',
+        'user_id.required' => 'انتخاب دانش آموز الزامی است',
+        'admin_id.required' => 'انتخاب تصحیح کننده الزامی است',
+    ];
+
     public function render()
     {
         $admins = User::isAdmin()->get()->pluck('id', 'full_name')->toArray();
@@ -36,12 +42,13 @@ class CreateQuestion extends Component
             'link' => $this->link,
             'response_deadline' => $this->response_deadline,
             'admin_id' => $this->admin_id,
-            'user_id' => $this->user_id,
             'text' => $this->text,
         ];
+
         DB::beginTransaction();
         try {
-            Question::query()->create($data);
+            $question = Question::query()->create($data);
+            $question->users()->attach($this->user_id);
             DB::commit();
             $this->reset(['link', 'response_deadline', 'admin_id', 'user_id', 'text']);
             session()->flash('success', __('errors.successful_operation'));

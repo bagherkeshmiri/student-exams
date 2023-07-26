@@ -19,6 +19,7 @@
         required
 >
     @isset($data)
+        <option>-- انتخاب کنید --</option>
         @foreach($data as $key => $value)
             <option
                 value="{{ $value }}"

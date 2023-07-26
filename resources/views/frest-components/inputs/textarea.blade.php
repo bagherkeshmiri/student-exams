@@ -1,25 +1,30 @@
 <fieldset class="form-label-group mb-0">
-    <textarea  class="form-control char-textarea @isset($classess) {{ $classess }} @endisset"
+    <textarea class="form-control char-textarea @isset($classess) {{ $classess }} @endisset"
 
-            @isset($id)
-                id="{{ $id }}"
-            @endisset
+              @isset($id)
+              id="{{ $id }}"
+              @endisset
 
-            @isset($name)
-               name="{{ $name }}"
-            @endisset
+              @isset($name)
+              name="{{ $name }}"
+              @endisset
 
-            @isset($rows)
-                rows="{{ $rows }}"
-            @endisset
+              @isset($wire)
+              wire:model.defer="{{$wire}}"
+              @endisset
 
-            @isset($placeholder)
-               placeholder="{{ $placeholder }}"
-            @endisset
 
-            @isset($attributes)
-                {{ $attributes }}
-            @endisset
+              @isset($rows)
+              rows="{{ $rows }}"
+              @endisset
+
+              @isset($placeholder)
+              placeholder="{{ $placeholder }}"
+                @endisset
+
+    @isset($attributes)
+        {{ $attributes }}
+        @endisset
 
                 >
 

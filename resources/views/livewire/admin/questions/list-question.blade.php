@@ -52,7 +52,7 @@
                                                 <tr>
                                                     <td>{{ $question->link }}</td>
                                                     <td>{{ $question->response_deadline }}</td>
-                                                    <td>{{ $question->admin->full_name }}</td>
+{{--                                                    <td>{{ $question->admin->full_name }}</td>--}}
                                                     <td>
                                                         @foreach($question->users as $user)
                                                             {{ $user->full_name }}

@@ -25,7 +25,7 @@ class Question extends Model
     protected $fillable = [
         'link',
         'response_deadline',
-        'user_id',
+        'admin_id',
         'status',
         'text',
         'response_time',
@@ -45,7 +45,7 @@ class Question extends Model
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'user_questions', self::COLUMN_QUESTION_ID, self::COLUMN_USER_ID);
+        return $this->belongsToMany(User::class, 'student_questions', self::COLUMN_QUESTION_ID, self::COLUMN_USER_ID);
     }
 
     public function protest(): HasOne
@@ -60,7 +60,7 @@ class Question extends Model
 
     public function admin(): BelongsTo
     {
-        return $this->belongsTo(Admin::class);
+        return $this->belongsTo(User::class);
     }
 
     /*-------------- Scopes -------------*/

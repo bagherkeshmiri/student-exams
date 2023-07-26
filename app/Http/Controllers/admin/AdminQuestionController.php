@@ -15,20 +15,6 @@ use Illuminate\Support\Facades\DB;
 
 class AdminQuestionController extends Controller
 {
-    public function index()
-    {
-        $questions = Question::query()->orderBy('id', 'desc')->paginate();
-        $question_new_status = QuestionStatus::Raw;
-        return view('admin.pages.question.list', compact('questions', 'question_new_status'));
-    }
-
-    public function create()
-    {
-        $admins = $this->getAllAdmins()->pluck('id', 'full_name')->toArray();
-        $students = $this->getAllUsers()->pluck('id', 'full_name')->toArray();
-        return view('admin.pages.question.create', compact('students', 'admins'));
-    }
-
     public function store(AdminQuestionStoreRequest $request)
     {
         DB::beginTransaction();
@@ -53,10 +39,6 @@ class AdminQuestionController extends Controller
         $admins = $this->getAllAdmins()->pluck('id', 'full_name')->toArray();
         $students = $this->getAllUsers()->pluck('id', 'full_name')->toArray();
         return view('admin.pages.question.edit', compact('question', 'admins', 'students'));
-    }
-
-    public function edit(Question $question)
-    {
     }
 
     public function update(AdminQuestionEditRequest $request, Question $question)

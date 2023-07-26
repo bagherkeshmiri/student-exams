@@ -64,7 +64,7 @@ class User extends Authenticatable
 
     public function questions(): BelongsToMany
     {
-        return $this->belongsToMany(Question::class, 'user_questions', self::COLUMN_USER_ID, self::COLUMN_QUESTION_ID);
+        return $this->belongsToMany(Question::class, 'student_questions', self::COLUMN_USER_ID, self::COLUMN_QUESTION_ID);
     }
 
     public function roles(): BelongsToMany
