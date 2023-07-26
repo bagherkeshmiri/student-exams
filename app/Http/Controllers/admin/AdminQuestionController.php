@@ -15,24 +15,6 @@ use Illuminate\Support\Facades\DB;
 
 class AdminQuestionController extends Controller
 {
-    public function store(AdminQuestionStoreRequest $request)
-    {
-        DB::beginTransaction();
-        try {
-            $question = new Question();
-            $question->link = $request->input('link');
-            $question->response_deadline = $request->input('response_deadline');
-            $question->admin_id = $request->input('admin_id');
-            $question->text = $request->input('text');
-            $question->save();
-            $question->users()->attach($request->input('user_id'));
-            DB::commit();
-            return redirect()->back()->with('success', __('errors.successful_operation'));
-        } catch (Exception) {
-            DB::rollBack();
-            return redirect()->back()->with('error', __('errors.error_in_operation'));
-        }
-    }
 
     public function show(Question $question)
     {

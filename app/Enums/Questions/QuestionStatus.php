@@ -4,10 +4,10 @@ namespace App\Enums\Questions;
 
 enum QuestionStatus: int
 {
-    case Raw = 0;
-    case Answered = 1;
-    case Reviewd = 2;
-    case HaveProtest = 3;
-    case ProtestApproved = 4;
-    case Confirmed = 5;
+    case Raw = 1;
+    case Answered = 2;
+    case Reviewd = 3;
+    case HaveProtest = 4;
+    case ProtestApproved = 5;
+    case Confirmed = 6;
 }
