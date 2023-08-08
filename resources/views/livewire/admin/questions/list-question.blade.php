@@ -16,7 +16,7 @@
                         <h5 class="content-header-title float-left pr-1 text-success " style=" border-left: 0 !important;"> لیست سوالات </h5>
                     </div>
                     <div class="col-6">
-                        @include('frest-components.inputs.buttons.refresh-btn')
+                        @include('frest-components.inputs.buttons.refresh-btn',['classes' => 'float-right' , 'tooltip_title' => ' بروزرسانی لیست'])
                     </div>
                 </div>
             </div>
