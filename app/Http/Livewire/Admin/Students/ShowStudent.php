@@ -8,7 +8,7 @@ use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
-class ShowStudents extends Component
+class ShowStudent extends Component
 {
     public User $user;
     public $name;

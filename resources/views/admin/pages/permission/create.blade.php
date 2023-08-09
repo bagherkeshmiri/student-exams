@@ -7,11 +7,7 @@
 
     <!-- select 2 css -->
     <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/vendors/css/forms/select/select2.min.css') }}">
-
-
-
 @endsection
-
 
 
 @section('contents')

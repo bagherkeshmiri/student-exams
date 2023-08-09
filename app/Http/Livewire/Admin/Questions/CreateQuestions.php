@@ -8,7 +8,7 @@ use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
-class CreateQuestion extends Component
+class CreateQuestions extends Component
 {
     public $link;
     public $response_deadline;
@@ -57,7 +57,6 @@ class CreateQuestion extends Component
             session()->flash('success', __('errors.successful_operation'));
         } catch (Exception $e) {
             DB::rollBack();
-            dd($e);
             session()->flash('error', __('errors.error_in_operation'));
         }
     }

@@ -10,7 +10,7 @@ use Exception;
 use Illuminate\Support\Facades\DB;
 
 
-class AdminStudentController extends Controller
+class AdminStudentsController extends Controller
 {
     public function update(AdminStudentEditRequest $request, User $user)
     {

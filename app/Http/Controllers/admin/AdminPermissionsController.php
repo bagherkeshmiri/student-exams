@@ -9,7 +9,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class AdminPermissionController extends Controller
+class AdminPermissionsController extends Controller
 {
     public function create()
     {

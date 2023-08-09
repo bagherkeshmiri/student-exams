@@ -10,7 +10,7 @@ use App\Models\Role;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
-class AdminAccountController extends Controller
+class AdminAccountsController extends Controller
 {
     public function index()
     {

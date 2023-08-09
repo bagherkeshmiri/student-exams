@@ -3,20 +3,23 @@
 use App\Http\Controllers\admin\AdminProfileController;
 use App\Http\Livewire\Admin\Auth\Login;
 use App\Http\Livewire\Admin\Dashboard\Dashboard;
-use App\Http\Livewire\Admin\Questions\CreateQuestion;
-use App\Http\Livewire\Admin\Questions\ListQuestion;
+use App\Http\Livewire\Admin\Questions\CreateQuestions;
+use App\Http\Livewire\Admin\Questions\ListQuestions;
 use App\Http\Livewire\Admin\Questions\ShowQuestion;
+use App\Http\Livewire\Admin\Roles\CreateRoles;
+use App\Http\Livewire\Admin\Roles\ListRoles;
+use App\Http\Livewire\Admin\Roles\ShowRole;
 use App\Http\Livewire\Admin\Students\CreateStudents;
 use App\Http\Livewire\Admin\Students\ListStudents;
-use App\Http\Livewire\Admin\Students\ShowStudents;
+use App\Http\Livewire\Admin\Students\ShowStudent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AdminAuthController;
-use App\Http\Controllers\admin\AdminRoleController;
-use App\Http\Controllers\admin\AdminAccountController;
-use App\Http\Controllers\admin\AdminStudentController;
-use App\Http\Controllers\admin\AdminQuestionController;
+use App\Http\Controllers\admin\AdminRolesController;
+use App\Http\Controllers\admin\AdminAccountsController;
+use App\Http\Controllers\admin\AdminStudentsController;
+use App\Http\Controllers\admin\AdminQuestionsController;
 use App\Http\Controllers\admin\AdminCorrectionController;
-use App\Http\Controllers\admin\AdminPermissionController;
+use App\Http\Controllers\admin\AdminPermissionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,30 +46,35 @@ Route::name('admin.panel.')->prefix('panel')->group(function () {
     Route::name('user.')->prefix('user')->group(function () {
         Route::get('/', ListStudents::class)->name('index');
         Route::get('/create', CreateStudents::class)->name('create');
-        Route::get('/show/{user}', ShowStudents::class)->name('show');
-        Route::get('/delete/{user}', [AdminStudentController::class, 'delete'])->name('delete');
+        Route::get('/show/{user}', ShowStudent::class)->name('show');
+        Route::get('/delete/{user}', [AdminStudentsController::class, 'delete'])->name('delete');
     });
 
     // questions
     Route::name('question.')->prefix('question')->group(function () {
-        Route::get('/', ListQuestion::class)->name('index');
-        Route::get('/create', CreateQuestion::class)->name('create');
+        Route::get('/', ListQuestions::class)->name('index');
+        Route::get('/create', CreateQuestions::class)->name('create');
         Route::get('/show/{question}', ShowQuestion::class)->name('show');
-        Route::get('/delete/{question}', [AdminQuestionController::class, 'delete'])->name('delete');
+        Route::get('/delete/{question}', [AdminQuestionsController::class, 'delete'])->name('delete');
     });
-//    Route::resource('question', AdminQuestionController::class)->except('edit', 'delete');
 
     // permissions
-    Route::resource('permission', AdminPermissionController::class)->except('edit', 'delete');
+    Route::resource('permission', AdminPermissionsController::class)->except('edit', 'delete');
 
 
-    // roles
-    Route::resource('role', AdminRoleController::class)->except('edit', 'delete');
+     // roles
+    Route::name('role.')->prefix('role')->group(function () {
+        Route::get('/', ListRoles::class)->name('index');
+        Route::get('/create', CreateRoles::class)->name('create');
+        Route::get('/show/{role}', ShowRole::class)->name('show');
+        Route::get('/delete/{role}', [AdminRolesController::class, 'delete'])->name('delete');
+//            Route::resource('role', AdminRoleController::class)->except('edit', 'delete');
+    });
 
 
     // accounts
-    Route::resource('admin', AdminAccountController::class)->except('edit', 'delete');
-    Route::name('admin.')->prefix('admin')->controller(AdminAccountController::Class)->group(function () {
+    Route::resource('admin', AdminAccountsController::class)->except('edit', 'delete');
+    Route::name('admin.')->prefix('admin')->controller(AdminAccountsController::Class)->group(function () {
         Route::get('/delete/{admin}', 'delete')->name('delete');
     });
 

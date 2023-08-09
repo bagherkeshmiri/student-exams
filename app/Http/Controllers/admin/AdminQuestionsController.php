@@ -13,7 +13,7 @@ use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
-class AdminQuestionController extends Controller
+class AdminQuestionsController extends Controller
 {
 
     public function show(Question $question)

@@ -8,7 +8,7 @@ use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class ListQuestion extends Component
+class ListQuestions extends Component
 {
     use WithPagination;
 

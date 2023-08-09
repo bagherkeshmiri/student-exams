@@ -2,9 +2,21 @@
     <div class="checkbox checkbox-sm checkbox-success checkbox-glow @isset($main_classes)  {{$main_classes}}  @endisset">
         <input type="checkbox"
 
-               name = "{{ $name }}"
+               @isset($wire)
+               wire:model.defer="{{$wire}}"
+               @endisset
 
+               @isset($wireSimple)
+               wire:model="{{$wireSimple}}"
+               @endisset
+
+               @isset($name)
+               name = "{{ $name }}"
+               @endisset
+
+               @isset($value)
                value = "{{ $value }}"
+               @endisset
 
                 id="{{ $id }}"
 

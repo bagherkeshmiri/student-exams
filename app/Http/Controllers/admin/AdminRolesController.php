@@ -10,19 +10,8 @@ use App\Models\Role;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
-class AdminRoleController extends Controller
+class AdminRolesController extends Controller
 {
-    public function index()
-    {
-        $roles = Role::query()->paginate();
-        return view('admin.pages.role.list', compact('roles'));
-    }
-
-    public function create()
-    {
-        $permissions = Permission::all();
-        return view('admin.pages.role.create', compact('permissions'));
-    }
 
     public function store(AdminRoleStoreRequest $request)
     {
