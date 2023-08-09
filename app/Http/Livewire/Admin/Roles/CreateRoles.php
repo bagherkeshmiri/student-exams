@@ -57,9 +57,8 @@ class CreateRoles extends Component
             DB::commit();
             $this->reset(['fa_name', 'en_name', 'permissions']);
             session()->flash('success', __('errors.successful_operation'));
-        } catch (Exception $e) {
+        } catch (Exception) {
             DB::rollBack();
-            dd($e);
             session()->flash('error', __('errors.error_in_operation'));
         }
     }

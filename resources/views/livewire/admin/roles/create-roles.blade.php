@@ -99,19 +99,4 @@
 
 
 @section('scripts')
-
-{{--    <script>--}}
-{{--        const selectAllPermissions = () => {--}}
-{{--            try {--}}
-{{--                let permissions = document.querySelectorAll('[name="permissions[]"]');--}}
-{{--                permissions.forEach((item) => {--}}
-{{--                        item.checked = item.checked !== true;--}}
-{{--                    }--}}
-{{--                );--}}
-{{--            } catch (e) {--}}
-{{--                console.log(e)--}}
-{{--            }--}}
-{{--        }--}}
-{{--    </script>--}}
-
 @endsection
